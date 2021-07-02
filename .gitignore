@@ -26,3 +26,6 @@ hs_err_pid*
 ## ignoring target file
 target/
 /.metadata/
+
+### servers ignore  ###
+Servers/
