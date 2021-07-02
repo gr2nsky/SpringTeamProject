@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+  
+/* font  */
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+	color: #505050;
+}
+
+#writeQna{
+	width:380px;
+	padding: 10px;
+	border: 1px solid #dcdcdc;
+}
+
+#writeQna th{
+	padding:10px;
+	font-size:20px;
+	font-weight:700;
+	height:50px;
+}
+#writeQna textarea{
+	width:350px;
+	height:100px;
+	resize: none;
+	border:none;
+}
+#writeQna textarea:focus{
+	outline: none;
+} 
+
+/*button  */
+#writeQna input[type="button"]{
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#505050;
+	background-color: #fff;
+	font-weight:700;
+
+	border: none;
+
+	display: inline-block;
+	width: 50px;
+	height:30px;
+}
+#writeQna input[type="button"]:hover{
+	
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 50px;
+	
+}
+#writeQna input[type="reset"]{
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#505050;
+	background-color: #fff;
+	font-weight:700;
+
+	border: none;
+
+	display: inline-block;
+	width: 50px;
+	height:30px;
+}
+#writeQna input[type="reset"]:hover{
+	
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 50px;
+	
+}
+
+
+/*host Write Qna  */
+#hostWriteQna{
+	width:380px;
+	padding: 10px;
+	border: 1px solid #dcdcdc;
+}
+
+#hostWriteQna th{
+	padding:10px;
+	font-size:20px;
+	font-weight:700;
+	height:50px;
+}
+#hostWriteQna textarea{
+	width:350px;
+	height:100px;
+	resize: none;
+	border:none;
+}
+#hostWriteQna textarea:focus{
+	outline: none;
+} 
+
+/*button  */
+#hostWriteQna input[type="button"]{
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#505050;
+	background-color: #fff;
+	font-weight:700;
+
+	border: none;
+
+	display: inline-block;
+	width: 50px;
+	height:30px;
+}
+#hostWriteQna input[type="button"]:hover{
+	
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 50px;
+	
+}
+#hostWriteQna input[type="reset"]{
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#505050;
+	background-color: #fff;
+	font-weight:700;
+
+	border: none;
+
+	display: inline-block;
+	width: 50px;
+	height:30px;
+}
+#hostWriteQna input[type="reset"]:hover{
+	
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 50px;
+	
+}
