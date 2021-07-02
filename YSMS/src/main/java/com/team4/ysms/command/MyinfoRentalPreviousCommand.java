@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ysms.dao.Dao_myinfo_Rental;
-import com.ysms.dto.Dto_Rental;
+import com.team4.ysms.dao.Dao_myinfo_Rental;
+import com.team4.ysms.dto.Dto_Rental;
 
 public class MyinfoRentalPreviousCommand implements Command {
 

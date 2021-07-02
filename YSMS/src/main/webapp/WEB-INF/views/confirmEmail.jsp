@@ -1,7 +1,7 @@
 <%@page import="java.io.PrintWriter"%>
-<%@page import="com.ysms.command.AuthEmailRequestCommand"%>
-<%@page import="com.ysms.common.ShareVar_login"%>
-<%@page import="com.ysms.dao.Dao_Login"%>
+<%@page import="com.team4.ysms.command.AuthEmailRequestCommand"%>
+<%@page import="com.team4.ysms.common.ShareVar_login"%>
+<%@page import="com.team4.ysms.dao.Dao_Login"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>   

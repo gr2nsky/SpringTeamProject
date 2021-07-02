@@ -9,8 +9,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.ysms.common.LoginedUserInfo;
-import com.ysms.dto.Dto_SignUp;
+import com.team4.ysms.common.LoginedUserInfo;
+import com.team4.ysms.dto.Dto_SignUp;
 
 public class Dao_MyInfo_UpdateProfile {
 	DataSource dataSource;

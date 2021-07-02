@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.ysms.common.ReservationInfo;
-import com.ysms.dao.Dao_Reservation;
-import com.ysms.dto.Dto_Refine_rental;
-import com.ysms.dto.Dto_Reservation_rental;
-import com.ysms.dto.Dto_Share;
+import com.team4.ysms.common.ReservationInfo;
+import com.team4.ysms.dao.Dao_Reservation;
+import com.team4.ysms.dto.Dto_Refine_rental;
+import com.team4.ysms.dto.Dto_Reservation_rental;
+import com.team4.ysms.dto.Dto_Share;
 
 public class ReservationCommand implements Command {
 

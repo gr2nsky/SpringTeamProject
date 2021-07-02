@@ -12,10 +12,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.ysms.common.LoginedUserInfo;
-import com.ysms.dto.Dto_Payment;
-import com.ysms.dto.Dto_Reservation_rental;
-import com.ysms.dto.Dto_Reservation_rentalDetail;
+import com.team4.ysms.common.LoginedUserInfo;
+import com.team4.ysms.dto.Dto_Payment;
+import com.team4.ysms.dto.Dto_Reservation_rental;
+import com.team4.ysms.dto.Dto_Reservation_rentalDetail;
 
 public class Dao_Reservation {
 	DataSource dataSource;

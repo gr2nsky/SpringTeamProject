@@ -5,8 +5,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ysms.common.LoginedUserInfo;
-import com.ysms.dao.Dao_QnA;
+import com.team4.ysms.common.LoginedUserInfo;
+import com.team4.ysms.dao.Dao_QnA;
 
 public class WriteQnACommand implements Command {
 

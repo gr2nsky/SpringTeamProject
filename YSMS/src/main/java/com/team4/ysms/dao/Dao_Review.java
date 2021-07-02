@@ -19,8 +19,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.ysms.common.FilePath;
-import com.ysms.dto.Dto_Review;
+import com.team4.ysms.common.FilePath;
+import com.team4.ysms.dto.Dto_Review;
 	
 public class Dao_Review {
 	DataSource dataSource;

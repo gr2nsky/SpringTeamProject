@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ysms.dao.Dao_Review;
-import com.ysms.dto.Dto_Review;
+import com.team4.ysms.dao.Dao_Review;
+import com.team4.ysms.dto.Dto_Review;
 
 public class ReviewCommand implements Command {
 

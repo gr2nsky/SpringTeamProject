@@ -16,7 +16,7 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 
-import com.ysms.common.ShareVar_login;
+import com.team4.ysms.common.ShareVar_login;
 
 
 public class AuthEmailRequestCommand implements Command{

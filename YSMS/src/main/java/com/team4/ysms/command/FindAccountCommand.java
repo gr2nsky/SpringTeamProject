@@ -13,8 +13,8 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ysms.common.ShareVar_login;
-import com.ysms.dao.Dao_Login;
+import com.team4.ysms.common.ShareVar_login;
+import com.team4.ysms.dao.Dao_Login;
 
 public class FindAccountCommand implements Command {
 

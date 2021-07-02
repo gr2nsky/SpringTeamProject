@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ysms.common.FilePath;
-import com.ysms.dao.Dao_Host_QnA;
-import com.ysms.dto.Dto_QnA;
+import com.team4.ysms.common.FilePath;
+import com.team4.ysms.dao.Dao_Host_QnA;
+import com.team4.ysms.dto.Dto_QnA;
 
 public class HostQnACommand implements Command {
 

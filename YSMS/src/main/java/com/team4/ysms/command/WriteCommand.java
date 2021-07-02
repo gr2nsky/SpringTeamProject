@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.ysms.dao.Dao_Share;
+import com.team4.ysms.dao.Dao_Share;
 
 
 public class WriteCommand implements Command {

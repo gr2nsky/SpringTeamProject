@@ -8,9 +8,9 @@ package com.team4.ysms.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ysms.common.LoginedUserInfo;
-import com.ysms.common.PaymentInfo;
-import com.ysms.dto.Dto_Payment;
+import com.team4.ysms.common.LoginedUserInfo;
+import com.team4.ysms.common.PaymentInfo;
+import com.team4.ysms.dto.Dto_Payment;
 
 public class PaymentCommand implements Command {
 

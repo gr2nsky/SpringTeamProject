@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ysms.common.LoginedUserInfo;
-import com.ysms.dao.Dao_Share;
-import com.ysms.dto.Dto_Share;
+import com.team4.ysms.common.LoginedUserInfo;
+import com.team4.ysms.dao.Dao_Share;
+import com.team4.ysms.dto.Dto_Share;
 
 
 public class ListCommand implements Command {

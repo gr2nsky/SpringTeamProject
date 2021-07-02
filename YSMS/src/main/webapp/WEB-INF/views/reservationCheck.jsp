@@ -1,7 +1,7 @@
-<%@page import="com.ysms.common.LoginedUserInfo"%>
+<%@page import="com.team4.ysms.common.LoginedUserInfo"%>
 <%@page import="org.json.simple.JSONArray"%>
-<%@page import="com.ysms.dto.Dto_Refine_rental"%>
-<%@page import="com.ysms.dto.Dto_Share"%>
+<%@page import="com.team4.ysms.dto.Dto_Refine_rental"%>
+<%@page import="com.team4.ysms.dto.Dto_Share"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

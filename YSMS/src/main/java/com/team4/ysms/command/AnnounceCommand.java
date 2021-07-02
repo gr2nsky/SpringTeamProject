@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ysms.dao.Dao_Announce;
-import com.ysms.dto.Dto_Announce;
+import com.team4.ysms.dao.Dao_Announce;
+import com.team4.ysms.dto.Dto_Announce;
 
 public class AnnounceCommand implements Command {
 

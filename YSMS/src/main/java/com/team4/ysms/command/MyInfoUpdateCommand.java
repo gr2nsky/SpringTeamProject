@@ -4,10 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
-import com.ysms.common.FilePath_login;
-import com.ysms.common.LoginedUserInfo;
-import com.ysms.dao.Dao_Login;
-import com.ysms.dao.Dao_MyInfo_UpdateProfile;
+import com.team4.ysms.common.FilePath_login;
+import com.team4.ysms.common.LoginedUserInfo;
+import com.team4.ysms.dao.Dao_Login;
+import com.team4.ysms.dao.Dao_MyInfo_UpdateProfile;
 
 public class MyInfoUpdateCommand implements Command {
 

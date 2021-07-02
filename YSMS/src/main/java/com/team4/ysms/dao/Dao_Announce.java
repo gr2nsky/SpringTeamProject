@@ -9,7 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.ysms.dto.Dto_Announce;
+import com.team4.ysms.dto.Dto_Announce;
 
 public class Dao_Announce {
 		

@@ -17,7 +17,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.ysms.dto.Dto_QnA;
+import com.team4.ysms.dto.Dto_QnA;
 
 public class Dao_myinfo_QnA {
 

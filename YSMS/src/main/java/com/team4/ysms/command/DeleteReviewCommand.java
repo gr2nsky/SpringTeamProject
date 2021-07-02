@@ -3,7 +3,7 @@ package com.team4.ysms.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ysms.dao.Dao_Review;
+import com.team4.ysms.dao.Dao_Review;
 
 public class DeleteReviewCommand implements Command {
 

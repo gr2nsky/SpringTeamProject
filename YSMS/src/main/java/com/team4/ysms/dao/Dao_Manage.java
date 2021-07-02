@@ -10,7 +10,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.ysms.dto.Dto_SignUp;
+import com.team4.ysms.dto.Dto_SignUp;
 
 public class Dao_Manage {
 	DataSource dataSource;

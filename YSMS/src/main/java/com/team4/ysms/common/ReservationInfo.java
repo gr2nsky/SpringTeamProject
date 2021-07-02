@@ -1,6 +1,6 @@
 package com.team4.ysms.common;
 
-import com.ysms.dto.Dto_Share;
+import com.team4.ysms.dto.Dto_Share;
 
 public class ReservationInfo {
 	public static Dto_Share detail = null;

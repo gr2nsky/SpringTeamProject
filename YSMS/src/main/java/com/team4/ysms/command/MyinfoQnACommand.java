@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ysms.common.LoginedUserInfo;
-import com.ysms.dao.Dao_myinfo_QnA;
-import com.ysms.dto.Dto_QnA;
+import com.team4.ysms.common.LoginedUserInfo;
+import com.team4.ysms.dao.Dao_myinfo_QnA;
+import com.team4.ysms.dto.Dto_QnA;
 
 public class MyinfoQnACommand implements Command {
 

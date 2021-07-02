@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ysms.dao.Dao_SearchPlace;
-import com.ysms.dto.Dto_SearchPlace;
+import com.team4.ysms.dao.Dao_SearchPlace;
+import com.team4.ysms.dto.Dto_SearchPlace;
 
 public class SearchPlaceCommand implements Command {
 	

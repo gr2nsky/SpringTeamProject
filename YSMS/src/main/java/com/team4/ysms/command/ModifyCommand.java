@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.ysms.common.FilePath;
-import com.ysms.dao.Dao_Share;
+import com.team4.ysms.common.FilePath;
+import com.team4.ysms.dao.Dao_Share;
 
 public class ModifyCommand implements Command {
 

@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ysms.dao.Dao_Manage;
-import com.ysms.dto.Dto_SignUp;
+import com.team4.ysms.dao.Dao_Manage;
+import com.team4.ysms.dto.Dto_SignUp;
 
 public class AdminUserListCommand implements Command {
 	

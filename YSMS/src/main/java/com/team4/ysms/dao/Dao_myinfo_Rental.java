@@ -17,8 +17,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.ysms.common.FilePath;
-import com.ysms.dto.Dto_Rental;
+import com.team4.ysms.common.FilePath;
+import com.team4.ysms.dto.Dto_Rental;
 
 public class Dao_myinfo_Rental {
 	

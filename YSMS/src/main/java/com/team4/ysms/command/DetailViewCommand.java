@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.ysms.common.FilePath;
-import com.ysms.common.ReservationInfo;
-import com.ysms.dao.Dao_Share;
-import com.ysms.dto.Dto_Share;
+import com.team4.ysms.common.FilePath;
+import com.team4.ysms.common.ReservationInfo;
+import com.team4.ysms.dao.Dao_Share;
+import com.team4.ysms.dto.Dto_Share;
 
 public class DetailViewCommand implements Command {
 

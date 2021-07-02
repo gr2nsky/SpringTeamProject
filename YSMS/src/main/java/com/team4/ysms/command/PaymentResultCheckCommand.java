@@ -3,10 +3,10 @@ package com.team4.ysms.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ysms.common.PaymentInfo;
-import com.ysms.common.ReservationInfo;
-import com.ysms.dto.Dto_Payment;
-import com.ysms.dto.Dto_Share;
+import com.team4.ysms.common.PaymentInfo;
+import com.team4.ysms.common.ReservationInfo;
+import com.team4.ysms.dto.Dto_Payment;
+import com.team4.ysms.dto.Dto_Share;
 
 public class PaymentResultCheckCommand implements Command {
 
