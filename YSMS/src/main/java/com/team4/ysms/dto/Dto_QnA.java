@@ -56,8 +56,7 @@ public class Dto_QnA {
 	// qnaNo, qnaContent, qnaQ_updateDate, qnaAnswer, qnaA_removeDate, 
 	// qnaPlaceName, yesNo, qnaA_updateDate
 	public Dto_QnA(int qnaNo, String qnaContent, String qnaQ_updateDate, 
-			String qnaAnswer, String qnaA_removeDate, String qnaPlaceName,
-			String qnaYesNo, String qnaA_updateDate) {
+			String qnaAnswer, String qnaA_updateDate, String qnaA_removeDate, int qnaPlace_no, String qnaPlaceName) {
 		super();
 		this.qnaNo = qnaNo;
 		this.qnaContent = qnaContent;
@@ -65,8 +64,8 @@ public class Dto_QnA {
 		this.qnaAnswer = qnaAnswer;
 		this.qnaA_removeDate = qnaA_removeDate;
 		this.qnaPlaceName = qnaPlaceName;
-		this.qnaYesNo = qnaYesNo;
 		this.qnaA_updateDate = qnaA_updateDate;
+		this.qnaPlace_no = qnaPlace_no;
 	}
 	
 	// Host_qna List

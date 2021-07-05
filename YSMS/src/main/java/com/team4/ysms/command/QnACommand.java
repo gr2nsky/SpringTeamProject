@@ -44,7 +44,6 @@ public class QnACommand implements SCommand {
 		Dao_QnA dao = sqlSession.getMapper(Dao_QnA.class);
 		
 		Dto_Paging dto = dao.qnaListCountDao(place_no);
-		System.out.println(dto);
 		
 		int countedTuple = dto.getTotalPage();
 		ArrayList<Integer> qnaPageList = calcNumOfPage(countedTuple);
