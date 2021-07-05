@@ -66,6 +66,7 @@ public class LoginController {
 	public String confirmID(HttpServletRequest request, Model model) {
 		
 	}
+
 //case "/confirmID.four":
 //	command = new DupleIDCheckCommand();
 //	command.execute(request, response);
