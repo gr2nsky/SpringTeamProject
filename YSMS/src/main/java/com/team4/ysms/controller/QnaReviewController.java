@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.team4.ysms.command.QnACommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteQnACommand;
+import com.team4.ysms.dao.Dao_QnA;
 
 @Controller
-public class QnaController {
+public class QnaReviewController {
 	
 	@Autowired
 	private SqlSession sqlSession;
 	
 	SCommand command = null;
+	String user_id = "user01";
 	
 	@RequestMapping("/qna.four")
 	public String quaList(HttpServletRequest request, Model model) {
@@ -47,10 +49,12 @@ public class QnaController {
 		System.out.println("qna_write()");
 		
 		HttpSession httpsession = request.getSession();
-		model.addAttribute("request", request);
 		
-		command = new WriteQnACommand();
-		command.execute(sqlSession, model, httpsession);
+		Dao_QnA dao = sqlSession.getMapper(Dao_QnA.class);
+		dao.qnaWriteDao(request.getParameter("qnaContent"), user_id, request.getParameter("place_no"));
+		
+//		command = new WriteQnACommand();
+//		command.execute(sqlSession, model, httpsession);
 		
 		return "write_QnA_Completed";
 	}
