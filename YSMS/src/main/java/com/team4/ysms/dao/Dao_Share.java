@@ -22,6 +22,10 @@ public interface Dao_Share {
 	
 	public void writeSpaceDao(String postCode, String address1, String address2, String capacity, String category);
 		
+	public void writeDetailDao(String title, String user_id, String introduce, String price, String filePath, int place_no, String startTime, String endTime, String dayLimit);
+
+	public int Find_PlaceNoDao(String postCode, int capacity, int category);
+	
 	
 //	DataSource dataSource;
 //
@@ -379,52 +383,7 @@ public interface Dao_Share {
 //	 *  - Park Jaewon
 //	 */
 //	
-//	// 공간 등록하기 1단계 (DB : place Entity에 정보 입력시키기)
-//	public void write_Space(String postCode, String address1, String address2, String capacity, String category) {
-//		System.out.println("* * Start Method : write_Space * *");
-//		
-//		//SQL Query
-//		String query = "INSERT INTO place (postCode, address1, address2, capacity, registrationDate, category) VALUES (?, ?, ?, ?, now(), ?)";
-//		// address1 : 주소 API에서 입력되는 값
-//		// address2 : 사용자가 직접 입력하는 값
-//		
-//		Connection conn = null;
-//		PreparedStatement psmt = null;
-//		
-//		// 공간 수용인원
-//		int temp1 = Integer.parseInt(capacity);
-//		// 공간이 어떤 유형인지 카테고리 선택
-//		int temp2 = Integer.parseInt(category);
-//				
-//		try {
-//			conn = dataSource.getConnection();
-//			psmt = conn.prepareStatement(query);
 //
-//			psmt.setString(1, postCode);
-//			psmt.setString(2, address1);
-//			psmt.setString(3, address2);
-//			psmt.setInt(4, temp1);
-//			psmt.setInt(5, temp2);
-//
-//			psmt.executeUpdate();
-//			System.out.println("< Data insert success : write_Space ( to place entity ) >");
-//			
-//		} catch (Exception e) {
-//			System.out.println("< Data insert Fail : write_Space  ( to place entity ) >");
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if (psmt != null)
-//					psmt.close();
-//				if (conn != null)
-//					conn.close();
-//				System.out.println("< psmt, conn close Success : write_Space >");
-//			} catch (Exception e) {
-//				System.out.println("< psmt, conn close Fail : write_Space >");
-//				e.printStackTrace();
-//			}
-//		}
-//	}
 //	
 //	/* DB Search : SEARCH no FROM place
 //	 *  - 2021.05.17 17:00
