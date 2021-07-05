@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="com.team4.ysms.dao.Dao_Share">
+    
+    	<!-- 새 공간 등록하기 -->
+    	<insert id="writeSpaceDao">
+    		INSERT INTO PLACE (POSTCODE, ADDRESS1, ADDRESS2, CAPACITY, REGISTRATIONDATE, CATEGORY) VALUES (#{param1}, #{param2}, #{param3}, #{param4}, NOW(), #{param5})
+    	</insert>
+    
+    
+    
+    </mapper>
