@@ -44,4 +44,11 @@
 		<beans:constructor-arg index="0" ref="sqlSessionFactory"></beans:constructor-arg>
 	</beans:bean>
 	
+	<!--multipart - fileupload  -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <beans:property name="maxUploadSize" value="200000000" />
+	    <beans:property name="maxInMemorySize" value="200000000" />
+	    <beans:property name="defaultEncoding" value="utf-8" />
+	</beans:bean>
+	
 </beans:beans>
