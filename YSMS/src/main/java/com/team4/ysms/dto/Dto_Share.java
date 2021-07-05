@@ -31,11 +31,9 @@ public class Dto_Share {
 	int endTime;
 	String dayLimit;
 	
-	
-	
-	
-	
 
+	
+	
 	public Dto_Share(int place_no) {
 		super();
 		this.place_no = place_no;

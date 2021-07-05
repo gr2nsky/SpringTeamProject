@@ -109,7 +109,7 @@
 			<input type="hidden" name="capacity" value="${CAPACITY }">
 			<input type="hidden" name="category" value="${CATEGORY }">
 			</td></tr>
-			<tr><td><button type="submit" class="btnChk" >신청하기</button></td></tr>
+			<tr><td><input type="submit" class="btnChk" value="신청하기"></td></tr>
 			<!-- <tr><td><input type="submit" value="신청하기" class="btnChk"></td></tr> -->
 		</table>
 		<br><br><br><br>
