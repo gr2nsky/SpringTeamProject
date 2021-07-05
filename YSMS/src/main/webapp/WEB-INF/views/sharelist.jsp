@@ -24,7 +24,7 @@
 			<th colspan="4">상세보기</th>
 			<th>질문보기</th>
 		</tr>
-		<c:forEach items="${list }" var="dto">
+		<c:forEach items="${SHARELIST }" var="dto">
 			<tr>
 				<td align="center">${dto.no }</td>
 				

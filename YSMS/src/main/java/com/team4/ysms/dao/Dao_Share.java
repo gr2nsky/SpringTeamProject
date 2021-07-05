@@ -24,23 +24,15 @@ public interface Dao_Share {
 		
 	public void writeDetailDao(String title, String user_id, String introduce, String price, String filePath, int place_no, String startTime, String endTime, String dayLimit);
 
-	public int Find_PlaceNoDao(String postCode, int capacity, int category);
+	public int find_PlaceNoDao(String postCode, int capacity, int category);
+	
+	//  Share List 를 불러오기 위한 Method 
+	public ArrayList<Dto_Share> shareListDao(String id, int requestPage, int numOfTuplePerPage);
+	
+	//  Paging을 위한 Method
+	public int countTuple();
 	
 	
-//	DataSource dataSource;
-//
-//	// DB Connecting
-//	public Dao_Share() {
-//		System.out.println("Connecting database...");
-//		try {
-//			Context context = new InitialContext();
-//			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/team4");
-//			System.out.println("Database connection success");
-//		} catch (NamingException e) {
-//			System.out.println("Database connection failed");
-//			e.printStackTrace();
-//		}
-//	}
 //	
 //	// [Paging 01]
 //	// 사용자가 요청한 페이지번째(requestPage : offset)와 페이지당 표시할 게시글의 수(numOfTuplePerPage : limit)을 매개변수로 받는다.

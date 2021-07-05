@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.team4.ysms.command.ShareListCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteCommand;
 import com.team4.ysms.dao.Dao_Share;
@@ -72,10 +73,25 @@ public class ShareSpaceController {
 		command = new WriteCommand();
 		command.execute(sqlSession, model, httpSession);
 		
-		return "redirect:write_space.four";
+		return "sharelist?page=1";
 	}
 	
-	
+	////////////////////////////////////
+	//  210705 22:00   Park Jaewon    //
+	//  내가 등록한 공간List 불러오기       //
+	////////////////////////////////////
+	@RequestMapping("/list.four")
+	public String ShareList(HttpServletRequest request, Model model) {
+		System.out.println("* * * Controller : ShareList * * *");
+		
+		HttpSession httpSession = request.getSession();
+		model.addAttribute("request", request);
+		
+		command = new ShareListCommand();
+		command.execute(sqlSession, model, httpSession);
+		
+		return "sharelist";
+	}
 	
 	
 }// End of ShareSpaceController

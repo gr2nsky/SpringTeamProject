@@ -63,7 +63,7 @@ public class WriteCommand implements SCommand {
         }
         
         String dayLimit = dateLimitForm(mtfRequest.getParameter("dayLimit"));
-		int place_no = dao.Find_PlaceNoDao(mtfRequest.getParameter("postCode"), 
+		int place_no = dao.find_PlaceNoDao(mtfRequest.getParameter("postCode"), 
 											  Integer.parseInt(mtfRequest.getParameter("capacity")), 
 											  Integer.parseInt(mtfRequest.getParameter("category")));
 
