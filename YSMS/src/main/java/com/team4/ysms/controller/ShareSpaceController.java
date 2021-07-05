@@ -22,9 +22,6 @@ public class ShareSpaceController {
 	
 	SCommand command;
 	
-	
-	
-	
 	////////////////////////////////////
 	//  210705 12:11   Park Jaewon    //
 	//  공간 작성페이지로 이동              //
@@ -61,7 +58,10 @@ public class ShareSpaceController {
 		return "write";
 	}
 	
-	
+	////////////////////////////////////
+	//  210705 18:25   Park Jaewon    //
+	//  MultupartRequest : 공간등록     //
+	////////////////////////////////////
 	@RequestMapping("/write.four")
 	public String writeDetail(MultipartHttpServletRequest mtfrequest, Model model) {
 		System.out.println("* * * Controller : writeDetail * * *");
