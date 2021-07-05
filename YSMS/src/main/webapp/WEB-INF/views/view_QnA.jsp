@@ -102,7 +102,14 @@
  		<tr>
 			<td  class="photo" rowspan="4" valign="top" align="center">
  			<div class="user">
-			<img class="userProfile" src="${pageContext.request.contextPath }/resources/userPhoto/basicPhoto.png">
+ 				<c:choose>
+					<c:when test="${!empty Dto_QnA.qnaUserFilePath }">
+						<img class="userProfile" src="${pageContext.request.contextPath }/resources/userPhoto/${Dto_QnA.qnaUserFilePath}">
+					</c:when>
+					<c:otherwise>
+						<img class="userProfile" src="${pageContext.request.contextPath }/resources/userPhoto/basicPhoto.png">
+					</c:otherwise>
+ 				</c:choose>
 			</div>
 			<input type="hidden" id = "target" value="${Dto_QnA.qnaTarget }">
 			</td>
