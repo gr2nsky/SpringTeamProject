@@ -11,13 +11,22 @@
     	</insert>
     
    		<!-- 공간 세부정보 등록을 위해 place_no 찾기 -->
-    	<select id="Find_PlaceNoDao" resultType="int">
+    	<select id="find_PlaceNoDao" resultType="int">
     		SELECT NO FROM PLACE WHERE POSTCODE = #{param1} AND CAPACITY = #{param2} AND CATEGORY = #{param3}
     	</select>
     
+    	<!-- 공간 세부정보 등록하기 -->
     	<insert id="writeDetailDao">
     		INSERT INTO SHARE (TITLE, USER_ID, INTRODUCE, UPDATEDATE, PRICE, FILEPATH, PLACE_NO, STARTTIME, ENDTIME, DAYLIMIT) VALUES (#{param1}, #{param2}, #{param3}, now(), #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9})
     	</insert>
     
+    	<select id="shareListDao" resultType="com.team4.ysms.dto.Dto_Share">
+    		SELECT NO, USER_ID, TITLE, UPDATEDATE, PLACE_NO FROM SHARE WHERE USER_ID = #{param1} ORDER BY NO DESC LIMIT #{param2}, #{param3}
+    	</select>
+    	
+    	<select id="countTuple" resultType="int">
+    		SELECT COUNT(*) FROM SHARE
+    	</select>
+
     
     </mapper>
