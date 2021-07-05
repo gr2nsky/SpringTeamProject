@@ -73,7 +73,7 @@ public class ShareSpaceController {
 		command = new WriteCommand();
 		command.execute(sqlSession, model, httpSession);
 		
-		return "sharelist?page=1";
+		return "redirect:list.four";
 	}
 	
 	////////////////////////////////////
