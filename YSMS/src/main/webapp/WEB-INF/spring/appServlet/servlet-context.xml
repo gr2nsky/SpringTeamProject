@@ -14,21 +14,11 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/resources/img/**" location="/resources/img/" /> 
+	<resources mapping="/resources/css/**" location="/resources/css/" />
 	
-	
-<!-- 	<Resource
-    	name = "jdbc/Market"
-    	auth = "Container"
-    	type = "javax.sql.DataSource"
-    	maxTotal = "8"
-    	maxIdle = "30"
-    	maxWaitMillis = "-1"
-    	username = "root"
-    	password = "qwer1234"
-    	driverClassName = "com.mysql.cj.jdbc.Driver"
-    	url ="jdbc:mysql://localhost:3306/Market?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useSSL=false"
-    /> -->
-	
+	<!-- ** : 폴더 안에 있는 것 전부 사용하겠다 -->
+
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

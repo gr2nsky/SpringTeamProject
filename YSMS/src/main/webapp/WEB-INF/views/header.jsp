@@ -3,7 +3,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>   
 <style>
  <!-- 폰트 적용 -->
-<link rel="stylesheet" href="css/spaceDetailView_QnaReview.css" type="text/css">
+<link rel="stylesheet" href="/ysms/resources/css/spaceDetailView_QnaReview.css" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
@@ -130,7 +130,7 @@
 </div>
 
 <div class="mainLogo">
-	<a href="mainPage.jsp"><img alt="너공나공 메인 로고" src="img/ysms_main_logo.png"></a> <!-- Logo->클릭시 메인페이지 -->
+	<a href="mainPage.jsp"><img alt="너공나공 메인 로고" src="/ysms/resources/img/ysms_main_logo.png"></a> <!-- Logo->클릭시 메인페이지 -->
 </div>
 <div class="mainBox">
 <div class="header">
