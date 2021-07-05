@@ -33,7 +33,6 @@ public class Dto_QnA {
 	public Dto_QnA(String qnaContent, String qnaQ_updateDate, String qnaSender, String qnaAnswer,
 			String qnaA_updateDate, String qnaA_removeDate, int qnaPlace_no, 
 			String qnaUserFilePath, String qnaPlaceName, String qnaTarget) {
-		
 		super();
 		this.qnaContent = qnaContent;
 		this.qnaQ_updateDate = qnaQ_updateDate;

@@ -92,26 +92,27 @@
 			<th align="right">
 				<button id="write" type="button" style="font-weight:800;" onclick="writeQna();">작성하기</button>
 				<input type="hidden" id="loginedId" value="${loginedUserID }">
-				<input type="hidden" id="place_no" value="${placeNo }">
+<%-- 				<input type="hidden" id="place_no" value="${placeNo }"> --%>
+				<input type="hidden" id="place_no" value="3">
 			</th>
 		</tr>
 		<c:choose>
 		<c:when test="${!empty qnaList }">
-		<c:forEach items="${qnaList }" var="qnaDto">
-		<tr>
+		<c:forEach items="${qnaList }" var="Dto_QnA">
+ 		<tr>
 			<td  class="photo" rowspan="4" valign="top" align="center">
  			<div class="user">
-			<img class="userProfile" src="userPhoto/${qnaDto.qnaUserFilePath }">
+			<img class="userProfile" src="${pageContext.request.contextPath }/resources/userPhoto/basicPhoto.png">
 			</div>
-			<input type="hidden" id = "target" value="${qnaDto.qnaTarget }">
+			<input type="hidden" id = "target" value="${Dto_QnA.qnaTarget }">
 			</td>
+		</tr> 
+		<tr>
+			<td align="left" style="font-weight:700;">${Dto_QnA.qnaSender }</td>
+			<td align="right"><span style="font-size:13px;">${Dto_QnA.qnaQ_updateDate }</span></td>
 		</tr>
 		<tr>
-			<td align="left" style="font-weight:700;">${qnaDto.qnaSender }</td>
-			<td align="right"><span style="font-size:13px;">${qnaDto.qnaQ_updateDate }</span></td>
-		</tr>
-		<tr>
-			<td colspan="2"><textarea readonly="readonly" disabled="disabled">${qnaDto.qnaContent }</textarea></td>
+			<td colspan="2"><textarea readonly="readonly" disabled="disabled">${Dto_QnA.qnaContent }</textarea></td>
 		</tr>
 		<tr>
 		</tr>
@@ -124,10 +125,10 @@
 		</tr>
 		<tr>
 			<td align="left" style="font-weight:700;">호스트의 답변</td>
-			<td align="right"><span style="font-size:13px;">${qnaDto.qnaA_updateDate }</span></td>
+			<td align="right"><span style="font-size:13px;">${Dto_QnA.qnaA_updateDate }</span></td>
 		</tr>
 		<tr>
-			<td colspan="2"><textarea readonly="readonly" disabled="disabled">${qnaDto.qnaAnswer }</textarea></td>
+			<td colspan="2"><textarea readonly="readonly" disabled="disabled">${Dto_QnA.qnaAnswer }</textarea></td>
 		</tr>
 		<tr>
 		</tr>
