@@ -7,5 +7,5 @@ import org.springframework.ui.Model;
 public interface SCommand {
 
 	void execute(SqlSession sqlSession, Model model, HttpSession httpSession);
-	
+
 }
