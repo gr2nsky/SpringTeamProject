@@ -9,6 +9,6 @@ public interface SCommand {
 
 
 	void execute(SqlSession sqlSession, Model model, HttpSession httpSession);
-
+	void execute(SqlSession sqlSession, Model model);
 	
 }
