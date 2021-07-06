@@ -16,13 +16,14 @@ import com.team4.ysms.command.MyinfoRentalPreviousCommand;
 import com.team4.ysms.command.MyinfoRentalScheduledCommand;
 import com.team4.ysms.command.MyinfoReviewCommand;
 import com.team4.ysms.command.SCommand;
+import com.team4.ysms.command.WriteReviewCommand;
 import com.team4.ysms.dao.Dao_myinfo_QnA;
 import com.team4.ysms.dao.Dao_myinfo_Review;
 
 @Controller
 public class MyinfoController {
 	
-	String user_id = "user01";
+	String user_id = "user01"; // 로그인 아이디 받아오기
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -32,6 +33,7 @@ public class MyinfoController {
 	
 	/*
 	 * 21.07.06 효경 -myInfoQnA
+	 * 
 	 */
 	
 	// myInfoQnA List - 내가 작성한 qnaList
@@ -181,6 +183,33 @@ public class MyinfoController {
 
 		return "delete_Review_Completed";
 	}
+	
+	// review write
+	@RequestMapping("/write_review")
+	public String write_review(HttpServletRequest request, Model model) {
+		System.out.println("write_review()");
+		
+		HttpSession httpsession = request.getSession();
+		
+		model.addAttribute("rentalNo", request.getParameter("rentalNo"));
+
+		return "write_Review";
+	}
+	
+	@RequestMapping("/review_write")
+	public String review_write(MultipartHttpServletRequest mtfRequest, Model model) {
+		System.out.println("review_write()");
+		
+		HttpSession httpsession = mtfRequest.getSession();
+		
+		model.addAttribute("mtfRequest", mtfRequest);
+		
+		command = new WriteReviewCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+		return "write_Review_Completed";
+	}
+	
 	
 	/*
 	 *  21.07.06 효경

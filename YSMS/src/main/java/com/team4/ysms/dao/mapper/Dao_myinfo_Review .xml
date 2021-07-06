@@ -33,4 +33,9 @@
 		UPDATE RENTAL SET REVIEWSUBMITDATE = NULL, REVIEWREMOVEDATE = NOW() WHERE NO = #{param1}
 	</update>
 	
+	<update id="myInfoReviewWriteDao">
+		UPDATE RENTAL SET REVIEWCONTENT = #{param1}, REVIEWSCORE = #{param2}, FILEPATH = #{param3},
+		REVIEWSUBMITDATE = NOW(), REVIEWUPDATEDATE = NOW(), REVIEWREMOVEDATE = NULL WHERE NO = #{param4}
+	</update>
+	
 </mapper>

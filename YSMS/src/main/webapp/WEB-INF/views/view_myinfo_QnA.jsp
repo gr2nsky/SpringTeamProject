@@ -81,7 +81,7 @@
 	}	
 </script>
 <body>
-<%-- <%@ include file="myinfoHeader.jsp" %> --%>
+<%@ include file="myinfoHeader.jsp" %>
 <div class="mainBox">
 	<div class="contentBox">
 		<div class="textLeft" style="margin-left:60px; margin-bottom:30px; font-size:25px; font-weight:700;">나의 문의 목록</div>

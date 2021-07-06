@@ -189,7 +189,7 @@
 							</c:when>
 							<c:when test="${empty Dto_Rental.reviewSubmitDate }">
 							<td colspan="2" align="right">
-								<a href="javascript:openReview('write_review.four?rentalNo=${Dto_Rental.rentalNo }')">
+								<a href="javascript:openReview('write_review?rentalNo=${Dto_Rental.rentalNo }')">
 								<button class="button_writeReview">리뷰쓰기</button></a>
 								<div style="padding-left:100px; padding-top:5px; text-align:center; font-size:9px; color:#6e6e6e">나눔 받은 공간은 어떠셨나요?? <br> 당신의 감상을 들려주세요.</div>
 							</td>
