@@ -21,7 +21,7 @@ public class Dto_Rental {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	// scheduled list
 	public Dto_Rental(int rentalNo, String rentalDate, String checkInDate, int rentalStartTime, int rentalEndTime,
 			String rentalCancellationDate, int rentalPrice, String rentalUser_id, int rentalPlace_no,
 			String rentalPhoto, String rentalTitle) {
