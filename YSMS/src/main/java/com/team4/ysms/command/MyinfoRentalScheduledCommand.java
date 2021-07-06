@@ -1,58 +1,51 @@
 package com.team4.ysms.command;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
 import com.team4.ysms.dao.Dao_myinfo_Rental;
-import com.team4.ysms.dto.Dto_Rental;
+import com.team4.ysms.dto.Dto_Paging;
 
-public class MyinfoRentalScheduledCommand implements Command {
+public class MyinfoRentalScheduledCommand implements SCommand {
 
-	/* 
- 	-----------------------------
- 	21.05.22 hyokyeong JO
- 	DB table rental, share
-
-	userId
- 	-----------------------------
-	 */
+	String user_id = "user01";
 	int numOfTuplesPerPage = 5;
+	
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
 		// TODO Auto-generated method stub
-
-		// 사용자가 요청한 페이지 번호 초기값은 가장 최신글을 보여주는 1
 		int requestPage = 1;
-		Dao_myinfo_Rental dao = new Dao_myinfo_Rental();
-		HttpSession session = request.getSession();
-		
-		String user_id = (String) session.getAttribute("loginedUserID");
-		
-		
-		// Page 처리
-		if (request.getParameter("rentalScheduledPage") != null) {
-			requestPage = Integer.parseInt(request.getParameter("rentalScheduledPage"));
-			// content에서 목록보기 요청시 최근 페이지 목록으로 돌아가기 위해 세션에 저장
-			session.setAttribute("currentPage", requestPage);
-		}
-		int countedTuple = dao.scheduledCountTuple(user_id);
-		ArrayList<Integer> rentalScheduledPageList = calcNumOfPage(countedTuple);
-		session.setAttribute("rentalScheduledPageList", rentalScheduledPageList);
 
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
-		// rentalList (예정된 예약) 출력
-		ArrayList<Dto_Rental> myinfoRentalScheduledList = dao.myinfoRentalScheduledList(user_id, requestPage, numOfTuplesPerPage);
-		String empty = "";
+		if(request.getParameter("rentalScheduledPage") != null) {
+			requestPage = Integer.parseInt(request.getParameter("rentalScheduledPage"));
+		}
 		
-			if(myinfoRentalScheduledList.isEmpty() == true) {
-				request.setAttribute("myinfoRentalScheduledList", empty);
-			}else {
-				request.setAttribute("myinfoRentalScheduledList", myinfoRentalScheduledList);
-			}
+		Dao_myinfo_Rental dao = sqlSession.getMapper(Dao_myinfo_Rental.class);
+		
+		Dto_Paging dto = dao.myinfoRentalScheduledListCountDao(user_id);
+		
+		int countedTuple = dto.getTotalPage();
+		ArrayList<Integer> rentalScheduledPage = calcNumOfPage(countedTuple);
+		model.addAttribute("rentalScheduledPageList", rentalScheduledPage);
+		
+		
+		int offset = requestPage-1;
+		if(offset != 0) {
+			offset *= numOfTuplesPerPage;
+		}
+		System.out.println(dao.myinfoRentalScheduledListDao(user_id, offset, numOfTuplesPerPage));
+		
+		model.addAttribute("myinfoRentalScheduledList", dao.myinfoRentalScheduledListDao(user_id, offset, numOfTuplesPerPage));
 	}
 
 	public ArrayList<Integer> calcNumOfPage(int countedTuple){
