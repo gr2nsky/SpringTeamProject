@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import com.team4.ysms.command.SPlaceListAllCommand;
 import com.team4.ysms.dao.Dao_SearchPlace;
 import com.team4.ysms.dao.IDao_SearchPlace;
 import com.team4.ysms.dto.Dto_SearchPlace;
+import com.team4.ysms.util.Constant;
 
 @Controller
 public class PlaceSearchController {
@@ -26,7 +28,15 @@ public class PlaceSearchController {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	private JdbcTemplate template;
+	
 	SCommand command = null;
+	
+	@Autowired
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+		Constant.template = this.template;
+	}
 	
 	// 검색 메인 페이지
 	@RequestMapping("/SearchPlacePage")
