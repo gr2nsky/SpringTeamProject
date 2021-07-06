@@ -12,8 +12,8 @@ public class Dto_Rental {
 	int rentalPlace_no;
 	String rentalPhoto;
 	String rentalTitle;
-	Date reviewSubmitDate;
-	Date reviewRemoveDate;
+	String reviewSubmitDate;
+	String reviewRemoveDate;
 	
 	
 	// constructor
@@ -39,10 +39,11 @@ public class Dto_Rental {
 		this.rentalTitle = rentalTitle;
 	}
 
+	// previous list
 	public Dto_Rental(int rentalNo, String rentalDate, String checkInDate, int rentalStartTime, int rentalEndTime,
 			String rentalCancellationDate, int rentalPrice, String rentalUser_id, int rentalPlace_no,
 			String rentalPhoto, String rentalTitle, 
-			Date reviewSubmitDate, Date reviewRemoveDate) {
+			String reviewSubmitDate, String reviewRemoveDate) {
 		super();
 		this.rentalNo = rentalNo;
 		this.rentalDate = rentalDate;
@@ -125,16 +126,16 @@ public class Dto_Rental {
 	public void setRentalTitle(String rentalTitle) {
 		this.rentalTitle = rentalTitle;
 	}
-	public Date getReviewSubmitDate() {
+	public String getReviewSubmitDate() {
 		return reviewSubmitDate;
 	}
-	public void setReviewSubmitDate(Date reviewSubmitDate) {
+	public void setReviewSubmitDate(String reviewSubmitDate) {
 		this.reviewSubmitDate = reviewSubmitDate;
 	}
-	public Date getReviewRemoveDate() {
+	public String getReviewRemoveDate() {
 		return reviewRemoveDate;
 	}
-	public void setReviewRemoveDate(Date reviewRemoveDate) {
+	public void setReviewRemoveDate(String reviewRemoveDate) {
 		this.reviewRemoveDate = reviewRemoveDate;
 	}
 	

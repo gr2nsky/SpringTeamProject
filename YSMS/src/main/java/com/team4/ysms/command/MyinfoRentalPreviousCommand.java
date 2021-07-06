@@ -1,58 +1,54 @@
 package com.team4.ysms.command;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
 import com.team4.ysms.dao.Dao_myinfo_Rental;
-import com.team4.ysms.dto.Dto_Rental;
+import com.team4.ysms.dto.Dto_Paging;
 
-public class MyinfoRentalPreviousCommand implements Command {
+public class MyinfoRentalPreviousCommand implements SCommand {
 
-	/* 
- 	-----------------------------
- 	21.05.22 hyokyeong JO
- 	DB table rental, share
 
-	userId
- 	-----------------------------
-	 */
+	String user_id = "user01";
 	int numOfTuplesPerPage = 5;
 
+
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
 		// TODO Auto-generated method stub
-
-		// 사용자가 요청한 페이지 번호 초기값은 가장 최신글을 보여주는 1
 		int requestPage = 1;
-		Dao_myinfo_Rental dao = new Dao_myinfo_Rental();
-		HttpSession session = request.getSession();
+
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
-		String user_id = (String) session.getAttribute("loginedUserID");
-		
-		
-		// Page 처리
-		if (request.getParameter("rentalPreviousPage") != null) {
+		if(request.getParameter("rentalPreviousPage") != null) {
 			requestPage = Integer.parseInt(request.getParameter("rentalPreviousPage"));
-			// content에서 목록보기 요청시 최근 페이지 목록으로 돌아가기 위해 세션에 저장
-			session.setAttribute("currentPage", requestPage);
 		}
-		int countedTuple = dao.previousCountTuple(user_id);
+		
+		Dao_myinfo_Rental dao = sqlSession.getMapper(Dao_myinfo_Rental.class);
+		
+		Dto_Paging dto = dao.myinfoRentalPreviousListCountDao(user_id);
+		
+		int countedTuple = dto.getTotalPage();
 		ArrayList<Integer> rentalPreviousPageList = calcNumOfPage(countedTuple);
-		session.setAttribute("rentalPreviousPageList", rentalPreviousPageList);
+		model.addAttribute("rentalPreviousPageList", rentalPreviousPageList);
+		
+		
+		int offset = requestPage-1;
+		if(offset != 0) {
+			offset *= numOfTuplesPerPage;
+		}
+		
+		model.addAttribute("myinfoRentalPreviousList", dao.myinfoRentalPreviousListDao(user_id, offset, numOfTuplesPerPage));
 
 		
-		// rentalList (이전 예약) 출력
-		ArrayList<Dto_Rental> myinfoRentalPreviousList = dao.myinfoRentalPreviousList(user_id, requestPage, numOfTuplesPerPage);
-		String empty = "";
 		
-			if(myinfoRentalPreviousList.isEmpty() == true) {
-				request.setAttribute("myinfoRentalPreviousList", empty);
-			}else {
-				request.setAttribute("myinfoRentalPreviousList", myinfoRentalPreviousList);
-			}
 	}
 
 	public ArrayList<Integer> calcNumOfPage(int countedTuple){

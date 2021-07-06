@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ModifyReviewCommand;
 import com.team4.ysms.command.MyinfoQnACommand;
+import com.team4.ysms.command.MyinfoRentalPreviousCommand;
 import com.team4.ysms.command.MyinfoRentalScheduledCommand;
 import com.team4.ysms.command.MyinfoReviewCommand;
 import com.team4.ysms.command.SCommand;
@@ -208,6 +209,11 @@ public class MyinfoController {
 		System.out.println("myinfo_rental_previous()");
 		
 		HttpSession httpsession = request.getSession();
+		
+		model.addAttribute("request", request);
+		
+		command = new MyinfoRentalPreviousCommand();
+		command.execute(sqlSession, model, httpsession);
 		
 		return "myinfoRentalList_previous";
 	}
