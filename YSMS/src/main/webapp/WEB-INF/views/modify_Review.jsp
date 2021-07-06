@@ -82,7 +82,7 @@
    			<td class="photo" colspan="2" align="center">
 			    <div id="preview">
 			    <c:if test="${!empty reviewOldFilePath }">
-			    <img class="reviewPhoto" src="reviewPhoto/${reviewOldFilePath }">
+			    <img class="reviewPhoto" src="${pageContext.request.contextPath }/resources/${reviewOldFilePath }">
 			    </c:if>
 			    </div>
    			</td>

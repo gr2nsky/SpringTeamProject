@@ -1,69 +1,59 @@
 package com.team4.ysms.command;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
 import com.team4.ysms.dao.Dao_Review;
-import com.team4.ysms.dto.Dto_Review;
+import com.team4.ysms.dto.Dto_Paging;
 
-public class ReviewCommand implements Command {
+public class ReviewCommand implements SCommand {
 
-	/* 
-	 	-----------------------------
-	 	21.05.18 hyokyeong JO
-	 	DB table qna_review
-	 	
-	 	****현재 place_no = 3으로 변수 선언해서 진행중
-	 	-> 추후 세션으로 받아와서 바꿀 것.
-	 	-----------------------------
+	/*
+	 * 21.07.06 효경
+	 * Review List Command
 	 */
-//	int place_no = 3;
+	
 	int reviewNumOfTuplesPerPage = 1;
 	
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		
-		System.out.println("Dao_Review - execute");;
-	
-		int place_no = Integer.parseInt(request.getParameter("place_no"));	
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
+		// TODO Auto-generated method stub
+		int requestPage = 1;
 
-		// 사용자가 요청한 페이지 번호 초기값은 가장 최신글을 보여주는 1
-		int reviewRequestPage = 1;
-		Dao_Review dao = new Dao_Review();
-		HttpSession session = request.getSession();
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
-		session.setAttribute("placeNo", place_no);
+		int place_no = Integer.parseInt(request.getParameter("place_no"));
 		
-		// 최초 목록 진입시 page값을 넘겨주지 않음 -> 초기값인 1페이지 목록을 보여줌
-		// 목록에서 page요청 -> 해당 페이지 번호로 requestPage 설정
-		if (request.getParameter("reviewPage") != null) {
-			reviewRequestPage = Integer.parseInt(request.getParameter("reviewPage"));
-			// content에서 목록보기 요청시 최근 페이지 목록으로 돌아가기 위해 세션에 저장
-			session.setAttribute("currentPage", reviewRequestPage);
+		
+		if(request.getParameter("reviewPage") != null) {
+			requestPage = Integer.parseInt(request.getParameter("reviewPage"));
 		}
-		// 반환되는 총 튜플의 수
-		int countedTuple = dao.countTuple(place_no);
-		// 페이지 목록 (1...n)
-		ArrayList<Integer> pageList = calcNumOfPage(countedTuple);
-		// 페이지 목록을 세션에 담는다. *list에 진입하면 무조건 세션이 갱신되므로 새 글이 생겨도 최신화가 된다.
-		session.setAttribute("reviewPageList", pageList);
-
 		
-		// Review List 호출
-		ArrayList<Dto_Review> dtoReview = dao.reviewList(place_no, reviewRequestPage, reviewNumOfTuplesPerPage);
-		String empty = "";
+		Dao_Review dao = sqlSession.getMapper(Dao_Review.class);
 		
-			if(dtoReview.isEmpty() == true) {
-				request.setAttribute("reviewList", empty);
-			}else {
-				request.setAttribute("reviewList", dtoReview);
-			}
+		Dto_Paging dto = dao.reviewListCountDao(place_no);
+		
+		int countedTuple = dto.getTotalPage();
+		ArrayList<Integer> reviewPageList = calcNumOfPage(countedTuple);
+		model.addAttribute("reviewPageList", reviewPageList);
+		
+		
+		int offset = requestPage-1;
+		if(offset != 0) {
+			offset *= reviewNumOfTuplesPerPage;
+		}
+		
+		model.addAttribute("reviewList", dao.reviewListDao(place_no, offset, reviewNumOfTuplesPerPage));
+		
+		
 	}
-	
-	
 	
 	public ArrayList<Integer> calcNumOfPage(int countedTuple){
 		ArrayList<Integer> reviewArr = new ArrayList<Integer>();
