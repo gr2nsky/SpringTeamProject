@@ -64,24 +64,35 @@ public class LoginController {
 
 	@RequestMapping("confirmID.four")
 	public String confirmID(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		HttpSession httpSession = request.getSession(); 
 		
+		command = new DupleIDCheckCommand();
+		command.execute(sqlSession, model, httpSession);
+		return "confirmID";
+	}
+	
+	@RequestMapping("confirmEmail.four")
+	public String confirmEmail(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		HttpSession httpSession = request.getSession(); 
+		
+		command = new DupleEmailCheckCommand();
+		command.execute(sqlSession, model, httpSession);
+		return "confirmEmail";
+	}
+	
+	@RequestMapping("requestAuthEmail.four")
+	public String requestAuthEmail(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		HttpSession httpSession = request.getSession(); 
+		
+		command = new AuthEmailRequestCommand();
+		command.execute(sqlSession, model, httpSession);
+		return "requestAuthEmail";
 	}
 
-//case "/confirmID.four":
-//	command = new DupleIDCheckCommand();
-//	command.execute(request, response);
-//	viewPage = "confirmID.jsp";
-//	break;
-//case "/confirmEmail.four":
-//	command = new DupleEmailCheckCommand();
-//	command.execute(request, response);
-//	viewPage = "confirmEmail.jsp";
-//	break;
-//case "/requestAuthEmail.four":
-//	command = new AuthEmailRequestCommand();
-//	command.execute(request, response);
-//	viewPage = "requestAuthEmail.jsp";
-//	break;
+
 //case "/findAccount.four":
 //	command = new FindAccountCommand();
 //	command.execute(request, response);
