@@ -54,7 +54,7 @@ function dateHandler(checkBox){
 	<div class="mainBox">
 	<div class="contentBox">
 	<h3 style="text-align: center;">공간 나눔 목록</h3>
-	<form action="modify.four" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+	<form action="share_modify" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
 	<table class="table" style="margin-left: auto; margin-right: auto;">
 		
 			<!-- <input type="hidden" name="bId" value="${content_view.bId }"> -->

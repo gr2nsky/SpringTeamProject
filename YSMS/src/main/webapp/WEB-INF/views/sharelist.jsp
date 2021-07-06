@@ -40,7 +40,7 @@
 				<td colspan="10" align="center">
 					<!-- 페이징 부분 -->
 					<c:forEach items="${pageList }" var="page">
-						<a href="list.four?page=${page }">${page}</a>
+						<a href="list?page=${page }">${page}</a>
 					</c:forEach>
 				</td>
 			</tr>
