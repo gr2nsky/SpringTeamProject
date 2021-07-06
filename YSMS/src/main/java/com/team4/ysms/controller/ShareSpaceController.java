@@ -38,7 +38,7 @@ public class ShareSpaceController {
 	//  210705 12:53   Park Jaewon    //
 	//  공간 작성페이지로 이동              //
 	////////////////////////////////////
-	@RequestMapping("/write_detail.four")
+	@RequestMapping("/write_detail")
 	public String writeSpace(HttpServletRequest request, Model model) {
 		System.out.println("* * * Controller : writeSpace * * *");
 		
@@ -64,7 +64,7 @@ public class ShareSpaceController {
 	//  210705 18:25   Park Jaewon    //
 	//  MultupartRequest : 공간등록     //
 	////////////////////////////////////
-	@RequestMapping("/write.four")
+	@RequestMapping("/write")
 	public String writeDetail(MultipartHttpServletRequest mtfrequest, Model model) {
 		System.out.println("* * * Controller : writeDetail * * *");
 		
@@ -74,16 +74,16 @@ public class ShareSpaceController {
 		command = new WriteCommand();
 		command.execute(sqlSession, model, httpSession);
 		
-		return "redirect:list.four";
+		return "redirect:list";
 	}
 	
 	////////////////////////////////////
 	//  210705 22:00   Park Jaewon    //
 	//  내가 등록한 공간List 불러오기       //
 	////////////////////////////////////
-	@RequestMapping("/list.four")
+	@RequestMapping("/list")
 	public String shareList(HttpServletRequest request, Model model) {
-		System.out.println("* * * Controller : ShareList * * *");
+		System.out.println("* * * Controller : shareList * * *");
 		
 		HttpSession httpSession = request.getSession();
 		model.addAttribute("request", request);
@@ -95,16 +95,29 @@ public class ShareSpaceController {
 	}
 	
 	//////////////////////////////////
-	//
-    //
+	//  210706 14:27  Park Jaewon   //
+    //  수정삭제를 위한 content이동      //
 	//////////////////////////////////
-	@RequestMapping("/content.four")
+	@RequestMapping("/content")
 	public String shareContent(HttpServletRequest request, Model model) {
 		
 		Dao_Share dao = sqlSession.getMapper(Dao_Share.class);
 		model.addAttribute("CONTENTS", dao.shareDetailDao(Integer.parseInt(request.getParameter("no"))));
 		
 		return "content";
+	}
+	
+	//////////////////////////////////
+	//  210706 14:31  Park Jaewon   //
+	//  content.jsp 에서 삭제하기      //
+	//////////////////////////////////
+	@RequestMapping("/sharedelete")
+	public String shareDelete(HttpServletRequest request, Model model) {
+		System.out.println("* * * Controller : shareDelete * * *");
+		
+		
+		
+		return "redirect:list";
 	}
 	
 	
