@@ -27,6 +27,14 @@
     	<select id="countTuple" resultType="int">
     		SELECT COUNT(*) FROM SHARE
     	</select>
-
+    	
+    	<select id="shareContentDao" resultType="com.team4.ysms.dto.Dto_Share">
+    		SELECT TITLE, USER_ID, INTRODUCE, UPDATEDATE, FILEPATH FROM SHARE WHERE NO = #{param1}
+    	</select>
+    
+    	<select id="shareDetailDao" resultType="com.team4.ysms.dto.Dto_Share">
+    		SELECT * FROM PLACE, SHARE WHERE PLACE.NO = SHARE.PLACE_NO AND SHARE.NO = #{param1}	
+    	</select>
+    
     
     </mapper>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ShareListCommand;
+import com.team4.ysms.command.ContentCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteCommand;
 import com.team4.ysms.dao.Dao_Share;
@@ -81,7 +82,7 @@ public class ShareSpaceController {
 	//  내가 등록한 공간List 불러오기       //
 	////////////////////////////////////
 	@RequestMapping("/list.four")
-	public String ShareList(HttpServletRequest request, Model model) {
+	public String shareList(HttpServletRequest request, Model model) {
 		System.out.println("* * * Controller : ShareList * * *");
 		
 		HttpSession httpSession = request.getSession();
@@ -91,6 +92,19 @@ public class ShareSpaceController {
 		command.execute(sqlSession, model, httpSession);
 		
 		return "sharelist";
+	}
+	
+	//////////////////////////////////
+	//
+    //
+	//////////////////////////////////
+	@RequestMapping("/content.four")
+	public String shareContent(HttpServletRequest request, Model model) {
+		
+		Dao_Share dao = sqlSession.getMapper(Dao_Share.class);
+		model.addAttribute("CONTENTS", dao.shareDetailDao(Integer.parseInt(request.getParameter("no"))));
+		
+		return "content";
 	}
 	
 	
