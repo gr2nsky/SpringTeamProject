@@ -16,6 +16,7 @@ import com.team4.ysms.command.PlaceListAllCommand;
 import com.team4.ysms.command.QnACommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.SPlaceListAllCommand;
+import com.team4.ysms.command.SSearchPlaceCommand;
 import com.team4.ysms.dao.Dao_SearchPlace;
 import com.team4.ysms.dao.IDao_SearchPlace;
 import com.team4.ysms.dto.Dto_SearchPlace;
@@ -67,7 +68,12 @@ public class PlaceSearchController {
 	// 검색 결과 페이지로 이동
 	@RequestMapping("SearchPlaceCommand")
 	public String PlaceResultPage(HttpServletRequest request, Model model) {
-		IDao_SearchPlace dao = sqlSession.getMapper(IDao_SearchPlace.class);
+		HttpSession httpsession = request.getSession();
+		model.addAttribute("request", request);
+		command = new SSearchPlaceCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+//		IDao_SearchPlace dao = sqlSession.getMapper(IDao_SearchPlace.class);
 //		model.addAttribute("inputCategory", dao.searchPlaceResult(inputCategory, inputLocation, inputDate, requestPage, numOfTuplesPerPage) ); // model에 전달
 //		command = new SDao_SearchPlace();
 	
