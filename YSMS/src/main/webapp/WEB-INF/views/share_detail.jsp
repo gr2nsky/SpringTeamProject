@@ -93,7 +93,7 @@
 		<div class="shareIntroduce" style="font-weight:700;">공간 정보</div>
 		<div class="shareUnderline"></div>
 			<div style="margin-bottom:50px; font-weight:700; font-size:40px;">${DETAIL.title}</div>
-			<div class="share"><img class="sharePhoto" src="${DETAIL.filePath }"/></div>
+			<div class="share"><img class="sharePhoto" src="${pageContext.request.contextPath }/resources/share/${DETAIL.filePath}"/></div>
 			<div class="shareIntroduce" style="font-weight:700;">공간 소개</div>
 			<div class="shareUnderline"></div>
 			<textarea name="introduce" readonly="readonly" disabled="disabled">${DETAIL.introduce}</textarea>
@@ -118,7 +118,7 @@
 			</table>
 					<!-- 예약하기 페이지로 이동 -->
 			<form action="reservation.four" method="post">
-			<input type="hidden" name="sNo" value="${sNo}">
+			<input type="hidden" name="sNo" value="${DETAIL.no}">
 			<!-- <input type="submit" value="예약하기"> -->
 			</form>
 		</div>
@@ -166,13 +166,13 @@
 	</div>	
 </div>
 <%// 리뷰와 큐앤에이 %>
-	<div style="text-align: center; margin-bottom:50px;">
+	<%-- <div style="text-align: center; margin-bottom:50px;">
 	<iframe src="qna.four?place_no=${DETAIL.place_no }" id="qna_iframe" onload="calcQnaHeight();" name="" title="" frameborder="0" scrolling="no"></iframe>
 	<iframe src="review.four?place_no=${DETAIL.place_no }" id="review_iframe" onload="calcReviewHeight();" frameborder="0" scrolling="no"></iframe>
 	</div>
 		<!-- 예약하기 페이지로 이동 -->
 	<form action="reservation.four" method="post">
-	<input type="hidden" name="sNo" value="${sNo}">
+	<input type="hidden" name="sNo" value="${DETAIL.no}"> --%>
 	<script type="text/javascript">
 		/* $(function() {
 			var offset = $("#sidebar").offset();

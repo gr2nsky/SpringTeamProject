@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ShareListCommand;
-import com.team4.ysms.command.ContentCommand;
-import com.team4.ysms.command.DeleteCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteCommand;
 import com.team4.ysms.dao.Dao_Share;
@@ -29,7 +27,7 @@ public class ShareSpaceController {
 	//  210705 12:11   Park Jaewon    //
 	//  공간 작성페이지로 이동              //
 	////////////////////////////////////
-	@RequestMapping("/write_space.four")
+	@RequestMapping("/write_space")
 	public String writeForm() {
 		System.out.println("* * * Controller : writeSpace * * *");
 		return "writeSpace";
@@ -116,13 +114,25 @@ public class ShareSpaceController {
 	public String shareDelete(HttpServletRequest request, Model model) {
 		System.out.println("* * * Controller : shareDelete * * *");
 		
-	
 		Dao_Share dao = sqlSession.getMapper(Dao_Share.class);
 		
 		dao.deleteShareDao(Integer.parseInt(request.getParameter("no")));
 		dao.deletePlaceDao(Integer.parseInt(request.getParameter("place_no")));
 			
 		return "redirect:list";
+	}
+	
+	//////////////////////////////////
+	//  210706 17:32  Park Jaewon   //
+	//  detail.jsp로 가기!            //
+	//////////////////////////////////
+	@RequestMapping("/share_detail")
+	public String shareDetail(HttpServletRequest request, Model model) {
+
+		Dao_Share dao = sqlSession.getMapper(Dao_Share.class);
+		model.addAttribute("DETAIL", dao.shareDetailDao(Integer.parseInt(request.getParameter("no"))));
+		
+		return "share_detail";
 	}
 	
 	
