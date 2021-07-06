@@ -32,7 +32,7 @@ public class SPlaceListAllCommand implements SCommand {
 		IDao_SearchPlace dao = sqlSession.getMapper(IDao_SearchPlace.class);
 		
 //		Dao_SearchPlace dao = new Dao_SearchPlace(); // BDao와 연결
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 		
 				
 			
@@ -42,13 +42,13 @@ public class SPlaceListAllCommand implements SCommand {
 			requestPage = Integer.parseInt(request.getParameter("shareListpage"));
 			System.out.println();
 			//content에서 목록보기 요청시 최근 페이지 목록으로 돌아가기 위해 세션에 저장
-			session.setAttribute("currentPage", requestPage);
+//			session.setAttribute("currentPage", requestPage);
 					
 			System.out.println(requestPage + "페이지 요청");
 		}
 				
 		//반환되는 총 튜플의 수
-		Dto_Paging dto = dao.ListCountDao(requestPage);
+		Dto_Paging dto = dao.ListCountDao();
 		int countedTuple = dto.getTotalPage();
 //		int countedTuple = dao.countShareTuple();
 				
@@ -57,11 +57,16 @@ public class SPlaceListAllCommand implements SCommand {
 		//페이지 목록을 세션에 담는다. *list에 진입하면 무조건 세션이 갱신되므로 새 글이 생겨도 최신화가 된다.
 //		session.setAttribute("shareListpage", pageList);
 		model.addAttribute("shareListpage", pageList);
+		
+		int offset = requestPage-1;
+		if(offset != 0) {
+			offset *= numOfTuplesPerPage;
+		}
 					
 				
 //		ArrayList<Dto_SearchPlace> dtos = dao.shareList(requestPage, numOfTuplesPerPage);
 //		request.setAttribute("shareList", dtos);
-		model.addAttribute("shareList", dao.ListCountDao(requestPage, numOfTuplesPerPage));
+		model.addAttribute("shareList", dao.searchPlacelistDao(offset, numOfTuplesPerPage));
 
 	}
 	

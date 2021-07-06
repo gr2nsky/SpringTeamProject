@@ -1,5 +1,7 @@
 package com.team4.ysms.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,7 @@ import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.SPlaceListAllCommand;
 import com.team4.ysms.dao.Dao_SearchPlace;
 import com.team4.ysms.dao.IDao_SearchPlace;
+import com.team4.ysms.dto.Dto_SearchPlace;
 
 @Controller
 public class PlaceSearchController {
@@ -35,8 +38,7 @@ public class PlaceSearchController {
 		command = new SPlaceListAllCommand();
 		command.execute(sqlSession, model, httpsession);
 		
-//		IDao_SearchPlace dao = sqlSession.getMapper(IDao_SearchPlace.class);
-//		model.addAttribute("searchPlacelistDao", dao.searchPlacelistDao()); // jsp로 값을 전달
+
 		return "PlaceSearchPage"; // jsp로 이동
 	}
 	
@@ -45,18 +47,20 @@ public class PlaceSearchController {
 	@RequestMapping("/placeSearchCalendar")
 	public String placeSearchCalendar(HttpServletRequest request, Model model) {
 		
-		HttpSession httpsession = request.getSession();
-		model.addAttribute("request", request);
+//		HttpSession httpsession = request.getSession();
+//		model.addAttribute("request", request);
 		
 		return "placeSearchCalendar"; // jsp로 이동
 	}
 	
 	
-	// 검색 결과 페이지
+	// 검색 결과 페이지로 이동
 	@RequestMapping("SearchPlaceCommand")
 	public String PlaceResultPage(HttpServletRequest request, Model model) {
-		model.addAttribute("request", request);
-		command = new Dao_SearchPlace();
+		IDao_SearchPlace dao = sqlSession.getMapper(IDao_SearchPlace.class);
+//		model.addAttribute("inputCategory", dao.searchPlaceResult(inputCategory, inputLocation, inputDate, requestPage, numOfTuplesPerPage) ); // model에 전달
+//		command = new SDao_SearchPlace();
+	
 		
 		return "PlaceResultPage"; // jsp로 이동
 	}

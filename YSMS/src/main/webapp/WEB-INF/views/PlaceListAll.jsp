@@ -16,15 +16,15 @@
 <div class="mainBox">
 	<div class="contentBox">
 		<table id="shareList" align="center">
-			<c:forEach  items="${shareList }" var="dtoShare"> <!-- items 잊지 말 것 -->
+			<c:forEach  items="${shareList }" var="Dto_SearchPlace"> <!-- items 잊지 말 것 -->
 			<tr>
 				<td class="photo" rowspan="2" align="right"><div class="shareList">
-				<a href="detail.four?no=${dtoShare.no }">
-				<img class="shareListPhoto" src="${dtoShare.filePath }"/></a></div></td>	
+				<a href="detail.four?no=${Dto_SearchPlace.no }">
+				<img class="shareListPhoto" src="${Dto_SearchPlace.filePath }"/></a></div></td>	
 				<th width="200">공간유형</th>		
-				<td width="200">${dtoShare.category }</td>
+				<td width="200">${Dto_SearchPlace.category }</td>
 				<th width="200">이름</th>
-				<td width="200"><a href="detail.four?no=${dtoShare.no }">${dtoShare.title }</a></td>	
+				<td width="200"><a href="detail.four?no=${Dto_SearchPlace.no }">${Dto_SearchPlace.title }</a></td>	
 			</tr>
 			
 			<!-- <tr>
@@ -32,9 +32,9 @@
 			</tr> -->
 			<tr>
 				<th >주소</th>		
-				<td >${dtoShare.address1 } ${dtoShare.address2 }</td> 
+				<td >${Dto_SearchPlace.address1 } ${Dto_SearchPlace.address2 }</td> 
 				<th>가격<br>(원/시간)</th>
-				<td><fmt:formatNumber value="${dtoShare.price }" pattern="##,###"/></td>	
+				<td><fmt:formatNumber value="${Dto_SearchPlace.price }" pattern="##,###"/></td>	
 		
 			</tr>	
 			<tr>
