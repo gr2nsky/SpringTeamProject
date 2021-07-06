@@ -43,4 +43,9 @@
     	<update id="deletePlaceDao">
     		UPDATE PLACE SET REMOVEDATE = NOW() WHERE NO = #{param1}
     	</update>
+    	
+    	<update id="modifyShareDao">
+    		UPDATE share SET title = #{param2}, introduce = #{param3}, filePath = #{param4} , price = #{param5}, startTime = #{param6}, endTime = #{param7}, dayLimit = #{param8} WHERE share.no = #{param1}
+    	</update>
+    	
     </mapper>

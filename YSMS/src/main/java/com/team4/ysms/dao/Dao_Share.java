@@ -40,6 +40,11 @@ public interface Dao_Share {
 	//  삭제를 위한 Method
 	public void deleteShareDao(int no);
 	public void deletePlaceDao(int place_no);
+	
+	//  수정을 위한 Method
+	public void modifyShareDao(int no, String title, String introduce, String filePath, String price, String startTime, String endTime, String dayLimit);
+	
+	
 //	
 //	/*
 //	 * 추가 : 2021-05-27 윤재필
@@ -112,141 +117,4 @@ public interface Dao_Share {
 //		return dto;
 //	}
 //	
-//	
-//	/* Update Method : use detail dto
-//	 *  - 2021.05.18 12:00
-//	 *  - Park Jaewon
-//	 */
-//	
-//	public void update(int no, String title, String introduce, String filePath, String price, String startTime, String endTime, String dayLimit) {
-//		System.out.println("* * Start Method : update * *");
-//		
-//		System.out.println(no);
-//		
-//		// 시간당 가격
-//		int temp00 = Integer.parseInt(price);
-//		// 시작시간 : 등록자가 수정
-//		int temp01 = Integer.parseInt(startTime);
-//		// 종료시간 : 등록자가 수정 
-//		int temp02 = Integer.parseInt(endTime);
-//		
-//		
-//		System.out.println("  - share no : " + no);
-//		System.out.println("  - Query start");
-//		
-//		String query01 = "UPDATE share SET ";
-//		String query02 = "title = ?, introduce = ?, filePath = ? ,";
-//		String query03 = "price = ?, startTime = ?, endTime = ?, dayLimit = ? ";
-//		String query04 = "WHERE share.no = ?";
-//
-//		Connection conn = null;
-//		PreparedStatement psmt = null;
-//
-//		try {
-//			conn = dataSource.getConnection();
-//			psmt = conn.prepareStatement(query01 + query02 + query03 + query04);
-//
-//			psmt.setString(1, title);
-//			psmt.setString(2, introduce);
-//			psmt.setString(3, filePath);
-//			psmt.setInt(4, temp00);
-//			psmt.setInt(5, temp01);
-//			psmt.setInt(6, temp02);
-//			psmt.setString(7, dayLimit);
-//			psmt.setInt(8, no);
-//
-//			psmt.executeUpdate();
-//			
-//			System.out.println("  - changed price : " + temp00);
-//			System.out.println("  - Data update Success");
-//		} catch (Exception e) {
-//			System.out.println("  - Data update Fail");
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if (psmt != null)
-//					psmt.close();
-//				if (conn != null)
-//					conn.close();
-//				System.out.println("< psmt, conn close Success : update >");
-//			} catch (Exception e) {
-//				System.out.println("< psmt, conn close Fail : update >");
-//				e.printStackTrace();
-//			}
-//		}
-//	}	
-//	public void deleteShare(int no) {
-//		System.out.println("* * Start Method : deleteShare * *");
-//		String query = "DELETE FROM share WHERE no = ?";
-//		
-//		Connection conn = null;
-//		PreparedStatement psmt = null;
-//		
-//		try {
-//			conn = dataSource.getConnection();
-//			psmt = conn.prepareStatement(query);
-//			psmt.setInt(1, no);
-//			psmt.executeUpdate();
-//			System.out.println("  - Data delete from Share : Success >");
-//		} catch (Exception e) {
-//			System.out.println("  - Data delete from Share : Fail >");
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if(psmt != null)
-//					psmt.close();
-//				if(conn != null)
-//					conn.close();
-//				System.out.println("< psmt, conn close Success : deleteShare >");
-//			} catch (Exception e) {
-//				System.out.println("< psmt, conn close Fail : deleteShare >");
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-//	
-//	public void deletePlace(int place_no) {
-//		System.out.println("* * Start Method : deletePlace * *");
-//		
-//		System.out.println("  - place_no : " + place_no);
-//		
-//		
-//		System.out.println("  - Query start");
-//		
-//		String query01 = "UPDATE place SET ";
-//		String query02 = "removeDate = now() ";
-//		String query03 = "WHERE no = ?";
-//
-//		Connection conn = null;
-//		PreparedStatement psmt = null;
-//
-//		try {
-//			conn = dataSource.getConnection();
-//			psmt = conn.prepareStatement(query01 + query02 + query03);
-//
-//			psmt.setInt(1, place_no);
-//
-//			psmt.executeUpdate();
-//			
-//			System.out.println("  - Data update Success : deletePlace // add removeDate ");
-//		} catch (Exception e) {
-//			System.out.println("  - Data update Fail : deletePlace // add removeDate ");
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if (psmt != null)
-//					psmt.close();
-//				if (conn != null)
-//					conn.close();
-//				System.out.println("< psmt, conn close Success : update >");
-//			} catch (Exception e) {
-//				System.out.println("< psmt, conn close Fail : update >");
-//				e.printStackTrace();
-//			}
-//		}
-//	}	
-	
-	
-	
-	
 }

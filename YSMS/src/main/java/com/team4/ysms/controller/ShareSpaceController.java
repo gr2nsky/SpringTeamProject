@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ShareListCommand;
+import com.team4.ysms.command.ModifyShareCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteCommand;
 import com.team4.ysms.dao.Dao_Share;
@@ -135,5 +136,23 @@ public class ShareSpaceController {
 		return "share_detail";
 	}
 	
+	//////////////////////////////////
+	//  210706 20:27  Park Jaewon   //
+	//  content.jsp 에서 수정         //
+	//////////////////////////////////
+	@RequestMapping("/share_modify")
+	public String shareModify(MultipartHttpServletRequest mtfrequest, Model model) {
+		System.out.println("* * * Controller : shareModify * * *");
+		
+		HttpSession httpSession = mtfrequest.getSession();
+		model.addAttribute("mtfrequest", mtfrequest);
+		
+		command = new ModifyShareCommand();
+		command.execute(sqlSession, model, httpSession);
+		
+		
+		
+		return "redirect:list";
+	}
 	
 }// End of ShareSpaceController

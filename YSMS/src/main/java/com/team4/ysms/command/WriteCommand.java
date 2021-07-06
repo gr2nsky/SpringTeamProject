@@ -29,7 +29,6 @@ public class WriteCommand implements SCommand {
 		
 		String root_path = httpSession.getServletContext().getRealPath("/"); // 웹서비스 root 경로 
 		System.out.println("  - root_path : " + root_path);
-//        System.out.println("Multi : " + mtfRequest.getFile("uploadFile"));
         
 		String attach_path = "resources/share/";
 		
