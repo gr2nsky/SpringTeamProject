@@ -149,9 +149,7 @@ public class ShareSpaceController {
 		
 		command = new ModifyShareCommand();
 		command.execute(sqlSession, model, httpSession);
-		
-		
-		
+
 		return "redirect:list";
 	}
 	
