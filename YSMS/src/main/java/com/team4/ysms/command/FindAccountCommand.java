@@ -1,5 +1,6 @@
 package com.team4.ysms.command;
 
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -12,14 +13,28 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.ui.Model;
 
 import com.team4.ysms.common.ShareVar_login;
 import com.team4.ysms.dao.Dao_Login;
 
-public class FindAccountCommand implements Command {
+public class FindAccountCommand implements SCommand {
+	
+	@Autowired
+	private JavaMailSender mailSender;
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		
 		String inputedEmail = null;
 		String inputedID = null;
 		String result = null;
@@ -38,66 +53,38 @@ public class FindAccountCommand implements Command {
 			mailSendReuslt = sendEmail(inputedEmail, result, 1);
 		}
 		
-		request.setAttribute("mailSendReuslt", mailSendReuslt);
+		model.addAttribute("mailSendReuslt", mailSendReuslt);
 		System.out.println("mailSendReuslt : " + mailSendReuslt);
+		
 	}
 	
 	public String sendEmail(String inputedEmail, String result, int type) {
-		
 		if(result == null || result.equals("")) {
 			return "false";
 		}
 		
-		// mail server 설정
-		String host = "smtp.gmail.com";
-		String user = ShareVar_login.hostID; // 자신의 네이버 계정
-		String password = ShareVar_login.hostPW;// 자신의 네이버 패스워드
+		String subject = "안녕하세요. 너공나공의 계정찾기 결과를 알려드립니다.";
+		String content = "";
+		// 메일 내용
+		if(type == 0) {
+			content = "아이디 :" + result;
+		} else {
+			content = "비밀번호 :" + result;
+		}
+		String from = "dbswovlf2009@gmail.com";
+		String to = inputedEmail;
 		
-		// 메일 받을 주소
-		String to_email = inputedEmail;
-		System.out.println("inputedEmail : " + inputedEmail);
-
-		// SMTP 서버 정보를 설정한다.
-		Properties prop = System.getProperties();
-		prop.put("mail.smtp.host", host);
-		//google - TLS : 587, SSL: 467
-		prop.put("mail.smtp.port", 465);
-		prop.put("mail.smtp.starttls.enable", "true");
-		prop.put("mail.smtp.auth", "true");
-		prop.put("mail.smtp.ssl.enable", "true");
-		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-		prop.put("mail.debug", "true");
-		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(user, password);
-			}
-		});
-		MimeMessage msg = new MimeMessage(session);
-		
-		// email 전송
 		try {
-			msg.setFrom(new InternetAddress(user));
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
-
-			// 메일 제목
-			msg.setSubject("안녕하세요. 너공나공의 계정찾기 결과를 알려드립니다.", "UTF-8");
-			// 메일 내용
-			if(type == 0) {
-				msg.setText("아이디 :" + result );
-			} else {
-				msg.setText("비밀번호 :" + result );
-			}
-			
-			Transport.send(msg);
-			System.out.println("이메일 전송 완료");
+			MimeMessage mail = mailSender.createMimeMessage();
+			MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
+			mailHelper.setFrom(from);
+			mailHelper.setTo(to);
+			mailHelper.setSubject(subject);
+			mailHelper.setText(content);
+			mailSender.send(mail);
 			return "true";
-		} catch (AddressException e) { 
-			// TODO Auto-generated catch block 
-			e.printStackTrace(); 
-			return "false";
-		} catch (MessagingException e) { 
-			// TODO Auto-generated catch block 
-			e.printStackTrace(); 
+		} catch(Exception e) {
+			e.printStackTrace();
 			return "false";
 		}
 	}

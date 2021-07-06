@@ -91,13 +91,16 @@ public class LoginController {
 		command.execute(sqlSession, model, httpSession);
 		return "requestAuthEmail";
 	}
-
-
-//case "/findAccount.four":
-//	command = new FindAccountCommand();
-//	command.execute(request, response);
-//	viewPage = "requestFindAccountEmail.jsp";
-//	break;
 	
+	@RequestMapping("findAccount.four")
+	public String findAccount(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		HttpSession httpSession = request.getSession(); 
+		
+		command = new FindAccountCommand();
+		command.execute(sqlSession, model, httpSession);
+		return "requestFindAccountEmail";
+	}
+
 }
  
