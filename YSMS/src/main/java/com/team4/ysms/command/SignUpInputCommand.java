@@ -13,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.team4.ysms.common.FilePath_login;
 import com.team4.ysms.dao.Dao_Login;
 
 public class SignUpInputCommand implements SCommand {
@@ -72,7 +70,7 @@ public class SignUpInputCommand implements SCommand {
 			Dao_Login dao = new Dao_Login();
 			String result = dao.signUp(id, name, pw, email, phone, status, birthday, filePath);
 
-			request.setAttribute("sginUpResult", result);
+			model.addAttribute("sginUpResult", result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

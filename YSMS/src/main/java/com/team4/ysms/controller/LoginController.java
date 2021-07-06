@@ -55,12 +55,17 @@ public class LoginController {
 	@RequestMapping("/signUpInput.four")
 	public String signUpInput(MultipartHttpServletRequest mtfRequest, Model model) {
 		model.addAttribute("mtfRequest", mtfRequest);
-//		command = new SignUpInputCommand();
-//		command.execute(request, response);
+		HttpSession httpSession = mtfRequest.getSession(); 
+		
+		command = new SignUpInputCommand();
+		command.execute(sqlSession, model, httpSession);
 		return "mainPage";
 	}
 
-
+	@RequestMapping("confirmID.four")
+	public String confirmID(HttpServletRequest request, Model model) {
+		
+	}
 //case "/confirmID.four":
 //	command = new DupleIDCheckCommand();
 //	command.execute(request, response);
