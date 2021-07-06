@@ -88,15 +88,15 @@
 			</tr>
 		<c:choose>
 		<c:when test="${!empty myinfoReviewList }">
-		<c:forEach items="${myinfoReviewList }" var="myReviewDto"> 
+		<c:forEach items="${myinfoReviewList }" var="Dto_review"> 
 		<!-- 반복되는 곳  -->
 			<tr>
-				<td>${myReviewDto.rentalNo }</td>
-				<td><div class="text_line">${myReviewDto.reviewPlaceName }</div></td>
-				<td><div class="text_contentline">${myReviewDto.reviewContent }</div></td>
-				<td>${myReviewDto.reviewScore }</td>
-				<td>${myReviewDto.reviewUpdateDate }</td>
-				<td><a href="javascript:openReview('detail_review.four?rentalNo=${myReviewDto.rentalNo }')">
+				<td>${Dto_review.rentalNo }</td>
+				<td><div class="text_line">${Dto_review.reviewPlaceName }</div></td>
+				<td><div class="text_contentline">${Dto_review.reviewContent }</div></td>
+				<td>${Dto_review.reviewScore }</td>
+				<td>${Dto_review.reviewUpdateDate }</td>
+				<td><a href="javascript:openReview('detail_review.four?rentalNo=${Dto_review.rentalNo }')">
 				<button>자세히보기</button></a></td>
 			</tr>
 		</c:forEach>

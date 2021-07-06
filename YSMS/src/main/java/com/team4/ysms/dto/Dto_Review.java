@@ -6,19 +6,19 @@ public class Dto_Review {
 
 	
 	int rentalNo;
-	Date rentalDate;
-	Date checkInDate;
+	String rentalDate;
+	String checkInDate;
 	int rentalStartTime;
 	int rentalEndTime;
-	Date rentalCancellationDate;
+	String rentalCancellationDate;
 	int rentalPrice;
 	String rentalUser_id;
 	int rentalPlace_no;
 	String reviewContent;
 	int reviewScore;
-	Date reviewSubmitDate;
-	Date reviewUpdateDate;
-	Date reviewRemoveDate;
+	String reviewSubmitDate;
+	String reviewUpdateDate;
+	String reviewRemoveDate;
 	String reviewFilePath;
 	String userFilePath;
 	String reviewPlaceName ;
@@ -29,25 +29,9 @@ public class Dto_Review {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-
-	// myinfo review list
-	public Dto_Review(int rentalNo, String reviewContent, int reviewScore, Date reviewUpdateDate, String reviewFilePath,
-			String reviewPlaceName) {
-		super();
-		this.rentalNo = rentalNo;
-		this.reviewContent = reviewContent;
-		this.reviewScore = reviewScore;
-		this.reviewUpdateDate = reviewUpdateDate;
-		this.reviewFilePath = reviewFilePath;
-		this.reviewPlaceName = reviewPlaceName;
-	}
-
-
-
-
-	public Dto_Review(String rentalUser_id, String reviewContent, int reviewScore, Date reviewUpdateDate,
-			Date reviewRemoveDate, String reviewFilePath, String userFilePath) {
+	// share-detail Review List
+	public Dto_Review(String userFilePath, String rentalUser_id, String reviewContent,int reviewScore, String reviewUpdateDate,
+			String reviewRemoveDate, String reviewFilePath) {
 		super();
 		this.rentalUser_id = rentalUser_id;
 		this.reviewContent = reviewContent;
@@ -57,10 +41,22 @@ public class Dto_Review {
 		this.reviewFilePath = reviewFilePath;
 		this.userFilePath = userFilePath;
 	}
+	
+	
+
+	// myinfo review list
+	public Dto_Review(int rentalNo, String reviewPlaceName, String reviewContent, int reviewScore, String reviewUpdateDate, String reviewFilePath) {
+		super();
+		this.rentalNo = rentalNo;
+		this.reviewContent = reviewContent;
+		this.reviewScore = reviewScore;
+		this.reviewUpdateDate = reviewUpdateDate;
+		this.reviewFilePath = reviewFilePath;
+		this.reviewPlaceName = reviewPlaceName;
+	}
 
 	// review Detail
-	public Dto_Review(String reviewContent, int reviewScore, Date reviewUpdateDate, String reviewFilePath,
-			String reviewPlaceName) {
+	public Dto_Review(String reviewPlaceName, String reviewContent, int reviewScore, String reviewUpdateDate, String reviewFilePath) {
 		super();
 		this.reviewContent = reviewContent;
 		this.reviewScore = reviewScore;
@@ -80,22 +76,22 @@ public class Dto_Review {
 	}
 
 
-	public Date getRentalDate() {
+	public String getRentalDate() {
 		return rentalDate;
 	}
 
 
-	public void setRentalDate(Date rentalDate) {
+	public void setRentalDate(String rentalDate) {
 		this.rentalDate = rentalDate;
 	}
 
 
-	public Date getCheckInDate() {
+	public String getCheckInDate() {
 		return checkInDate;
 	}
 
 
-	public void setCheckInDate(Date checkInDate) {
+	public void setCheckInDate(String checkInDate) {
 		this.checkInDate = checkInDate;
 	}
 
@@ -120,12 +116,12 @@ public class Dto_Review {
 	}
 
 
-	public Date getRentalCancellationDate() {
+	public String getRentalCancellationDate() {
 		return rentalCancellationDate;
 	}
 
 
-	public void setRentalCancellationDate(Date rentalCancellationDate) {
+	public void setRentalCancellationDate(String rentalCancellationDate) {
 		this.rentalCancellationDate = rentalCancellationDate;
 	}
 
@@ -180,32 +176,32 @@ public class Dto_Review {
 	}
 
 
-	public Date getReviewSubmitDate() {
+	public String getReviewSubmitDate() {
 		return reviewSubmitDate;
 	}
 
 
-	public void setReviewSubmitDate(Date reviewSubmitDate) {
+	public void setReviewSubmitDate(String reviewSubmitDate) {
 		this.reviewSubmitDate = reviewSubmitDate;
 	}
 
 
-	public Date getReviewUpdateDate() {
+	public String getReviewUpdateDate() {
 		return reviewUpdateDate;
 	}
 
 
-	public void setReviewUpdateDate(Date reviewUpdateDate) {
+	public void setReviewUpdateDate(String reviewUpdateDate) {
 		this.reviewUpdateDate = reviewUpdateDate;
 	}
 
 
-	public Date getReviewRemoveDate() {
+	public String getReviewRemoveDate() {
 		return reviewRemoveDate;
 	}
 
 
-	public void setReviewRemoveDate(Date reviewRemoveDate) {
+	public void setReviewRemoveDate(String reviewRemoveDate) {
 		this.reviewRemoveDate = reviewRemoveDate;
 	}
 

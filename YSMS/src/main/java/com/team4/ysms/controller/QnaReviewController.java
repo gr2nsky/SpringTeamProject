@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.team4.ysms.command.HostQnACommand;
 import com.team4.ysms.command.QnACommand;
+import com.team4.ysms.command.ReviewCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.dao.Dao_Host_QnA;
 import com.team4.ysms.dao.Dao_QnA;
@@ -153,4 +154,24 @@ public class QnaReviewController {
 
 		return "Host_Delete_QnA_Completed";
 	}
+	
+	/*
+	 * 21.07.06 hyokyeong
+	 * share detail view - review
+	 * 
+	 */
+	
+	@RequestMapping("/review.four")
+	public String reviewList(HttpServletRequest request, Model model) {
+		System.out.println("reviewList()");
+		
+		HttpSession httpsession = request.getSession();
+		model.addAttribute("request", request);
+		
+		command = new ReviewCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+		return "view_Review";
+	}
+	
 }
