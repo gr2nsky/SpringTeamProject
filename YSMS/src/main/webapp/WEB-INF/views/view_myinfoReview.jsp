@@ -96,7 +96,7 @@
 				<td><div class="text_contentline">${Dto_review.reviewContent }</div></td>
 				<td>${Dto_review.reviewScore }</td>
 				<td>${Dto_review.reviewUpdateDate }</td>
-				<td><a href="javascript:openReview('detail_review.four?rentalNo=${Dto_review.rentalNo }')">
+				<td><a href="javascript:openReview('detail_review?rentalNo=${Dto_review.rentalNo }')">
 				<button>자세히보기</button></a></td>
 			</tr>
 		</c:forEach>
@@ -109,7 +109,7 @@
 		</c:choose>
 		<tr><td colspan="6" align="center">
 		 	<c:forEach items="${myinfoReviewPageList }" var="myinfoReviewPage">
-			<a href="myinfo_review.four?myinfoReviewPage=${myinfoReviewPage }">${myinfoReviewPage }</a>
+			<a href="myinfo_review?myinfoReviewPage=${myinfoReviewPage }">${myinfoReviewPage }</a>
 			</c:forEach>
 		</td></tr>
 		</table>

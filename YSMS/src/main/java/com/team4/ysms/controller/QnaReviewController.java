@@ -30,7 +30,7 @@ public class QnaReviewController {
 	 * share detailView - QnA
 	 */
 	
-	@RequestMapping("/qna.four")
+	@RequestMapping("/qna")
 	public String quaList(HttpServletRequest request, Model model) {
 		System.out.println("qnaList()");
 		
@@ -43,7 +43,7 @@ public class QnaReviewController {
 		return "view_QnA";
 	}
 	
-	@RequestMapping("/write_qna.four")
+	@RequestMapping("/write_qna")
 	public String write_qna(HttpServletRequest request, Model model) {
 		System.out.println("write_qna()");
 		model.addAttribute("place_no", request.getParameter("place_no"));
@@ -51,7 +51,7 @@ public class QnaReviewController {
 		return "write_QnA";
 	}
 	
-	@RequestMapping("/qna_write.four")
+	@RequestMapping("/qna_write")
 	public String qna_write(HttpServletRequest request, Model model) {
 		System.out.println("qna_write()");
 		
@@ -69,7 +69,7 @@ public class QnaReviewController {
 	 */
 	
 	// hostQnA list
-	@RequestMapping("/host_qna.four")
+	@RequestMapping("/host_qna")
 	public String host_qna(HttpServletRequest request, Model model) {
 		System.out.println("host_qna()");
 		
@@ -83,7 +83,7 @@ public class QnaReviewController {
 	}
 	
 	// hostQnA write
-	@RequestMapping("/host_write_qna.four")
+	@RequestMapping("/host_write_qna")
 	public String host_write_qna(HttpServletRequest request, Model model) {
 		System.out.println("host_write_qna()");
 		
@@ -95,7 +95,7 @@ public class QnaReviewController {
 		return "Host_Write_QnA";
 	}
 	
-	@RequestMapping("/host_qna_write.four")
+	@RequestMapping("/host_qna_write")
 	public String host_qna_write(HttpServletRequest request, Model model) {
 		System.out.println("host_qna_write()");
 		
@@ -108,7 +108,7 @@ public class QnaReviewController {
 	}
 
 	// hostQnA modify
-	@RequestMapping("/host_modify_qna.four")
+	@RequestMapping("/host_modify_qna")
 	public String host_modify_qna(HttpServletRequest request, Model model) {
 		System.out.println("host_modify_qna()");
 		
@@ -120,7 +120,7 @@ public class QnaReviewController {
 		return "Host_Modify_QnA";
 	}
 	
-	@RequestMapping("/host_qna_modify.four")
+	@RequestMapping("/host_qna_modify")
 	public String host_qna_modify(HttpServletRequest request, Model model) {
 		System.out.println("host_qna_modify()");
 		
@@ -133,7 +133,7 @@ public class QnaReviewController {
 	}
 	
 	// hostQnA delete
-	@RequestMapping("/host_deleteCheck_qna.four")
+	@RequestMapping("/host_deleteCheck_qna")
 	public String host_deleteCheck_qna(HttpServletRequest request, Model model) {
 		System.out.println("host_deleteCheck_qna()");
 		
@@ -143,7 +143,7 @@ public class QnaReviewController {
 		return "Host_Delete_QnA_check";
 	}
 	
-	@RequestMapping("/host_qna_delete.four")
+	@RequestMapping("/host_qna_delete")
 	public String host_qna_delete(HttpServletRequest request, Model model) {
 		System.out.println("host_qna_delete()");
 		
@@ -161,7 +161,7 @@ public class QnaReviewController {
 	 * 
 	 */
 	
-	@RequestMapping("/review.four")
+	@RequestMapping("/review")
 	public String reviewList(HttpServletRequest request, Model model) {
 		System.out.println("reviewList()");
 		

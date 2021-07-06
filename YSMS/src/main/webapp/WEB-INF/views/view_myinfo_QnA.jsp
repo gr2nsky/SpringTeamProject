@@ -123,9 +123,9 @@
 
 				</td>
 				<td colspan="2" valign="bottom" align="right">
-				<a href="javascript:modifyQna('modify_qna.four?qna_no=${Dto_QnA.qnaNo }')">
+				<a href="javascript:modifyQna('modify_qna?qna_no=${Dto_QnA.qnaNo }')">
 				<input type="button" value="수정하기"></a>
-				<a href="javascript:openNewWindow('deleteCheck_qna.four?qna_no=${Dto_QnA.qnaNo }')">
+				<a href="javascript:openNewWindow('deleteCheck_qna?qna_no=${Dto_QnA.qnaNo }')">
 				<input type="button" value="삭제하기"></a>			
 				</td>
 			</tr>
@@ -141,7 +141,7 @@
 				<td colspan="4" align="center" >
 					<!--Paging  -->
 				<c:forEach items="${myinfoQnaPageList }" var="myinfoQnaPage">
-					<a href="myinfo_qna.four?myinfoQnaPage=${myinfoQnaPage }">${myinfoQnaPage }</a>
+					<a href="myinfo_qna?myinfoQnaPage=${myinfoQnaPage }">${myinfoQnaPage }</a>
 				</c:forEach></td>
 			</tr> 
 		</table>

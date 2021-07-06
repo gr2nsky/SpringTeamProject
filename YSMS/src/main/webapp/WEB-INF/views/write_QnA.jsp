@@ -30,7 +30,7 @@
 	session.setAttribute("place_no", place_no);
 %>
 
-	<form name="writeQna" action="qna_write.four" method="post">
+	<form name="writeQna" action="qna_write" method="post">
 	
 		<input type="hidden" name="place_no" value="${place_no }">
 	<table id = "writeQna" align="center">

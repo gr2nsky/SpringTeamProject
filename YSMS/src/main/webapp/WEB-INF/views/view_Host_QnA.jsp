@@ -116,13 +116,13 @@
 				<td colspan="2" valign="bottom" align="right">
 				<c:choose>
 				<c:when test="${empty Dto_QnA.qnaAnswer}">
-					<a href="javascript:modifyQna('host_write_qna.four?qna_no=${Dto_QnA.qnaNo }')">
+					<a href="javascript:modifyQna('host_write_qna?qna_no=${Dto_QnA.qnaNo }')">
 					<input type="button" value="답변작성하기"></a>
 				</c:when>
 				<c:otherwise>
-					<a href="javascript:modifyQna('host_modify_qna.four?qna_no=${Dto_QnA.qnaNo }')">
+					<a href="javascript:modifyQna('host_modify_qna?qna_no=${Dto_QnA.qnaNo }')">
 					<input type="button" value="수정하기"></a>
-					<a href="javascript:openNewWindow('host_deleteCheck_qna.four?qna_no=${Dto_QnA.qnaNo }')">
+					<a href="javascript:openNewWindow('host_deleteCheck_qna?qna_no=${Dto_QnA.qnaNo }')">
 					<input type="button" value="삭제하기"></a>	
 				</c:otherwise>
 				</c:choose>
@@ -140,7 +140,7 @@
 				<td colspan="4" align="center">
 					<!--Paging  -->
 				<c:forEach items="${hostQnaPageList }" var="hostQnaPage">
-					<a href="host_qna.four?place_no=${placeNo }&hostQnaPage=${hostQnaPage }">${hostQnaPage }</a>
+					<a href="host_qna?place_no=${placeNo }&hostQnaPage=${hostQnaPage }">${hostQnaPage }</a>
 				</c:forEach></td>
 			</tr> 
 		</table>

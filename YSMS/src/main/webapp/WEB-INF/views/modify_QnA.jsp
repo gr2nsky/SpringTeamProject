@@ -27,7 +27,7 @@
 <body>
 
 
-	<form name="modifyQna" action="qna_modify.four" method="post">
+	<form name="modifyQna" action="qna_modify" method="post">
 		<input type="hidden" name="qna_no" value="${qnaDetail.qnaNo }">
 	<table id="writeQna" align="center">
 		<tr>		

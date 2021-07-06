@@ -53,10 +53,10 @@
 		<c:set var="loginedUserID" value="${loginedUserID }" />
 		
 		<li><a href="myInfoUpdateForm.four">내 정보 확인</a></li>
-		<li><a href="myinfo_qna.four">나의 문의 목록 </a></li>
-		<li><a href="myinfo_review.four">나의 리뷰 목록</a></li>
-		<li><a href="myinfo_rental_scheduled.four">다가오는 예약</a></li>
-		<li><a href="myinfo_rental_previous.four">지난 예약</a></li>
+		<li><a href="myinfo_qna">나의 문의 목록 </a></li>
+		<li><a href="myinfo_review">나의 리뷰 목록</a></li>
+		<li><a href="myinfo_rental_scheduled">다가오는 예약</a></li>
+		<li><a href="myinfo_rental_previous">지난 예약</a></li>
 	</ul>
 </div>
 </div>

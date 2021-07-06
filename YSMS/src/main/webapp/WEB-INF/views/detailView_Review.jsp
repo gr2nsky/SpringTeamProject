@@ -15,7 +15,7 @@
 		document.reviewDetail.submit();
 	}
 	function deleteReview() {
-		var url = "deleteCheck_review.four?rentalNo=" + ${rentalNo } ;
+		var url = "deleteCheck_review?rentalNo=" + ${rentalNo } ;
 		location.href = url
 	}
 </script>
@@ -24,7 +24,7 @@
 	int rentalNo = Integer.parseInt(request.getParameter("rentalNo"));
 	session.setAttribute("rentalNo", rentalNo);
 %>
-	<form name="reviewDetail" action="modify_review.four" method="post">
+	<form name="reviewDetail" action="modify_review" method="post">
 	<table id="detailReview" align="center">
 		<tr>
 			<th colspan="2" align="left">내가 쓴 리뷰

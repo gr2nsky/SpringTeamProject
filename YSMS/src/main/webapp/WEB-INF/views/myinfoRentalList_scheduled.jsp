@@ -107,7 +107,7 @@ function moveToDetail(btn){
 <div class="mainBox">
 	<div class="contentBox">
 		<div class="textLeft" style="margin-bottom:20px;">
-			<strong>예정된 예약</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="myinfo_rental_previous.four">이전 예약</a>
+			<strong>예정된 예약</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="myinfo_rental_previous">이전 예약</a>
 		</div>
 		<hr>
 		<table class="table_outter">
@@ -157,7 +157,7 @@ function moveToDetail(btn){
 		<tr><td align="center">
 			<hr><br><br>
 			<c:forEach items="${rentalScheduledPageList }" var="rentalScheduledPage">
-			<a href="myinfo_rental_scheduled.four?rentalScheduledPage=${rentalScheduledPage }">${rentalScheduledPage }</a>
+			<a href="myinfo_rental_scheduled?rentalScheduledPage=${rentalScheduledPage }">${rentalScheduledPage }</a>
 			</c:forEach>
 		</td></tr>
 		</table>

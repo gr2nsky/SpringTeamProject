@@ -140,7 +140,7 @@
 <div class="mainBox">
 	<div class="contentBox">
 		<div class="textLeft" style="margin-bottom:20px;">
-			<a href="myinfo_rental_scheduled.four">예정된 예약</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>이전 예약</strong>
+			<a href="myinfo_rental_scheduled">예정된 예약</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>이전 예약</strong>
 		</div>
 		<hr>
 		<table class="table_outter">
@@ -195,7 +195,7 @@
 							</td>
 							</c:when>				
 							<c:otherwise>
-							<td colspan="2" align="right"><a href="javascript:openReview('detail_review.four?rentalNo=${Dto_Rental.rentalNo }')">
+							<td colspan="2" align="right"><a href="javascript:openReview('detail_review?rentalNo=${Dto_Rental.rentalNo }')">
 							<button class="button_myReview">내가 쓴 리뷰 보기</button></a></td>
 							</c:otherwise>
 						</c:choose>
@@ -213,7 +213,7 @@
 			<tr><td align="center">
 			<hr><br><br>
 				<c:forEach items="${rentalPreviousPageList }" var="rentalPreviousPage">
-				<a href="myinfo_rental_previous.four?rentalPreviousPage=${rentalPreviousPage }">${rentalPreviousPage }</a>
+				<a href="myinfo_rental_previous?rentalPreviousPage=${rentalPreviousPage }">${rentalPreviousPage }</a>
 				</c:forEach>
 			</td></tr>
 		</table>
