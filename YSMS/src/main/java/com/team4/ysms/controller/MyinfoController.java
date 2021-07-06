@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ModifyReviewCommand;
 import com.team4.ysms.command.MyinfoQnACommand;
+import com.team4.ysms.command.MyinfoRentalScheduledCommand;
 import com.team4.ysms.command.MyinfoReviewCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.dao.Dao_myinfo_QnA;
@@ -155,10 +156,7 @@ public class MyinfoController {
 		
 		return "modify_Review_Completed";
 	}
-	
-	
-	
-	
+
 	// review Delete check
 	@RequestMapping("/deleteCheck_review.four")
 	public String deleteCheck_review(HttpServletRequest request, Model model) {
@@ -182,4 +180,36 @@ public class MyinfoController {
 
 		return "delete_Review_Completed";
 	}
+	
+	/*
+	 *  21.07.06 효경
+	 *  나의 예약 리스트
+	 */
+	
+	// myInfo rental List(예정된예약) 보여주기
+	@RequestMapping("/myinfo_rental_scheduled.four")
+	public String myinfo_rental_scheduled(HttpServletRequest request, Model model) {
+		System.out.println("myinfo_rental_scheduled()");
+		
+		HttpSession httpsession = request.getSession();
+		
+		model.addAttribute("request", request);
+		
+		command = new MyinfoRentalScheduledCommand();
+		command.execute(sqlSession, model, httpsession);
+	
+		
+		return "myinfoRentalList_scheduled";
+	}
+	
+	// myInfo rental List(이전 예약) 보여주기
+	@RequestMapping("/myinfo_rental_previous.four")
+	public String myinfo_rental_previous(HttpServletRequest request, Model model) {
+		System.out.println("myinfo_rental_previous()");
+		
+		HttpSession httpsession = request.getSession();
+		
+		return "myinfoRentalList_previous";
+	}
+	
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.team4.ysms.dao.Dao_myinfo_Rental">
+
+	<select id="myinfoRentalScheduledListDao" resultType="com.team4.ysms.dto.Dto_Rental" >
+		SELECT R.NO as rentalNo, R.RENTALDATE as rentalDate, R.CHECKINDATE as checkInDate, 
+		R.STARTTIME as rentalStartTime, R.ENDTIME as rentalEndTime, 
+		R.CANCELLATIONDATE as rentalCancellationDate, R.PRICE as rentalPrice, 
+		R.USER_ID as rentalUser_id, R.PLACE_NO as rentalPlace_no, 
+		S.FILEPATH as rentalPhoto, S.TITLE as rentalTitle 
+		FROM RENTAL R, SHARE S 
+		WHERE R.USER_ID = #{param1} AND R.PLACE_NO = S.PLACE_NO AND R.CHECKINDATE >= NOW() AND R.CANCELLATIONDATE IS NULL  
+		ORDER BY R.CHECKINDATE LIMIT #{param2}, #{param3}
+	</select>
+	
+	<select id="myinfoRentalScheduledListCountDao" resultType="com.team4.ysms.dto.Dto_Paging">
+		SELECT COUNT(NO) as totalPage FROM RENTAL WHERE USER_ID = #{param1} AND CHECKINDATE >= NOW() AND CANCELLATIONDATE IS NULL
+	</select>
+	
+</mapper>
