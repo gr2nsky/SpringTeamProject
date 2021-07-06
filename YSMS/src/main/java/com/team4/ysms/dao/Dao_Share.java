@@ -38,7 +38,6 @@ public interface Dao_Share {
 	public Dto_Share shareDetailDao(int place_no);
 
 	//  삭제를 위한 Method
-	public int Find_placeNo_From_share(int no);
 	public void deleteShareDao(int no);
 	public void deletePlaceDao(int place_no);
 //	

@@ -33,13 +33,10 @@
     	</select>
     
     	<select id="shareDetailDao" resultType="com.team4.ysms.dto.Dto_Share">
-    		SELECT * FROM PLACE, SHARE WHERE PLACE.NO = SHARE.PLACE_NO AND SHARE.NO = #{param1}	
+    		SELECT SHARE.NO, CAPACITY, CATEGORY, PRICE, STARTTIME, ENDTIME, TITLE, USER_ID, INTRODUCE, POSTCODE, ADDRESS1, ADDRESS2, REGISTRATIONDATE, REMOVEDATE, FILEPATH, DAYLIMIT, PLACE_NO FROM PLACE, SHARE WHERE PLACE.NO = SHARE.PLACE_NO AND SHARE.NO = #{param1}	
     	</select>
     
     	<!-- content.jsp 에서 삭제를 위한 Query -->
-    	<select id="Find_placeNo_From_share" resultType="int">
-    	 	SELECT PLACE_NO FROM SHARE WHERE NO = #{param1}
-    	</select>
     	<delete id="deleteShareDao">
     		DELETE FROM SHARE WHERE NO = #{param1}
     	</delete>

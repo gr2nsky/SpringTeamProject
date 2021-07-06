@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ShareListCommand;
 import com.team4.ysms.command.ContentCommand;
+import com.team4.ysms.command.DeleteCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteCommand;
 import com.team4.ysms.dao.Dao_Share;
@@ -115,8 +116,12 @@ public class ShareSpaceController {
 	public String shareDelete(HttpServletRequest request, Model model) {
 		System.out.println("* * * Controller : shareDelete * * *");
 		
+	
+		Dao_Share dao = sqlSession.getMapper(Dao_Share.class);
 		
-		
+		dao.deleteShareDao(Integer.parseInt(request.getParameter("no")));
+		dao.deletePlaceDao(Integer.parseInt(request.getParameter("place_no")));
+			
 		return "redirect:list";
 	}
 	
