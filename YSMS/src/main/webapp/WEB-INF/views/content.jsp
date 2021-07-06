@@ -11,11 +11,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%
-	int dayLimit = Integer.parseInt((String)request.getAttribute("dayLimit")); 
-%>
+
 <script type="text/javascript">
-let shareableDateNum = "<%=dayLimit%>";
+let shareableDateNum = ${CONTENTS.dayLimit};
 shareableDateNum *= 1;
 
 function checkBoxSet(){
@@ -51,7 +49,7 @@ function dateHandler(checkBox){
 <body>
 	<%@ include file="header.jsp" %>
 	
-	<%@ include file="reservationCheck.jsp" %>
+	<%-- <%@ include file="reservationCheck.jsp" %> --%>
 	
 	<div class="mainBox">
 	<div class="contentBox">
@@ -62,57 +60,57 @@ function dateHandler(checkBox){
 			<!-- <input type="hidden" name="bId" value="${content_view.bId }"> -->
 			<tr>
 				<th>등록번호</th>
-				<td><input type="text" name="no" readonly="readonly" value="${DETAIL.no }"></td>
+				<td><input type="text" name="no" readonly="readonly" value="${CONTENTS.no }"></td>
 			</tr>
 			<tr>
 				<th>등록한 사람</th>
-				<td><input type="text" name="user_id" size="20" readonly="readonly"  value="${DETAIL.user_id }"></td>
+				<td><input type="text" name="user_id" size="20" readonly="readonly"  value="${CONTENTS.user_id }"></td>
 			</tr> 
 			<tr>
 				<th>타이틀</th>
-				<td><input type="text" name="title" size="50" value="${DETAIL.title }"></td>
+				<td><input type="text" name="title" size="50" value="${CONTENTS.title }"></td>
 			</tr> 
 			<tr>
 				<th>공간소개</th>
-				<td><textarea rows="10" cols="50" name="introduce">${DETAIL.introduce }</textarea></td>
+				<td><textarea rows="10" cols="50" name="introduce">${CONTENTS.introduce }</textarea></td>
 			</tr> 
 			<tr>
 				<th>첨부파일</th>
 				<td>
-					<c:set var="requestFilePath" value="${DETAIL.filePath }" />
+					<c:set var="requestFilePath" value="${CONTENTS.filePath }" />
 					<c:choose>
 					    <c:when test="${!empty requestFilePath}">
-					        <a href="${DETAIL.filePath }" download>${fileName }</a>
+					        <a href="${CONTENTS.filePath }" download>${fileName }</a>
 					    </c:when>
 					    <c:otherwise>
 					        <a>첨부파일 없음</a>
 					    </c:otherwise>
 					</c:choose>
 					<!-- 이미지 수정을 위해서 기존 파일 경로도 전송해야하므로 히든아이템으로 유지한다. -->
-					<input type="hidden" name="oldFilePath" value="${DETAIL.filePath }">
+					<input type="hidden" name="oldFilePath" value="${CONTENTS.filePath }">
 					<input type="file" name="uploadFile" >
 				</td>
 			</tr>
 			<tr>
 				<th>첨부파일 미리보기</th>
-				<td><img width="300" src="${DETAIL.filePath }"/></td>
+				<td><img src="${pageContext.request.contextPath }/resources/share/${CONTENTS.filePath}" width="auto" height="100"/></td>
 			</tr>
 			<tr>
 				<th>시간당 금액</th>
-				<td><input type="text" name="price" size="15" value="${DETAIL.price }"></td>
+				<td><input type="text" name="price" size="15" value="${CONTENTS.price }"></td>
 			</tr>
 			<tr>
 				<th>예약가능 시작시간</th>
-				<td><input type="text" name="startTime" size="15" value="${DETAIL.startTime }"></td>
+				<td><input type="text" name="startTime" size="15" value="${CONTENTS.startTime }"></td>
 			</tr>
 			<tr>
 				<th>예약가능 종료시간</th>
-				<td><input type="text" name="endTime" size="15" value="${DETAIL.endTime }"></td>
+				<td><input type="text" name="endTime" size="15" value="${CONTENTS.endTime }"></td>
 			</tr>
 			<tr>
 				<th>예약가능 요일</th>
 				<td>
-					<input type="hidden" id="dayLimit" name="dayLimit" value="${DETAIL.dayLimit }" size="50">
+					<input type="hidden" id="dayLimit" name="dayLimit" value="${CONTENTS.dayLimit }" size="50">
 					<input type="checkbox" name = "checkBox" value="1000000" onclick="dateHandler(this)" checked="checked">일
 					<input type="checkbox" name = "checkBox" value="100000" onclick="dateHandler(this)" checked="checked">월
 					<input type="checkbox" name = "checkBox" value="10000" onclick="dateHandler(this)" checked="checked">화
@@ -129,10 +127,10 @@ function dateHandler(checkBox){
 			<tr>
 				<td>
 					<button type="submit" class="btnModDel">수정</button>
-					<a href="delete.four?no=${DETAIL.no }"><button type="button" class="btnModDel">삭제</button></a>
+					<a href="sharedelete?no=${CONTENTS.no }"><button type="button" class="btnModDel">삭제</button></a>
 				</td>
 				<td align="right">
-					<a href="list.four?page=${currentPage}"><button type="button" class="btnGoList">목록보기</button></a>
+					<a href="list?page=${currentPage}"><button type="button" class="btnGoList">목록보기</button></a>
 				</td>
 			</tr>
 		
