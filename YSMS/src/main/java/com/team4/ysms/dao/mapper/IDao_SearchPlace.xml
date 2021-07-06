@@ -8,5 +8,10 @@
 	<select id="searchPlacelistDao" resultType="com.team4.ysms.dto.Dto_SearchPlace">
 	SELECT DISTINCT S.NO, S.FILEPATH, P.CATEGORY, S.TITLE, P.ADDRESS1, P.ADDRESS2, S.PRICE FROM SHARE S, PLACE  P WHERE P.NO = S.PLACE_NO AND P.REMOVEDATE IS NULL ORDER BY S.NO DESC	
 	</select>
+	
+	<!-- 검색 결과 보기 -->
+	<select id="searchPlaceResult" resultType="com.team4.ysms.dto.Dto_SearchPlace">
+	
+	</select>
     
     </mapper>

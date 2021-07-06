@@ -13,6 +13,7 @@ import com.team4.ysms.command.PlaceListAllCommand;
 import com.team4.ysms.command.QnACommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.SPlaceListAllCommand;
+import com.team4.ysms.dao.Dao_SearchPlace;
 import com.team4.ysms.dao.IDao_SearchPlace;
 
 @Controller
@@ -24,7 +25,7 @@ public class PlaceSearchController {
 	
 	SCommand command = null;
 	
-	
+	// 검색 메인 페이지
 	@RequestMapping("/SearchPlacePage")
 	public String SearchPlacePage(HttpServletRequest request, Model model) {
 		
@@ -39,6 +40,8 @@ public class PlaceSearchController {
 		return "PlaceSearchPage"; // jsp로 이동
 	}
 	
+	
+	// 날짜 선택
 	@RequestMapping("/placeSearchCalendar")
 	public String placeSearchCalendar(HttpServletRequest request, Model model) {
 		
@@ -49,11 +52,11 @@ public class PlaceSearchController {
 	}
 	
 	
+	// 검색 결과 페이지
 	@RequestMapping("SearchPlaceCommand")
 	public String PlaceResultPage(HttpServletRequest request, Model model) {
-		
-		HttpSession httpsession = request.getSession();
 		model.addAttribute("request", request);
+		command = new Dao_SearchPlace();
 		
 		return "PlaceResultPage"; // jsp로 이동
 	}

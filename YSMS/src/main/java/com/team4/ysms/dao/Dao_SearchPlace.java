@@ -10,25 +10,35 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import com.team4.ysms.dto.Dto_SearchPlace;
+import com.team4.ysms.util.*;
 
 
 
 public class Dao_SearchPlace {
 	
 	DataSource dataSource; //javax.sql
+	private JdbcTemplate template;
 //	int count = 0; //검색된 행 갯수
 
 	
+//	public Dao_SearchPlace() {
+//		try {
+//			Context context = new InitialContext();// javax.naming , context.xml과 연결
+//			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/team4"); // context.xml의 내용을 불러옴
+//			
+//		}catch(Exception e){
+//			e.printStackTrace(); // error code 출력
+//		}
+//	}
+	
+	/* */
 	public Dao_SearchPlace() {
-		try {
-			Context context = new InitialContext();// javax.naming , context.xml과 연결
-			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/team4"); // context.xml의 내용을 불러옴
-			
-		}catch(Exception e){
-			e.printStackTrace(); // error code 출력
-		}
+		this.template = Constant.template;
 	}
+	/* */
 	
 	
 	//검색 결과 목록 출력
