@@ -1,18 +1,28 @@
 package com.team4.ysms.command;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.team4.ysms.common.FilePath_login;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.team4.ysms.dao.Dao_Login;
 
-public class SignUpInputCommand implements Command {
+public class SignUpInputCommand implements SCommand {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		FilePath_login fl = FilePath_login.getInstance();
-		MultipartRequest multi = null;
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
+//		FilePath_login fl = FilePath_login.getInstance();
+		
+		Map<String, Object> map = model.asMap();
+		MultipartHttpServletRequest mtfRequest = (MultipartHttpServletRequest) map.get("mtfRequest");
 		
 		String id = null;
 		String name = null;
@@ -21,29 +31,64 @@ public class SignUpInputCommand implements Command {
 		String phone = null;
 		int status = 0;
 		String birthday = null;
-		String filePath = fl.signUp_filePath;
+		String filePath = getFilePath(httpSession);
+		
 		
 		try {
-			//일반 request와는 구분됩니다. request.getParameter로는 값을 가져올 수 없습니다.
-			multi = fl.getMultipartRequest(request);
 			
-			id = multi.getParameter("id");
-			name = multi.getParameter("name");
-			pw = multi.getParameter("pw1");
-			email = multi.getParameter("email");
-			phone = multi.getParameter("phone1") + "-" + multi.getParameter("phone2") + "-" + multi.getParameter("phone3");
+			id = mtfRequest.getParameter("id");
+			name = mtfRequest.getParameter("name");
+			pw = mtfRequest.getParameter("pw1");
+			email = mtfRequest.getParameter("email");
+			phone = mtfRequest.getParameter("phone1") + "-" + mtfRequest.getParameter("phone2") + "-" + mtfRequest.getParameter("phone3");
 			status = 1;
-			birthday = multi.getParameter("year") + "-" + multi.getParameter("month") + "-" + multi.getParameter("day");
-			String uploadPhoto = multi.getFilesystemName("uploadPhoto");
+			birthday = mtfRequest.getParameter("year") + "-" + mtfRequest.getParameter("month") + "-" + mtfRequest.getParameter("day");
+			
+			MultipartFile uploadPhoto = mtfRequest.getFile("uploadPhoto");
+	    	String originFileName = uploadPhoto.getOriginalFilename(); // 원본 파일 명
+	        long fileSize = uploadPhoto.getSize(); // 파일 사이즈
+	        
+	        String saveFilename = null;
+	        // file upload check
+	        if(fileSize != 0) {
+		        saveFilename = System.currentTimeMillis() + originFileName; // 저장될 파일명
+		        String saveFile = filePath + saveFilename;
+		        
+		        try {
+		        	uploadPhoto.transferTo(new File(saveFile));
+		        }catch (IllegalStateException e) {
+		            // TODO Auto-generated catch block
+		            e.printStackTrace();
+		        } catch (IOException e) {
+		            // TODO Auto-generated catch block
+		           e.printStackTrace();
+		        }
+	        }
+	        
 			filePath = filePath + "/" + uploadPhoto;
 
 			Dao_Login dao = new Dao_Login();
 			String result = dao.signUp(id, name, pw, email, phone, status, birthday, filePath);
 
-			request.setAttribute("sginUpResult", result);
+			model.addAttribute("sginUpResult", result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public String getFilePath(HttpSession session) {
+		String root_path = session.getServletContext().getRealPath("/"); // 웹서비스 root 경로 
+		String attach_path = "resources/test/";
+		
+		String uploadPath = root_path + attach_path;
+		System.out.println(uploadPath);
+		
+		// 폴더가 없을시 폴더 생성
+        if ( ! new File(uploadPath).exists()) {
+            new File(uploadPath).mkdirs();
+        }
+        
+        return uploadPath;
 	}
 
 }

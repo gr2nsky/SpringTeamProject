@@ -1,88 +1,57 @@
 package com.team4.ysms.command;
 
 import java.util.Random;
-import java.io.UnsupportedEncodingException;
-import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
+import java.util.Map;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.ui.Model;
 
 import com.team4.ysms.common.ShareVar_login;
 
 
-public class AuthEmailRequestCommand implements Command{
+public class AuthEmailRequestCommand implements SCommand{
+	
+	@Autowired
+	private JavaMailSender mailSender;
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String inputedEmail = request.getParameter("email");
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
 		
-		//인증코드 생성
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
 		String AuthenticationKey = authCodeMaker();
-		
-		// mail server 설정
-		String host = "smtp.gmail.com";
-		String user = ShareVar_login.hostID; // 자신의 네이버 계정
-		String password = ShareVar_login.hostPW;// 자신의 네이버 패스워드
-		
-		// 메일 받을 주소
-		String to_email = inputedEmail;
-		System.out.println("inputedEmail : " + inputedEmail);
-
-		// SMTP 서버 정보를 설정한다.
-		Properties prop = System.getProperties();
-		prop.put("mail.smtp.host", host);
-		//google - TLS : 587, SSL: 467
-		prop.put("mail.smtp.port", 465);
-		prop.put("mail.smtp.starttls.enable", "true");
-		prop.put("mail.smtp.auth", "true");
-		prop.put("mail.smtp.ssl.enable", "true");
-		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-		prop.put("mail.debug", "true");
-		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(user, password);
-			}
-		});
-		MimeMessage msg = new MimeMessage(session);
+		String subject = "안녕하세요. 너공나공의 인증메일입니다.";
+		String content ="인증코드는 [ " + AuthenticationKey + " ]입니다.";
+		String from = "dbswovlf2009@gmail.com";
+		String to = request.getParameter("email");
 		
 		// email 전송
 		try {
-			msg.setFrom(new InternetAddress(user));
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
-
-			// 메일 제목
-			msg.setSubject("안녕하세요. 너공나공의 인증메일입니다.", "UTF-8");
-			// 메일 내용
-			msg.setText("인증 번호 :" + AuthenticationKey );
-
-			Transport.send(msg);
+			MimeMessage mail = mailSender.createMimeMessage();
+			MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
+			mailHelper.setFrom(from);
+			mailHelper.setTo(to);
+			mailHelper.setSubject(subject);
+			mailHelper.setText(content);
+			mailSender.send(mail);
 			System.out.println("이메일 전송 : " + AuthenticationKey);
+			
 			ShareVar_login sv = ShareVar_login.getInstance();
 			sv.authEamilCode = AuthenticationKey;
-
-		} catch (AddressException e) { 
-			// TODO Auto-generated catch block 
-			e.printStackTrace(); 
-		} catch (MessagingException e) { 
-				// TODO Auto-generated catch block 
-				e.printStackTrace(); 
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-
-		
-		
 		
 	}
 	
-	// 인증 번호 생성기
+// 인증 번호 생성기
 	public String authCodeMaker() {
 		String authCode = null;
 		
@@ -111,5 +80,4 @@ public class AuthEmailRequestCommand implements Command{
 		
 		return authCode;
 	}
-
 }

@@ -103,46 +103,6 @@
 //		
 //
 //		switch (com) {
-//		
-//			// Login Process * * * * * * * * * * *
-//			case "/login_try.four":
-//				command = new LoginCommand();
-//				command.execute(request, response);
-//				viewPage = "loginForm.jsp";
-//				break;
-//			case "/logout.four":
-//				command = new LogoutCommand();
-//				command.execute(request, response);
-//				viewPage = "mainPage.jsp";
-//				break;
-//			case "/signUpInput.four":
-//				command = new SignUpInputCommand();
-//				command.execute(request, response);
-//				viewPage = "mainPage.jsp";
-//				break;
-//			case "/confirmID.four":
-//				command = new DupleIDCheckCommand();
-//				command.execute(request, response);
-//				viewPage = "confirmID.jsp";
-//				break;
-//			case "/confirmEmail.four":
-//				command = new DupleEmailCheckCommand();
-//				command.execute(request, response);
-//				viewPage = "confirmEmail.jsp";
-//				break;
-//			case "/requestAuthEmail.four":
-//				command = new AuthEmailRequestCommand();
-//				command.execute(request, response);
-//				viewPage = "requestAuthEmail.jsp";
-//				break;
-//			case "/findAccount.four":
-//				command = new FindAccountCommand();
-//				command.execute(request, response);
-//				viewPage = "requestFindAccountEmail.jsp";
-//				break;
-//
-//			// * * * * * * * * * * * * * * * * * *//
-//		
 //			// Mypage  * * * * * * * * * * * * * *
 //				
 //			case "/mypage.four":
