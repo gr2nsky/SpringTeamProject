@@ -8,10 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.team4.ysms.command.ModifyReviewCommand;
 import com.team4.ysms.command.MyinfoQnACommand;
+import com.team4.ysms.command.MyinfoReviewCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.dao.Dao_myinfo_QnA;
+import com.team4.ysms.dao.Dao_myinfo_Review;
 
 @Controller
 public class MyinfoController {
@@ -90,5 +94,92 @@ public class MyinfoController {
 		dao.myInfoQnaDeleteDao(request.getParameter("qna_no"));
 
 		return "delete_QnA_Completed";
+	}
+	
+	/*
+	 *  21.07.06 효경 - myInfoReview
+	 */
+	
+	// myInfoReview List - 내가 작성한 reviewList
+	@RequestMapping("/myinfo_review.four")
+	public String myInfo_review(HttpServletRequest request, Model model) {
+		System.out.println("myInfo_review()");
+		
+		HttpSession httpsession = request.getSession();
+		model.addAttribute("request", request);
+		
+		command = new MyinfoReviewCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+		return "view_myinfoReview";
+	}
+	
+	// review detailView
+	@RequestMapping("/detail_review.four")
+	public String detail_review(HttpServletRequest request, Model model) {
+		System.out.println("detail_review()");
+		
+		HttpSession httpsession = request.getSession();
+		
+		Dao_myinfo_Review dao = sqlSession.getMapper(Dao_myinfo_Review.class);
+		model.addAttribute("detailViewReview", dao.myInfoReviewDetailDao(request.getParameter("rentalNo")));
+		
+		return "detailView_Review";
+	}
+	
+	// myInfoQnA modify
+	@RequestMapping("/modify_review.four")
+	public String modify_review(HttpServletRequest request, Model model) {
+		System.out.println("modify_review()");
+		
+		HttpSession httpsession = request.getSession();
+		
+		model.addAttribute("rentalNo", request.getParameter("rentalNo"));
+		model.addAttribute("reviewScore", request.getParameter("reviewScore"));
+		model.addAttribute("reviewContent", request.getParameter("reviewContent"));
+		model.addAttribute("reviewFilePath", request.getParameter("reviewFilePath"));
+		
+		return "modify_Review";
+	}
+	
+	@RequestMapping("/review_modify.four")
+	public String review_modify(MultipartHttpServletRequest mtfRequest, Model model) {
+		System.out.println("review_modify()");
+		
+		HttpSession httpsession = mtfRequest.getSession();
+		
+		model.addAttribute("mtfRequest", mtfRequest);
+		
+		command = new ModifyReviewCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+		return "modify_Review_Completed";
+	}
+	
+	
+	
+	
+	// review Delete check
+	@RequestMapping("/deleteCheck_review.four")
+	public String deleteCheck_review(HttpServletRequest request, Model model) {
+		System.out.println("deleteCheck_review()");
+		
+		HttpSession httpsession = request.getSession();
+		model.addAttribute("rentalNo", request.getParameter("rentalNo"));
+		
+		return "delete_Review_check";
+	}
+	
+	// review delete
+	@RequestMapping("/review_delete.four")
+	public String review_delete(HttpServletRequest request, Model model) {
+		System.out.println("deleteCheck_review()");
+		
+		HttpSession httpsession = request.getSession();
+		
+		Dao_myinfo_Review dao = sqlSession.getMapper(Dao_myinfo_Review.class);
+		dao.myInfoReviewDeleteDao(request.getParameter("rentalNo"));
+
+		return "delete_Review_Completed";
 	}
 }

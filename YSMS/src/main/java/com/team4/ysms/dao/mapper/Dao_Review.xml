@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.team4.ysms.dao.Dao_Review">
+
+	<select id="reviewListDao" resultType="com.team4.ysms.dto.Dto_Review" >
+		SELECT U.FILEPATH as userFilePath, R.USER_ID as rentalUser_id, R.REVIEWCONTENT as reviewContent, 
+		R.REVIEWSCORE as reviewScore, R.REVIEWUPDATEDATE as reviewUpdateDate, R.REVIEWREMOVEDATE as reviewRemoveDate, 
+		R.FILEPATH as reviewFilePath
+		FROM RENTAL R, USER U 
+		WHERE R.PLACE_NO = #{param1} AND U.ID = R.USER_ID AND R.REVIEWSUBMITDATE IS NOT NULL AND R.REVIEWREMOVEDATE IS NULL 
+		ORDER BY R.REVIEWSUBMITDATE DESC LIMIT #{param2}, #{param3}
+	</select>
+	
+	<select id="reviewListCountDao" resultType="com.team4.ysms.dto.Dto_Paging">
+		SELECT COUNT(REVIEWCONTENT) as totalPage FROM RENTAL WHERE PLACE_NO = #{param1} AND REVIEWSUBMITDATE IS NOT NULL AND REVIEWREMOVEDATE IS NULL
+	</select>
+	
+</mapper>

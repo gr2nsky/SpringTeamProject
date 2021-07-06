@@ -56,7 +56,7 @@
 	<table align="center">
 		<c:choose>
 		<c:when test="${!empty reviewList }">
-		<c:forEach items="${reviewList }" var="reviewDto">
+		<c:forEach items="${reviewList }" var="Dto_Review">
 		<tr>
 			<th colspan="2" align="left">
 			<span style="padding:5px; font-size:15pt; font-weight:700;">이용 후기</span>
@@ -64,54 +64,54 @@
 			</th>
 <%-- 			<th align="right">${reviewDto.reviewScore }</th> --%>
 			<th align="right">
-				<c:if test="${reviewDto.reviewScore == 5 }">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
+				<c:if test="${Dto_Review.reviewScore == 5 }">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
 				</c:if>
-				<c:if test="${reviewDto.reviewScore == 4 }">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
+				<c:if test="${Dto_Review.reviewScore == 4 }">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
 				</c:if>
-				<c:if test="${reviewDto.reviewScore == 3 }">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
+				<c:if test="${Dto_Review.reviewScore == 3 }">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
 				</c:if>
-				<c:if test="${reviewDto.reviewScore == 2 }">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
+				<c:if test="${Dto_Review.reviewScore == 2 }">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
 				</c:if>
-				<c:if test="${reviewDto.reviewScore == 1 }">
-				<img class="reviewScore" src="reviewPhoto/reviewScore.PNG">
+				<c:if test="${Dto_Review.reviewScore == 1 }">
+					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
 				</c:if>
 			</th>
 		</tr>
 		<tr>
 			<td  class="photo" rowspan="3" valign="top" align="center">
 			<div class="user">
-				<img class="userProfile" src="userPhoto/${reviewDto.userFilePath }">
+				<img class="userProfile" src="userPhoto/${Dto_Review.userFilePath }">
 			</div>
 			</td>
-			<td align="left" style="font-weight:700;">${reviewDto.rentalUser_id }</td>
-			<td align="right"><span style="font-size:13px;">${reviewDto.reviewUpdateDate }</span></td>
+			<td align="left" style="font-weight:700;">${Dto_Review.rentalUser_id }</td>
+			<td align="right"><span style="font-size:13px;">${Dto_Review.reviewUpdateDate }</span></td>
 		</tr>
-				<c:if test="${!empty reviewDto.reviewFilePath }">
+				<c:if test="${!empty Dto_Review.reviewFilePath }">
 		<tr>
 			<td colspan="3" align="center">
 				<div class="review">
-					<img class="reviewPhoto" src="reviewPhoto/${reviewDto.reviewFilePath }">
+					<img class="reviewPhoto" src="${pageContext.request.contextPath }/resources/${Dto_Review.reviewFilePath }">
 				</div>
 			</td>
 		</tr>
 				</c:if>
 		<tr>
 			<td colspan="3">
-			<textarea readonly="readonly" disabled="disabled">${reviewDto.reviewContent }</textarea></td>
+			<textarea readonly="readonly" disabled="disabled">${Dto_Review.reviewContent }</textarea></td>
 		</tr>
 		</c:forEach>
 		</c:when>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.team4.ysms.dao.Dao_myinfo_Review">
+
+	<select id="myInfoReviewListDao" resultType="com.team4.ysms.dto.Dto_Review" >
+		SELECT R.NO as rentalNo, S.TITLE as reviewPlaceName, R.REVIEWCONTENT as reviewContent, R.REVIEWSCORE as reviewScore, R.REVIEWUPDATEDATE as reviewUpdateDate, 
+		R.FILEPATH as reviewFilePath
+		FROM RENTAL R, SHARE S 
+		WHERE R.USER_ID = #{param1} AND R.PLACE_NO = S.PLACE_NO AND REVIEWSUBMITDATE IS NOT NULL 
+		ORDER BY R.REVIEWSUBMITDATE DESC LIMIT #{param2}, #{param3}
+	</select>
+	
+	<select id="myInfoReviewListCountDao" resultType="com.team4.ysms.dto.Dto_Paging">
+		SELECT COUNT(*) as totalPage FROM RENTAL R, SHARE S WHERE R.USER_ID = #{param1} AND R.PLACE_NO = S.PLACE_NO 
+		AND REVIEWSUBMITDATE IS NOT NULL
+	</select>
+	
+	<select id="myInfoReviewDetailDao" resultType="com.team4.ysms.dto.Dto_Review">
+		SELECT S.TITLE as reviewPlaceName, R.REVIEWCONTENT as reviewContent, R.REVIEWSCORE as reviewScore, 
+		R.REVIEWUPDATEDATE as reviewUpdateDate, R.FILEPATH as reviewFilePath
+		FROM RENTAL R, SHARE S WHERE R.NO = #{param1} AND R.PLACE_NO = S.PLACE_NO
+	</select>
+	
+	<update id="myInfoReviewModifyDao">
+		UPDATE RENTAL SET REVIEWCONTENT = #{param1}, REVIEWSCORE = #{param2}, FILEPATH = #{param3}, 
+		REVIEWUPDATEDATE = NOW() WHERE NO = #{param4}
+	</update>
+	
+	<update id="myInfoReviewDeleteDao">
+		UPDATE RENTAL SET REVIEWSUBMITDATE = NULL, REVIEWREMOVEDATE = NOW() WHERE NO = #{param1}
+	</update>
+	
+</mapper>
