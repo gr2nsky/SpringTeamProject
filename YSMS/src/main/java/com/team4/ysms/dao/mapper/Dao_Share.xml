@@ -36,5 +36,14 @@
     		SELECT * FROM PLACE, SHARE WHERE PLACE.NO = SHARE.PLACE_NO AND SHARE.NO = #{param1}	
     	</select>
     
-    
+    	<!-- content.jsp 에서 삭제를 위한 Query -->
+    	<select id="Find_placeNo_From_share" resultType="int">
+    	 	SELECT PLACE_NO FROM SHARE WHERE NO = #{param1}
+    	</select>
+    	<delete id="deleteShareDao">
+    		DELETE FROM SHARE WHERE NO = #{param1}
+    	</delete>
+    	<update id="deletePlaceDao">
+    		UPDATE PLACE SET REMOVEDATE = NOW() WHERE NO = #{param1}
+    	</update>
     </mapper>
