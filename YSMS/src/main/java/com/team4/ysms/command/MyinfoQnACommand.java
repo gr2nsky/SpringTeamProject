@@ -1,67 +1,53 @@
 package com.team4.ysms.command;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
 
 import com.team4.ysms.common.LoginedUserInfo;
 import com.team4.ysms.dao.Dao_myinfo_QnA;
-import com.team4.ysms.dto.Dto_QnA;
+import com.team4.ysms.dto.Dto_Paging;
 
-public class MyinfoQnACommand implements Command {
+public class MyinfoQnACommand implements SCommand {
 
-	/* 
-	 	-----------------------------
-	 	21.05.17 hyokyeong JO
-	 	DB table qna_review
-	 	
-	 	****현재 sender = user01 으로 변수 선언해서 진행중
-	 	-> 추후 세션으로 받아와서 바꿀 것.
-	 	-----------------------------
-	 */
-	String user_id = LoginedUserInfo.id;
-	
+//	String user_id = LoginedUserInfo.id;
+	String user_id = "user01";
 	int numOfTuplesPerPage = 5;
 	
+
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		
-		System.out.println("Dao_myinfo_QnAReview - execute");;
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
+		// TODO Auto-generated method stub
 
-		// 사용자가 요청한 페이지 번호 초기값은 가장 최신글을 보여주는 1
 		int requestPage = 1;
-		Dao_myinfo_QnA dao = new Dao_myinfo_QnA();
-		HttpSession session = request.getSession();
-		
-		
-		System.out.println("user_id (MyinfoQnACommand) : " + user_id);
-		// 최초 목록 진입시 page값을 넘겨주지 않음 -> 초기값인 1페이지 목록을 보여줌
-		// 목록에서 page요청 -> 해당 페이지 번호로 requestPage 설정
-		if (request.getParameter("myinfoQnaPage") != null) {
-			requestPage = Integer.parseInt(request.getParameter("myinfoQnaPage"));
-			// content에서 목록보기 요청시 최근 페이지 목록으로 돌아가기 위해 세션에 저장
-			session.setAttribute("currentPage", requestPage);
-		}
-		// 반환되는 총 튜플의 수
-		int countedTuple = dao.countTuple(user_id);
-		// 페이지 목록 (1...n)
-		ArrayList<Integer> myinfoQnaPageList = calcNumOfPage(countedTuple);
-		// 페이지 목록을 세션에 담는다. *list에 진입하면 무조건 세션이 갱신되므로 새 글이 생겨도 최신화가 된다.
-		session.setAttribute("myinfoQnaPageList", myinfoQnaPageList);
 
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
-		// myInfoQnAList 호출
-		ArrayList<Dto_QnA> dtoQnA = dao.myInfoQnAList(user_id, requestPage, numOfTuplesPerPage);
-		String empty = "";
+		if(request.getParameter("myinfoQnaPage") != null) {
+			requestPage = Integer.parseInt(request.getParameter("myinfoQnaPage"));
+		}
 		
-			if(dtoQnA.isEmpty() == true) {
-				request.setAttribute("myInfoQnaList", empty);
-			}else {
-				request.setAttribute("myInfoQnaList", dtoQnA);
-			}
-			System.out.println(dtoQnA.isEmpty());
+		Dao_myinfo_QnA dao = sqlSession.getMapper(Dao_myinfo_QnA.class);
+		
+		Dto_Paging dto = dao.myInfoQnaListCountDao(user_id);
+		
+		int countedTuple = dto.getTotalPage();
+		ArrayList<Integer> myinfoQnaPageList = calcNumOfPage(countedTuple);
+		model.addAttribute("myinfoQnaPageList", myinfoQnaPageList);
+		
+		
+		int offset = requestPage-1;
+		if(offset != 0) {
+			offset *= numOfTuplesPerPage;
+		}
+		
+		model.addAttribute("myInfoQnaList", dao.myInfoQnAListDao(user_id, offset, numOfTuplesPerPage));
 		
 	}
 

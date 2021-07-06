@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.team4.ysms.dao.Dao_Host_QnA">
+
+	<select id="hostQnaListDao" resultType="com.team4.ysms.dto.Dto_QnA">
+		SELECT Q.NO as qnaNo, Q.CONTENT as qnaContent, Q.UPDATEDATE as qnaQ_updateDate, 
+		Q.SENDER as qnaSender, Q.ANSWER as qnaAnswer, Q.A_UPDATEDATE as qnaA_updateDate, 
+		Q.A_REMOVEDATE as qnaA_removeDate, Q.PLACE_NO as qnaPlace_no, S.TITLE as qnaPlaceName 
+		FROM QNA_REVIEW Q, USER U, SHARE S
+		WHERE Q.PLACE_NO = #{param1} AND U.ID = Q.SENDER AND Q.PLACE_NO = S.PLACE_NO 
+		AND Q.REMOVEDATE IS NULL AND Q.SCORE IS NULL 
+		ORDER BY Q.NO DESC LIMIT #{param2}, #{param3}
+	</select>
+	
+	<select id="hostQnaListCountDao" resultType="com.team4.ysms.dto.Dto_Paging">
+		SELECT COUNT(*) as totalPage FROM QNA_REVIEW WHERE PLACE_NO = #{param1} AND SCORE IS NULL AND REMOVEDATE IS NULL
+	</select>
+	
+	<select id="hostQnaShareTitleDao" resultType="com.team4.ysms.dto.Dto_QnA">
+		SELECT PLACE_NO as qnaPlace_no, TITLE as qnaPlaceName FROM SHARE WHERE PLACE_NO = #{param1}
+	</select>
+	
+	<select id="hostQnADetailDao" resultType="com.team4.ysms.dto.Dto_QnA">
+		SELECT NO as qnaNo, CONTENT as qnaContent, ANSWER as qnaAnswer FROM QNA_REVIEW WHERE NO = #{param1}
+	</select>
+	
+	<update id="hostQnaWriteDao">
+		UPDATE QNA_REVIEW SET ANSWER = #{param2}, A_SUBMITDATE = NOW(), A_UPDATEDATE = NOW(), 
+		A_REMOVEDATE = NULL WHERE NO = #{param1}
+	</update>
+	
+	<update id="hostQnaModifyDao">
+		UPDATE QNA_REVIEW SET ANSWER = #{param2}, A_UPDATEDATE = NOW(), A_REMOVEDATE = NULL WHERE NO = #{param1}
+	</update>
+	
+	<update id="hostQnaDeleteDao">
+		UPDATE QNA_REVIEW SET ANSWER = NULL, A_SUBMITDATE = NULL, A_REMOVEDATE = NOW() WHERE NO = #{param1}
+	</update>
+	
+</mapper>

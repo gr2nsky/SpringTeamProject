@@ -87,33 +87,42 @@
 			
 			<c:choose>
 			<c:when test="${!empty hostQnaList }">
-			<c:forEach items="${hostQnaList }" var="hostQnaDto">
+			<c:forEach items="${hostQnaList }" var="Dto_QnA">
 			<tr>
-				<td>${hostQnaDto.qnaSender }</td>
-				<td><div class="text_contentline">${hostQnaDto.qnaContent }</div></td>
-				<td align="center">${hostQnaDto.qnaQ_updateDate }</td>
-				<td align="center">${hostQnaDto.qnaYesNo }</td>
+				<td>${Dto_QnA.qnaSender }</td>
+				<td><div class="text_contentline">${Dto_QnA.qnaContent }</div></td>
+				<td align="center">${Dto_QnA.qnaQ_updateDate }</td>
+				<td align="center">
+					<c:choose>
+						<c:when test="${!empty Dto_QnA.qnaAnswer }">
+							<p>Y</p>
+						</c:when>
+						<c:otherwise>
+							<p>N</p>
+						</c:otherwise>
+					</c:choose>
+				</td>
 			</tr>
 			<tr>
 				<!--Detail  -->
 				<td colspan = "2" align="left" style="margin-left:10px;">
 					<p style="font-weight:700;">문의내용</p>
-					<pre>${hostQnaDto.qnaContent }</pre>
+					<pre>${Dto_QnA.qnaContent }</pre>
 					<br>
 					<p style="font-weight:700;">호스트답변</p>
-					<pre>${hostQnaDto.qnaAnswer }</pre>
-					<p>${hostQnaDto.qnaA_updateDate}</p>
+					<pre>${Dto_QnA.qnaAnswer }</pre>
+					<p>${Dto_QnA.qnaA_updateDate}</p>
 				</td>
 				<td colspan="2" valign="bottom" align="right">
 				<c:choose>
-				<c:when test="${hostQnaDto.qnaYesNo == 'N' }">
-					<a href="javascript:modifyQna('host_write_qna.four?qna_no=${hostQnaDto.qnaNo }')">
+				<c:when test="${empty Dto_QnA.qnaAnswer}">
+					<a href="javascript:modifyQna('host_write_qna.four?qna_no=${Dto_QnA.qnaNo }')">
 					<input type="button" value="답변작성하기"></a>
 				</c:when>
 				<c:otherwise>
-					<a href="javascript:modifyQna('host_modify_qna.four?qna_no=${hostQnaDto.qnaNo }')">
+					<a href="javascript:modifyQna('host_modify_qna.four?qna_no=${Dto_QnA.qnaNo }')">
 					<input type="button" value="수정하기"></a>
-					<a href="javascript:openNewWindow('host_deleteCheck_qna.four?qna_no=${hostQnaDto.qnaNo }')">
+					<a href="javascript:openNewWindow('host_deleteCheck_qna.four?qna_no=${Dto_QnA.qnaNo }')">
 					<input type="button" value="삭제하기"></a>	
 				</c:otherwise>
 				</c:choose>
