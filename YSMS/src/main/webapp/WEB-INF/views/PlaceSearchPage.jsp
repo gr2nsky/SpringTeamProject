@@ -39,11 +39,12 @@ function checkTF(){
 		return false;
 	}
 	
-	if(form.date.value==""){
+	// ******나중에 확인할 것
+/* 	if(form.date.value==""){
 		alert("날짜를 입력해 주세요!");
 		form.location.focus(); // tf 포커스
 		return false;
-	}	
+	}	 */
 	
 	form.submit(); // loginForm 전송
 	}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="com.team4.ysms.dao.IDao_SearchPlace">
+    <!-- 전체검색 (전체 내용 보기)  -->
+	<select id="searchPlacelistDao" resultType="com.team4.ysms.dto.Dto_SearchPlace">
+	SELECT DISTINCT S.NO, S.FILEPATH, P.CATEGORY, S.TITLE, P.ADDRESS1, P.ADDRESS2, S.PRICE FROM SHARE S, PLACE  P WHERE P.NO = S.PLACE_NO AND P.REMOVEDATE IS NULL ORDER BY S.NO DESC LIMIT #{param1}, #{param2} 	
+	</select>
+	
+	<!-- paging -->
+	<select id="ListCountDao" resultType="com.team4.ysms.dto.Dto_Paging">
+		SELECT DISTINCT COUNT(S.TITLE) as totalPage FROM SHARE S, PLACE  P WHERE P.NO = S.PLACE_NO AND P.REMOVEDATE IS NULL
+	</select>
+	
+	<!-- 검색 결과 보기 -->
+	<select id="searchPlaceResult" resultType="com.team4.ysms.dto.Dto_SearchPlace">
+	
+	</select>
+    
+    </mapper>
