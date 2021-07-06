@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ShareListCommand;
-import com.team4.ysms.command.ContentCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteCommand;
 import com.team4.ysms.dao.Dao_Share;
@@ -28,7 +27,7 @@ public class ShareSpaceController {
 	//  210705 12:11   Park Jaewon    //
 	//  공간 작성페이지로 이동              //
 	////////////////////////////////////
-	@RequestMapping("/write_space.four")
+	@RequestMapping("/write_space")
 	public String writeForm() {
 		System.out.println("* * * Controller : writeSpace * * *");
 		return "writeSpace";
@@ -38,7 +37,7 @@ public class ShareSpaceController {
 	//  210705 12:53   Park Jaewon    //
 	//  공간 작성페이지로 이동              //
 	////////////////////////////////////
-	@RequestMapping("/write_detail.four")
+	@RequestMapping("/write_detail")
 	public String writeSpace(HttpServletRequest request, Model model) {
 		System.out.println("* * * Controller : writeSpace * * *");
 		
@@ -64,7 +63,7 @@ public class ShareSpaceController {
 	//  210705 18:25   Park Jaewon    //
 	//  MultupartRequest : 공간등록     //
 	////////////////////////////////////
-	@RequestMapping("/write.four")
+	@RequestMapping("/write")
 	public String writeDetail(MultipartHttpServletRequest mtfrequest, Model model) {
 		System.out.println("* * * Controller : writeDetail * * *");
 		
@@ -74,16 +73,16 @@ public class ShareSpaceController {
 		command = new WriteCommand();
 		command.execute(sqlSession, model, httpSession);
 		
-		return "redirect:list.four";
+		return "redirect:list";
 	}
 	
 	////////////////////////////////////
 	//  210705 22:00   Park Jaewon    //
 	//  내가 등록한 공간List 불러오기       //
 	////////////////////////////////////
-	@RequestMapping("/list.four")
+	@RequestMapping("/list")
 	public String shareList(HttpServletRequest request, Model model) {
-		System.out.println("* * * Controller : ShareList * * *");
+		System.out.println("* * * Controller : shareList * * *");
 		
 		HttpSession httpSession = request.getSession();
 		model.addAttribute("request", request);
@@ -95,16 +94,45 @@ public class ShareSpaceController {
 	}
 	
 	//////////////////////////////////
-	//
-    //
+	//  210706 14:27  Park Jaewon   //
+    //  수정삭제를 위한 content이동      //
 	//////////////////////////////////
-	@RequestMapping("/content.four")
+	@RequestMapping("/content")
 	public String shareContent(HttpServletRequest request, Model model) {
 		
 		Dao_Share dao = sqlSession.getMapper(Dao_Share.class);
 		model.addAttribute("CONTENTS", dao.shareDetailDao(Integer.parseInt(request.getParameter("no"))));
 		
 		return "content";
+	}
+	
+	//////////////////////////////////
+	//  210706 14:31  Park Jaewon   //
+	//  content.jsp 에서 삭제하기      //
+	//////////////////////////////////
+	@RequestMapping("/sharedelete")
+	public String shareDelete(HttpServletRequest request, Model model) {
+		System.out.println("* * * Controller : shareDelete * * *");
+		
+		Dao_Share dao = sqlSession.getMapper(Dao_Share.class);
+		
+		dao.deleteShareDao(Integer.parseInt(request.getParameter("no")));
+		dao.deletePlaceDao(Integer.parseInt(request.getParameter("place_no")));
+			
+		return "redirect:list";
+	}
+	
+	//////////////////////////////////
+	//  210706 17:32  Park Jaewon   //
+	//  detail.jsp로 가기!            //
+	//////////////////////////////////
+	@RequestMapping("/share_detail")
+	public String shareDetail(HttpServletRequest request, Model model) {
+
+		Dao_Share dao = sqlSession.getMapper(Dao_Share.class);
+		model.addAttribute("DETAIL", dao.shareDetailDao(Integer.parseInt(request.getParameter("no"))));
+		
+		return "share_detail";
 	}
 	
 	

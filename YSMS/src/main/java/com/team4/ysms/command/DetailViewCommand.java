@@ -10,33 +10,43 @@ package com.team4.ysms.command;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
 
 import com.team4.ysms.common.FilePath;
 import com.team4.ysms.common.ReservationInfo;
 import com.team4.ysms.dao.Dao_Share;
 import com.team4.ysms.dto.Dto_Share;
 
-public class DetailViewCommand implements Command {
-
-	FilePath file = new FilePath();
+public class DetailViewCommand implements SCommand {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
-
-		int no = Integer.parseInt(request.getParameter("no"));
-
-		Dao_Share dao = new Dao_Share();
-		Dto_Share detail = dao.detail(no);
-
-		// 파일이 업로드되있는 상태라면 (이름+경로) - 경로를 해서 파일 이름만 추출해서 request로 전송
-		if (detail.getFilePath() != null) {
-			String filePath = detail.getFilePath();
-			String fileName = filePath.substring(file.Image.length());
-			request.setAttribute("IMAGE", fileName);
-		}
-		ReservationInfo.detail = detail;
-		request.setAttribute("DETAIL", detail);
-		request.setAttribute("sNo", no);
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
+		// TODO Auto-generated method stub
+		
 	}
+
+//	FilePath file = new FilePath();
+//
+//	@Override
+//	public void execute(HttpServletRequest request, HttpServletResponse response) {
+////
+////		int no = Integer.parseInt(request.getParameter("no"));
+//
+//		Dao_Share dao = new Dao_Share();
+//		Dto_Share detail = dao.detail(no);
+//
+//		// 파일이 업로드되있는 상태라면 (이름+경로) - 경로를 해서 파일 이름만 추출해서 request로 전송
+//		if (detail.getFilePath() != null) {
+//			String filePath = detail.getFilePath();
+//			String fileName = filePath.substring(file.Image.length());
+//			request.setAttribute("IMAGE", fileName);
+//		}
+//		ReservationInfo.detail = detail;
+//		request.setAttribute("DETAIL", detail);
+//		request.setAttribute("sNo", no);
+//	}
 
 }

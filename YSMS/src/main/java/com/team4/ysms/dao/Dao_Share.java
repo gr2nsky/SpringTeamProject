@@ -34,124 +34,13 @@ public interface Dao_Share {
 	
 	public Dto_Share shareContentDao(int contentNo);
 	
+	//  content.jsp 내용을 위한 Method
 	public Dto_Share shareDetailDao(int place_no);
-	
-//
-//	// [Paging 03]
-//	//detail view를 위해 튜플의 모든 정보를 가져온다.
-//	public Dto_Share content(int contentNo) {
-//		Dto_Share dto = null;
-//		String query = "SELECT * FROM share where no = ?";
-//
-//		Connection conn = null;
-//		PreparedStatement psmt = null;
-//		ResultSet rs = null;
-//
-//		try {
-//			conn = dataSource.getConnection();
-//			psmt = conn.prepareStatement(query);
-//			psmt.setInt(1, contentNo);
-//			rs = psmt.executeQuery();
-//
-//			if (rs.next()) {
-//				int no = rs.getInt("no");
-//				String title = rs.getString("title");
-//				String user_id = rs.getString("user_id");
-//				String introduce = rs.getString("introduce");
-//				String updateDate = rs.getString("updateDate");
-//				String filePath = rs.getString("filePath");
-//
-//				dto = new Dto_Share(no, title, user_id, introduce, updateDate, filePath);
-//				System.out.println(" Data load success : content ");
-//			}
-//
-//		} catch (Exception e) { 
-//			System.out.println(" Data load Fail : content ");
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if (rs != null)
-//					rs.close();
-//				if (psmt != null)
-//					psmt.close();
-//				if (conn != null)
-//					conn.close();
-//			} catch (Exception e) {
-//				System.out.println("< rs, psmt, conn close Fail>");
-//				e.printStackTrace();
-//			}
-//		}
-//		return dto;
-//	}
+
+	//  삭제를 위한 Method
+	public void deleteShareDao(int no);
+	public void deletePlaceDao(int place_no);
 //	
-//	// place와 share 에 있는 모든 정보 가져오기
-//	public Dto_Share detail(int placeNo) {
-//		System.out.println("* * Start Method : detail * *");
-//		
-//		Dto_Share dto = null;
-//		String query01 = "SELECT * FROM place, share WHERE place.no = share.place_no ";
-//		String query02 = "AND share.no = ?";
-//		
-//		
-//		Connection conn = null;
-//		PreparedStatement psmt = null;
-//		ResultSet rs = null;
-//		
-//		try {
-//			conn = dataSource.getConnection();
-//			psmt = conn.prepareStatement(query01+query02);
-//			psmt.setInt(1, placeNo);
-//			rs = psmt.executeQuery();
-//			
-//			if (rs.next()) {
-//				int no = rs.getInt("share.no");
-//				int capacity = rs.getInt("capacity");
-//				int category = rs.getInt("category");
-//				int price = rs.getInt("price");
-//				int startTime = rs.getInt("startTime");
-//				int endTime = rs.getInt("endTime");
-//				String title = rs.getString("title");
-//				String user_id = rs.getString("user_id");
-//				String introduce = rs.getString("introduce");
-//				String postCode = rs.getString("postCode");
-//				String address1 = rs.getString("address1");
-//				String address2 = rs.getString("address2");
-//				Timestamp registrationDate = rs.getTimestamp("registrationDate");
-//				Timestamp removeDate = rs.getTimestamp("removeDate");
-//				String filePath = rs.getString("filePath");
-//				String dayLimit = rs.getString("dayLimit");
-//				int place_no = rs.getInt("place_no");
-//				
-//				dto = new Dto_Share(no, capacity, category, price, startTime, endTime, 
-//							  title, user_id, introduce, 
-//							  postCode, address1, address2, 
-//							  registrationDate, removeDate, 
-//							  filePath, dayLimit, place_no);
-//				
-//				System.out.println("  - share no : " + no);
-//				System.out.println("  - place no : " + place_no);
-//				System.out.println("  - user_id : " + user_id);
-//				System.out.println(" Data load success : detail ");
-//			}
-//			
-//		} catch (Exception e) { 
-//			System.out.println("  - Data load Fail : detail ");
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if (rs != null)
-//					rs.close();
-//				if (psmt != null)
-//					psmt.close();
-//				if (conn != null)
-//					conn.close();
-//			} catch (Exception e) {
-//				System.out.println("< rs, psmt, conn close Fail>");
-//				e.printStackTrace();
-//			}
-//		}
-//		return dto;
-//	}
 //	/*
 //	 * 추가 : 2021-05-27 윤재필
 //	 * placeNo으로 찾도록 추가작
@@ -286,58 +175,6 @@ public interface Dao_Share {
 //			}
 //		}
 //	}	
-//	
-//	/* Delete command : ready to delete ( find place_no from share )
-//	 *  - 2021.05.18 14:50
-//	 *  - Park Jaewon
-//	 */
-//	
-//	
-//	public int Find_placeNo_From_share(int no) {
-//		System.out.println("* * Start Method : Find_placeNo_From_share * *");
-//		int place_no = 0;
-//		
-//		System.out.println("  - place_no :  " + place_no);
-//		System.out.println("  - Query Start");
-//			
-//		String query01 = "SELECT place_no FROM share WHERE no = ? ";
-//		
-//		Connection conn = null;
-//		PreparedStatement psmt = null;
-//		ResultSet rs = null;
-//			
-//			try {
-//				conn = dataSource.getConnection();
-//				psmt = conn.prepareStatement(query01);
-//				psmt.setInt(1, no);
-//				rs = psmt.executeQuery();
-//				
-//				while (rs.next()) {
-//					place_no =  rs.getInt("place_no");
-//					
-//					System.out.println("   - place_no (Query Comp) :  " + place_no);
-//					System.out.println(" Data load success : detail ");
-//				}
-//				
-//			} catch (Exception e) { 
-//				System.out.println("  - Data load Fail : detail ");
-//				e.printStackTrace();
-//			} finally {
-//				try {
-//					if (rs != null)
-//						rs.close();
-//					if (psmt != null)
-//						psmt.close();
-//					if (conn != null)
-//						conn.close();
-//				} catch (Exception e) {
-//					System.out.println("< rs, psmt, conn close Fail>");
-//					e.printStackTrace();
-//				}
-//			}
-//			return place_no;
-//	}
-//	
 //	public void deleteShare(int no) {
 //		System.out.println("* * Start Method : deleteShare * *");
 //		String query = "DELETE FROM share WHERE no = ?";
