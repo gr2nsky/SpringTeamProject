@@ -127,7 +127,7 @@ function dateHandler(checkBox){
 			<tr>
 				<td>
 					<button type="submit" class="btnModDel">수정</button>
-					<a href="sharedelete?no=${CONTENTS.no }"><button type="button" class="btnModDel">삭제</button></a>
+					<a href="sharedelete?no=${CONTENTS.no }&place_no=${CONTENTS.place_no}"><button type="button" class="btnModDel">삭제</button></a>
 				</td>
 				<td align="right">
 					<a href="list?page=${currentPage}"><button type="button" class="btnGoList">목록보기</button></a>
