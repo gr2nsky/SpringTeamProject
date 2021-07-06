@@ -21,4 +21,7 @@ public interface Dao_myinfo_Review {
 	
 	// delete
 	public void myInfoReviewDeleteDao(String rentalNo);
+	
+	// write
+	public void myInfoReviewWriteDao(String reviewContent, String reviewScore, String reviewFilepath, String rentalNo);
 }

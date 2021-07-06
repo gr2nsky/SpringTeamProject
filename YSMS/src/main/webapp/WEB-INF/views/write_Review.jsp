@@ -35,7 +35,7 @@
 	session.setAttribute("rentalNo", rentalNo);
 %>
 
-	<form name="writeReview" action="review_write.four" method="post" enctype="multipart/form-data">
+	<form name="writeReview" action="review_write" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="rentalNo" value="${rentalNo }">
 	<table id="writeReview">
 		<tr>		

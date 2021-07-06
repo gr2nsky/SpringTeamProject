@@ -48,7 +48,7 @@
 	session.setAttribute("reviewOldFilePath", reviewFilePath);	
 %>
 
-	<form name="modifyReview" action="review_modify.four" method="post" enctype="multipart/form-data">
+	<form name="modifyReview" action="review_modify" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="rentalNo" value="${rentalNo }">
 		<input type="hidden" name="reviewOldFilePath" value="${reviewOldFilePath }">
 	<table id="modifyReview" align="center">

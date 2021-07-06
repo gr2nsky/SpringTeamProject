@@ -12,15 +12,18 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ModifyReviewCommand;
 import com.team4.ysms.command.MyinfoQnACommand;
+import com.team4.ysms.command.MyinfoRentalPreviousCommand;
+import com.team4.ysms.command.MyinfoRentalScheduledCommand;
 import com.team4.ysms.command.MyinfoReviewCommand;
 import com.team4.ysms.command.SCommand;
+import com.team4.ysms.command.WriteReviewCommand;
 import com.team4.ysms.dao.Dao_myinfo_QnA;
 import com.team4.ysms.dao.Dao_myinfo_Review;
 
 @Controller
 public class MyinfoController {
 	
-	String user_id = "user01";
+	String user_id = "user01"; // 로그인 아이디 받아오기
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -30,10 +33,11 @@ public class MyinfoController {
 	
 	/*
 	 * 21.07.06 효경 -myInfoQnA
+	 * 
 	 */
 	
 	// myInfoQnA List - 내가 작성한 qnaList
-	@RequestMapping("/myinfo_qna.four")
+	@RequestMapping("/myinfo_qna")
 	public String myInfo_qna(HttpServletRequest request, Model model) {
 		System.out.println("myInfo_qna()");
 		
@@ -47,7 +51,7 @@ public class MyinfoController {
 	}
 	
 	// myInfoQnA detailView
-	@RequestMapping("/modify_qna.four")
+	@RequestMapping("/modify_qna")
 	public String modify_qna(HttpServletRequest request, Model model) {
 		System.out.println("modify_qna()");
 		
@@ -60,7 +64,7 @@ public class MyinfoController {
 	}
 	
 	// myInfoQnA modify
-	@RequestMapping("/qna_modify.four")
+	@RequestMapping("/qna_modify")
 	public String qna_modify(HttpServletRequest request, Model model) {
 		System.out.println("qna_modify()");
 		
@@ -73,7 +77,7 @@ public class MyinfoController {
 	}
 	
 	// myInfoQnA Delete check
-	@RequestMapping("/deleteCheck_qna.four")
+	@RequestMapping("/deleteCheck_qna")
 	public String deleteCheck_qna(HttpServletRequest request, Model model) {
 		System.out.println("deleteCheck_qna()");
 		
@@ -84,7 +88,7 @@ public class MyinfoController {
 	}
 	
 	// myInfoQnA delete
-	@RequestMapping("/qna_delete.four")
+	@RequestMapping("/qna_delete")
 	public String qna_delete(HttpServletRequest request, Model model) {
 		System.out.println("qna_delete()");
 		
@@ -101,7 +105,7 @@ public class MyinfoController {
 	 */
 	
 	// myInfoReview List - 내가 작성한 reviewList
-	@RequestMapping("/myinfo_review.four")
+	@RequestMapping("/myinfo_review")
 	public String myInfo_review(HttpServletRequest request, Model model) {
 		System.out.println("myInfo_review()");
 		
@@ -115,7 +119,7 @@ public class MyinfoController {
 	}
 	
 	// review detailView
-	@RequestMapping("/detail_review.four")
+	@RequestMapping("/detail_review")
 	public String detail_review(HttpServletRequest request, Model model) {
 		System.out.println("detail_review()");
 		
@@ -128,7 +132,7 @@ public class MyinfoController {
 	}
 	
 	// myInfoQnA modify
-	@RequestMapping("/modify_review.four")
+	@RequestMapping("/modify_review")
 	public String modify_review(HttpServletRequest request, Model model) {
 		System.out.println("modify_review()");
 		
@@ -142,7 +146,7 @@ public class MyinfoController {
 		return "modify_Review";
 	}
 	
-	@RequestMapping("/review_modify.four")
+	@RequestMapping("/review_modify")
 	public String review_modify(MultipartHttpServletRequest mtfRequest, Model model) {
 		System.out.println("review_modify()");
 		
@@ -155,12 +159,9 @@ public class MyinfoController {
 		
 		return "modify_Review_Completed";
 	}
-	
-	
-	
-	
+
 	// review Delete check
-	@RequestMapping("/deleteCheck_review.four")
+	@RequestMapping("/deleteCheck_review")
 	public String deleteCheck_review(HttpServletRequest request, Model model) {
 		System.out.println("deleteCheck_review()");
 		
@@ -171,7 +172,7 @@ public class MyinfoController {
 	}
 	
 	// review delete
-	@RequestMapping("/review_delete.four")
+	@RequestMapping("/review_delete")
 	public String review_delete(HttpServletRequest request, Model model) {
 		System.out.println("deleteCheck_review()");
 		
@@ -182,4 +183,68 @@ public class MyinfoController {
 
 		return "delete_Review_Completed";
 	}
+	
+	// review write
+	@RequestMapping("/write_review")
+	public String write_review(HttpServletRequest request, Model model) {
+		System.out.println("write_review()");
+		
+		HttpSession httpsession = request.getSession();
+		
+		model.addAttribute("rentalNo", request.getParameter("rentalNo"));
+
+		return "write_Review";
+	}
+	
+	@RequestMapping("/review_write")
+	public String review_write(MultipartHttpServletRequest mtfRequest, Model model) {
+		System.out.println("review_write()");
+		
+		HttpSession httpsession = mtfRequest.getSession();
+		
+		model.addAttribute("mtfRequest", mtfRequest);
+		
+		command = new WriteReviewCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+		return "write_Review_Completed";
+	}
+	
+	
+	/*
+	 *  21.07.06 효경
+	 *  나의 예약 리스트
+	 */
+	
+	// myInfo rental List(예정된예약) 보여주기
+	@RequestMapping("/myinfo_rental_scheduled")
+	public String myinfo_rental_scheduled(HttpServletRequest request, Model model) {
+		System.out.println("myinfo_rental_scheduled()");
+		
+		HttpSession httpsession = request.getSession();
+		
+		model.addAttribute("request", request);
+		
+		command = new MyinfoRentalScheduledCommand();
+		command.execute(sqlSession, model, httpsession);
+	
+		
+		return "myinfoRentalList_scheduled";
+	}
+	
+	// myInfo rental List(이전 예약) 보여주기
+	@RequestMapping("/myinfo_rental_previous")
+	public String myinfo_rental_previous(HttpServletRequest request, Model model) {
+		System.out.println("myinfo_rental_previous()");
+		
+		HttpSession httpsession = request.getSession();
+		
+		model.addAttribute("request", request);
+		
+		command = new MyinfoRentalPreviousCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+		return "myinfoRentalList_previous";
+	}
+	
 }

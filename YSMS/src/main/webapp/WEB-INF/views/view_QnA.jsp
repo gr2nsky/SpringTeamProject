@@ -67,7 +67,7 @@
 <script type="text/javascript">
 	function writeQna(){
  		var place_no = document.getElementById("place_no").value;
- 		  var url = "write_qna.four?place_no=" + place_no;
+ 		  var url = "write_qna?place_no=" + place_no;
 		open(url, "confirm",
 				"roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=450,height=230");
  	}
@@ -155,7 +155,7 @@
 			<td colspan="3" align="center">
 				<!--Paging  -->
 			<c:forEach items="${qnaPageList }" var="qnaPage">
-				<a href="qna.four?place_no=${placeNo }&qnaPage=${qnaPage }">${qnaPage }</a>
+				<a href="qna?place_no=${placeNo }&qnaPage=${qnaPage }">${qnaPage }</a>
 			</c:forEach></td>
 		</tr>
 	</table>

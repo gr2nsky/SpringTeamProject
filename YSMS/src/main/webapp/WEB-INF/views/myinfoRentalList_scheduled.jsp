@@ -107,13 +107,13 @@ function moveToDetail(btn){
 <div class="mainBox">
 	<div class="contentBox">
 		<div class="textLeft" style="margin-bottom:20px;">
-			<strong>예정된 예약</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="myinfo_rental_previous.four">이전 예약</a>
+			<strong>예정된 예약</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="myinfo_rental_previous">이전 예약</a>
 		</div>
 		<hr>
 		<table class="table_outter">
 		<c:choose>
 			<c:when test="${!empty myinfoRentalScheduledList }">
-			<c:forEach items="${myinfoRentalScheduledList }" var="rentalSCDto">
+			<c:forEach items="${myinfoRentalScheduledList }" var="Dto_Rental">
 			<!-- 반복되는 곳  -->
 			<tr><td>
 			<hr>
@@ -121,28 +121,28 @@ function moveToDetail(btn){
 					<tr>
 						<th rowspan="4">
 							<div class="rentalList">
-								<img class="rentalListPhoto" src="save/${rentalSCDto.rentalPhoto }">
+								<img class="rentalListPhoto" src="${pageContext.request.contextPath }/resources/${Dto_Rental.rentalPhoto }">
 							</div>
 						</th>
-						<th colspan="3" align="left">${rentalSCDto.rentalTitle }</th>
+						<th colspan="3" align="left">${Dto_Rental.rentalTitle }</th>
 						<th align="right"><button class="button_rental" disabled="disabled">예약완료</button><button class="button_rental" disabled="disabled">결제완료</button></th>
 					</tr>
 					<tr>
 						<td class="td_title">이용일자 :</td>
-						<td class="td_content">${rentalSCDto.checkInDate }</td>
+						<td class="td_content">${Dto_Rental.checkInDate }</td>
 						<td class="td_title">예약일자 :</td>
-						<td class="td_content">${rentalSCDto.rentalDate }</td>
+						<td class="td_content">${Dto_Rental.rentalDate }</td>
 					</tr>
 					<tr>
 						<td class="td_title">이용시간 :</td>
-						<td class="td_content">${rentalSCDto.rentalStartTime }시 ~ ${rentalSCDto.rentalEndTime }시</td>
+						<td class="td_content">${Dto_Rental.rentalStartTime }시 ~ ${Dto_Rental.rentalEndTime }시</td>
 						<td class="td_title">예약번호 :</td>
-						<td class="td_content">${rentalSCDto.rentalNo }</td>
+						<td class="td_content">${Dto_Rental.rentalNo }</td>
 					</tr>
 					<tr>
 						<td class="td_title">총 금액 :</td>
-						<td class="td_content" colspan="2">&#8361; <fmt:formatNumber value="${rentalSCDto.rentalPrice }" pattern="#,###"/></td>
-						<td align="right"><button class="button_detail" value="${rentalSCDto.rentalNo }" onclick="moveToDetail(this)">예약 상세 보기</button></td>
+						<td class="td_content" colspan="2">&#8361; <fmt:formatNumber value="${Dto_Rental.rentalPrice }" pattern="#,###"/></td>
+						<td align="right"><button class="button_detail" value="${Dto_Rental.rentalNo }" onclick="moveToDetail(this)">예약 상세 보기</button></td>
 					</tr>
 				</table>
 			</td></tr>
@@ -157,7 +157,7 @@ function moveToDetail(btn){
 		<tr><td align="center">
 			<hr><br><br>
 			<c:forEach items="${rentalScheduledPageList }" var="rentalScheduledPage">
-			<a href="myinfo_rental_scheduled.four?rentalScheduledPage=${rentalScheduledPage }">${rentalScheduledPage }</a>
+			<a href="myinfo_rental_scheduled?rentalScheduledPage=${rentalScheduledPage }">${rentalScheduledPage }</a>
 			</c:forEach>
 		</td></tr>
 		</table>

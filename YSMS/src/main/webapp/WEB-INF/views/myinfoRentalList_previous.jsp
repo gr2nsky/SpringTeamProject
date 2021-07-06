@@ -140,24 +140,25 @@
 <div class="mainBox">
 	<div class="contentBox">
 		<div class="textLeft" style="margin-bottom:20px;">
-			<a href="myinfo_rental_scheduled.four">예정된 예약</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>이전 예약</strong>
+			<a href="myinfo_rental_scheduled">예정된 예약</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>이전 예약</strong>
 		</div>
 		<hr>
 		<table class="table_outter">
 		<c:choose>
 			<c:when test="${!empty myinfoRentalPreviousList }">
-			<c:forEach items="${myinfoRentalPreviousList }" var="rentalPVDto" varStatus="status">
+			<c:forEach items="${myinfoRentalPreviousList }" var="Dto_Rental" varStatus="status">
 			<!-- 반복되는 곳  -->
 			<tr><td>
 			<hr>
 				<table class="table_inner">
 					<tr>
 						<th rowspan="4"><div class="rentalList">
-							<img class="rentalListPhoto" src="save/${rentalPVDto.rentalPhoto }"></div></th>
-						<th colspan="3" align="left">${rentalPVDto.rentalTitle }</th>
+							<img class="rentalListPhoto" src="${pageContext.request.contextPath }/resources/${Dto_Rental.rentalPhoto }">
+							</div></th>
+						<th colspan="3" align="left">${Dto_Rental.rentalTitle }</th>
 						<th align="right">
 							<c:choose>
-								<c:when test="${empty rentalPVDto.rentalCancellationDate }">
+								<c:when test="${empty Dto_Rental.rentalCancellationDate }">
 									<button class="button_rental" disabled="disabled"> 예약완료 </button><button class="button_rental" disabled="disabled"> 결제완료 </button>					
 								</c:when>
 								<c:otherwise>
@@ -168,33 +169,33 @@
 					</tr>
 					<tr>
 						<td class="td_title">이용일자 :</td>
-						<td class="td_content">${rentalPVDto.checkInDate }</td>
+						<td class="td_content">${Dto_Rental.checkInDate }</td>
 						<td class="td_title">예약일자 :</td>
-						<td class="td_content">${rentalPVDto.rentalDate }</td>
+						<td class="td_content">${Dto_Rental.rentalDate }</td>
 					</tr>
 					<tr>
 						<td class="td_title">이용시간 :</td>
-						<td class="td_content">${rentalPVDto.rentalStartTime }시 ~ ${rentalPVDto.rentalEndTime }시</td>
+						<td class="td_content">${Dto_Rental.rentalStartTime }시 ~ ${Dto_Rental.rentalEndTime }시</td>
 						<td class="td_title">예약번호 :</td>
-						<td class="td_content">${rentalPVDto.rentalNo }</td>
+						<td class="td_content">${Dto_Rental.rentalNo }</td>
 					</tr>
 					<tr>
 						<td class="td_title">총 금액 :</td>
-						<td class="td_content">&#8361; <fmt:formatNumber value="${rentalPVDto.rentalPrice }" pattern="#,###"/></td>
+						<td class="td_content">&#8361; <fmt:formatNumber value="${Dto_Rental.rentalPrice }" pattern="#,###"/></td>
 			 			<c:choose>
-							<c:when test="${!empty rentalPVDto.rentalCancellationDate }">
+							<c:when test="${!empty Dto_Rental.rentalCancellationDate }">
 							<td class="td_title">취소일자 :</td>
-							<td class="td_content">${rentalPVDto.rentalCancellationDate }</td>
+							<td class="td_content">${Dto_Rental.rentalCancellationDate }</td>
 							</c:when>
-							<c:when test="${empty rentalPVDto.reviewSubmitDate }">
+							<c:when test="${empty Dto_Rental.reviewSubmitDate }">
 							<td colspan="2" align="right">
-								<a href="javascript:openReview('write_review.four?rentalNo=${rentalPVDto.rentalNo }')">
+								<a href="javascript:openReview('write_review?rentalNo=${Dto_Rental.rentalNo }')">
 								<button class="button_writeReview">리뷰쓰기</button></a>
 								<div style="padding-left:100px; padding-top:5px; text-align:center; font-size:9px; color:#6e6e6e">나눔 받은 공간은 어떠셨나요?? <br> 당신의 감상을 들려주세요.</div>
 							</td>
 							</c:when>				
 							<c:otherwise>
-							<td colspan="2" align="right"><a href="javascript:openReview('detail_review.four?rentalNo=${rentalPVDto.rentalNo }')">
+							<td colspan="2" align="right"><a href="javascript:openReview('detail_review?rentalNo=${Dto_Rental.rentalNo }')">
 							<button class="button_myReview">내가 쓴 리뷰 보기</button></a></td>
 							</c:otherwise>
 						</c:choose>
@@ -212,7 +213,7 @@
 			<tr><td align="center">
 			<hr><br><br>
 				<c:forEach items="${rentalPreviousPageList }" var="rentalPreviousPage">
-				<a href="myinfo_rental_previous.four?rentalPreviousPage=${rentalPreviousPage }">${rentalPreviousPage }</a>
+				<a href="myinfo_rental_previous?rentalPreviousPage=${rentalPreviousPage }">${rentalPreviousPage }</a>
 				</c:forEach>
 			</td></tr>
 		</table>

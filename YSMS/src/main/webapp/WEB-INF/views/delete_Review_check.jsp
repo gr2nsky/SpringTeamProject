@@ -17,7 +17,7 @@
 
 <body>
 <table id="reviewDeleteChk" align="center">
-	<form action="review_delete.four" method="post">
+	<form action="review_delete" method="post">
 	<input type="hidden" name="rentalNo" value="${rentalNo }">
 	<tr>
 		<td colspan="2" align="center" valign="bottom">정말 삭제하시겠습니까?</td>

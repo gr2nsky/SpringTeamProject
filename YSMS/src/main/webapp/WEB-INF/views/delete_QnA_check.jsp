@@ -17,7 +17,7 @@
 
 <body>
 <table id="qnaDeleteChk" align="center">
-	<form action="qna_delete.four" method="post">
+	<form action="qna_delete" method="post">
 	<input type="hidden" name="qna_no" value="${qnaNo }">
 	<tr>
 		<td colspan="2" align="center" valign="bottom">정말 삭제하시겠습니까?</td>

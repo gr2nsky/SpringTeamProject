@@ -25,7 +25,7 @@
 	}
 </script>
 <body>
-	<form name="hostAnswerQna" action="host_qna_write.four" method="post">
+	<form name="hostAnswerQna" action="host_qna_write" method="post">
 		<input type="hidden" name="qna_no" value="${qnaDetail.qnaNo }">
 	<table id="hostWriteQna" align="center">
 		<tr>		

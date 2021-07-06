@@ -125,7 +125,7 @@
 			<td colspan="3" align="center">
 				<!--Paging  -->
 			<c:forEach items="${reviewPageList }" var="reviewPage">
-				<a href="review.four?place_no=${placeNo }&reviewPage=${reviewPage }">${reviewPage }</a>
+				<a href="review?place_no=${placeNo }&reviewPage=${reviewPage }">${reviewPage }</a>
 			</c:forEach></td>
 		</tr>
 	</table>
