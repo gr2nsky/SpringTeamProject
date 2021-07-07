@@ -29,13 +29,37 @@ public class LoginController {
 	
 	SCommand command = null;
 	
-	@RequestMapping("/loginForm.jsp")
+	@RequestMapping("/loginForm")
 	public String loginForm(HttpServletRequest request, Model model) {
 		
 		return "loginForm";
 	}
 	
-	@RequestMapping("/login_try.four")
+	@RequestMapping("/findID")
+	public String findID(HttpServletRequest request, Model model) {
+		
+		return "findID";
+	}
+	
+	@RequestMapping("/findPW")
+	public String findPW(HttpServletRequest request, Model model) {
+		
+		return "findPW";
+	}
+	
+	@RequestMapping("/authCodeCheck")
+	public String authCodeCheck(HttpServletRequest request, Model model) {
+		
+		return "authCodeCheck";
+	}
+	
+	@RequestMapping("/signUpForm")
+	public String signUpForm(HttpServletRequest request, Model model) {
+
+		return "signUpForm";
+	}
+	
+	@RequestMapping("/login_try")
 	public String writeForm(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession httpSession = request.getSession();
@@ -45,9 +69,10 @@ public class LoginController {
 		
 		return "loginForm";
 	}
+
 	
 	//작업이 워낙 적어서 커맨드 제거하고 컨트롤러에서 제어
-	@RequestMapping("/logout.four")
+	@RequestMapping("/logout")
 	public String logOut(HttpServletRequest request, Model model) {
 		
 		HttpSession httpSession = request.getSession();
@@ -58,7 +83,7 @@ public class LoginController {
 		return "mainPage";
 	}
 	
-	@RequestMapping("/signUpInput.four")
+	@RequestMapping("/signUpInput")
 	public String signUpInput(MultipartHttpServletRequest mtfRequest, Model model) {
 		model.addAttribute("mtfRequest", mtfRequest);
 		HttpSession httpSession = mtfRequest.getSession(); 
@@ -68,7 +93,7 @@ public class LoginController {
 		return "mainPage";
 	}
 
-	@RequestMapping("confirmID.four")
+	@RequestMapping("confirmID")
 	public String confirmID(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession httpSession = request.getSession(); 
@@ -78,7 +103,7 @@ public class LoginController {
 		return "confirmID";
 	}
 	
-	@RequestMapping("confirmEmail.four")
+	@RequestMapping("confirmEmail")
 	public String confirmEmail(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession httpSession = request.getSession(); 
@@ -88,7 +113,7 @@ public class LoginController {
 		return "confirmEmail";
 	}
 	
-	@RequestMapping("requestAuthEmail.four")
+	@RequestMapping("requestAuthEmail")
 	public String requestAuthEmail(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession httpSession = request.getSession(); 
@@ -98,7 +123,7 @@ public class LoginController {
 		return "requestAuthEmail";
 	}
 	
-	@RequestMapping("findAccount.four")
+	@RequestMapping("findAccount")
 	public String findAccount(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession httpSession = request.getSession(); 
