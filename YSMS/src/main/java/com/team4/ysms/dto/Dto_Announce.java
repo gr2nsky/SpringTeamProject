@@ -14,6 +14,8 @@ public class Dto_Announce {
 			
 		}
 
+		// Constructor
+		
 		public Dto_Announce(int no, String title, String content, String createDate, String updateDate, String removeDate,
 				String user_id) {
 			super();
@@ -26,6 +28,8 @@ public class Dto_Announce {
 			this.user_id = user_id;
 		}
 
+		// Getters and Setters
+		
 		public int getNo() {
 			return no;
 		}
