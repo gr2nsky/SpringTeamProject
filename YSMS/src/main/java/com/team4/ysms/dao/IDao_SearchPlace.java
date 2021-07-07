@@ -16,10 +16,16 @@ public interface IDao_SearchPlace {
 	public ArrayList<Dto_SearchPlace> searchPlacelistDao(int requestPage, int numOfTuplesPerPage);
 	
 	// 검색 결과
-	public ArrayList<Dto_SearchPlace> searchPlaceResult(String inputCategory, String inputLocation, String inputDate, int requestPage, int numOfTuplesPerPage);
+	public ArrayList<Dto_SearchPlace> searchPlaceResult(String inputCategory, String inputLocation, String inputDate, int offset, int numOfTuplesPerPage);
+	public Dto_Paging searchPlaceResultPaging(String inputCategory, String inputLocation);
+	
+	// 검색 결과(카테고리 = 전체)
+	public ArrayList<Dto_SearchPlace> searchPlaceResultAll(String inputCategory, String inputLocation, String inputDate, int offset, int numOfTuplesPerPage);
+	public Dto_Paging searchPlaceResulAllPaging(String inputCategory, String inputLocation);
 
-//	//검색 결과 목록 출력
+	//검색 결과 목록 출력
 //	public ArrayList<Dto_SearchPlace> SearchLocation(String inputCategory, String inputLocation, String inputDate, int requestPage, int numOfTuplesPerPage){ // 검색
+//	public ArrayList<Dto_SearchPlace> searchPlaceResult(String inputCategory, String inputLocation, String inputDate, int requestPage, int numOfTuplesPerPage){ // 검색
 //		ArrayList<Dto_SearchPlace> dtos = new ArrayList<Dto_SearchPlace>();
 //		Connection connection = null;// java.sql
 //		PreparedStatement preparedStatement = null; // java.sql
@@ -115,7 +121,8 @@ public interface IDao_SearchPlace {
 //		}
 //		return dtos;
 //		
-//		
+//	}
+		
 }
 
 

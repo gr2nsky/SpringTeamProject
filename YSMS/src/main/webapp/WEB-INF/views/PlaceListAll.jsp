@@ -20,7 +20,7 @@
 			<tr>
 				<td class="photo" rowspan="2" align="right"><div class="shareList">
 				<a href="detail.four?no=${Dto_SearchPlace.no }">
-				<img class="shareListPhoto" src="${Dto_SearchPlace.filePath }"/></a></div></td>	
+				<img class="shareListPhoto" src="${pageContext.request.contextPath }/resources/${Dto_SearchPlace.filePath }"/></a></div></td>	
 				<th width="200">공간유형</th>		
 				<td width="200">${Dto_SearchPlace.category }</td>
 				<th width="200">이름</th>

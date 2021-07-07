@@ -66,7 +66,7 @@ public class PlaceSearchController {
 	
 	
 	// 검색 결과 페이지로 이동
-	@RequestMapping("SearchPlaceCommand")
+	@RequestMapping("/PlaceResultPage")
 	public String PlaceResultPage(HttpServletRequest request, Model model) {
 		HttpSession httpsession = request.getSession();
 		model.addAttribute("request", request);

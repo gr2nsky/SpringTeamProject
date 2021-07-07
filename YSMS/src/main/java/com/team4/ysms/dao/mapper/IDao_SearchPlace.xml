@@ -16,7 +16,40 @@
 	
 	<!-- 검색 결과 보기 -->
 	<select id="searchPlaceResult" resultType="com.team4.ysms.dto.Dto_SearchPlace">
-	
+<!-- 		search4 = "";
+		if(useCategory.equals("0")) {
+//					useCategory = "is not null"; // null값이 아닌 값을 전부
+//					search4 = "and p.address1 like '%" + inputLocation + "%' and p.category " + useCategory +" limit ?, ?";
+//							
+//				} else {
+//					search4 = "and p.address1 like '%" + inputLocation + "%' and p.category = '" + useCategory +"' limit ?, ?";
+//				} -->
+		SELECT DISTINCT S.NO, S.FILEPATH, P.CATEGORY, S.TITLE, P.ADDRESS1, P.ADDRESS2, S.PRICE, S.DAYLIMIT 
+		FROM SHARE AS S, PLACE AS P, QNA_REVIEW AS Q WHERE P.NO = S.PLACE_NO AND P.REMOVEDATE IS NULL
+		 AND P.ADDRESS1 LIKE CONCAT('%', #{param2}, '%') AND P.CATEGORY =  #{param1} LIMIT #{param4}, #{param5}
+		
 	</select>
+	
+	<!-- 검색 결과 보기 -->
+	<select id="searchPlaceResultAll" resultType="com.team4.ysms.dto.Dto_SearchPlace">
+		SELECT DISTINCT S.NO, S.FILEPATH, P.CATEGORY, S.TITLE, P.ADDRESS1, P.ADDRESS2, S.PRICE, S.DAYLIMIT 
+		FROM SHARE AS S, PLACE AS P, QNA_REVIEW AS Q WHERE P.NO = S.PLACE_NO AND P.REMOVEDATE IS NULL
+		 AND P.ADDRESS1 LIKE CONCAT('%', #{param2}, '%') LIMIT #{param4}, #{param5}
+		
+	</select>
+	
+	<!-- 검색결과라인수 세기 -->
+	<select id="searchPlaceResultPaging" resultType="com.team4.ysms.dto.Dto_Paging">
+		SELECT DISTINCT COUNT(S.NO) as totalPage FROM SHARE AS S, PLACE AS P WHERE P.NO = S.PLACE_NO AND P.REMOVEDATE IS NULL
+		 AND P.ADDRESS1 LIKE CONCAT('%', #{param2}, '%') AND P.CATEGORY =  #{param1}
+	</select>
+	
+	<!-- 검색결과라인수 세기(카테고리=전체) -->
+	<select id="searchPlaceResulAllPaging" resultType="com.team4.ysms.dto.Dto_Paging">
+		SELECT DISTINCT COUNT(S.NO) as totalPage FROM SHARE AS S, PLACE AS P WHERE P.NO = S.PLACE_NO AND P.REMOVEDATE IS NULL
+		 AND P.ADDRESS1 LIKE CONCAT('%', #{param2}, '%')
+	</select>
+	
+	
     
     </mapper>

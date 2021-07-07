@@ -60,7 +60,8 @@ function checkTF(){
 <%@ include file="header.jsp" %>
 <div class="mainBox">
 	<div class="contentBox">
-		<form name="searchForm" action="SearchPlaceCommand.four" method="post">
+		<!-- <form name="searchForm" action="SearchPlaceCommand.four" method="post"> -->
+		<form name="searchForm" action="PlaceResultPage" method="post">
 		<table id="SearchSpace" style="margin-left: auto; margin-right: auto;">
 			<tr>
 				<td colspan="4" align="center"><h2>장소 검색</h2></td>
