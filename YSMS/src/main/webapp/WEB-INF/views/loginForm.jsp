@@ -35,21 +35,21 @@
 			alert("아이디와 비밀번호를 정확히 입력해 주세요.");
 			return false;
 		} else {
-			location.href="mainPage.jsp";
+			location.href="mainPage";
 			return false;
 		}
 	}
 	
 	//새 창을 띄워서 id, pw 찾기로 이동
 	function findID(){
-		var url = "findID.jsp";
+		var url = "findID";
 		open(url, "findID",
 				"roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 	}
 	function findPW(){
-		var url = "findPW.jsp";
+		var url = "findPW";
 		open(url, "findPW",
-				"roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
+				"roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=300");
 	}
 </script>
 <body>
@@ -83,7 +83,7 @@
 	<h1>로그인</h1>
 	
 	<table border="0" style="margin-left: auto; margin-right: auto;">
-		<form action="login_try.four" name="loginForm" method="post">
+		<form action="login_try" name="loginForm" method="post">
 			<tr>
 				<td align="center" ><input type="text" name="userID" size="33" placeholder="아이디" style="height : 30px;"></td>
 			</tr>
@@ -105,7 +105,7 @@
 			<tr>
 				<td align="center">
 				<div class="link" style="font-size: 15px; ">
-				<a href="signUpForm.jsp" >회원가입</a> |
+				<a href="signUpForm" >회원가입</a> |
 				<a a href='javascript:void(0);' onclick="findID()" >아이디 찾기</a> |
 				<a a href='javascript:void(0);' onclick="findPW()" >비밀번호 찾기</a> 
 				</div>				

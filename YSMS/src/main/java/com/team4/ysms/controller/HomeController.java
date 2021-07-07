@@ -25,7 +25,7 @@ public class HomeController {
 		
 		return "mainPage";
 	}
-	
+
 	// 로고 클릭시 메인 페이지로 이동
 	@RequestMapping("/mainPage")
 	public String mainPage() {

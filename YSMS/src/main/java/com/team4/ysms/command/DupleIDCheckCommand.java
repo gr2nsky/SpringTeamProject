@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 import com.team4.ysms.dao.Dao_Login;
+import com.team4.ysms.dto.Dto_Login;
 
 public class DupleIDCheckCommand implements SCommand {
 
@@ -19,10 +20,12 @@ public class DupleIDCheckCommand implements SCommand {
 		
 		
 		String id = request.getParameter("id");
-
-		Dao_Login dao = new Dao_Login();
-		String result = dao.IDdupleCheck(id);
-		if (result == "useable"){
+		
+		Dao_Login dao = sqlSession.getMapper(Dao_Login.class);
+		Dto_Login dto = dao.IDdupleCheck(id);
+		String result = dto.getId();
+		
+		if (result.equals("") && result.equals("null")){
 			model.addAttribute("duplicate_checked_id", id);
 		}
 		

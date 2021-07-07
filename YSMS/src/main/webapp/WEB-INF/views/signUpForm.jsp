@@ -106,7 +106,7 @@
 	
 	function idDupleCheck(){
 		idValCheck();
-		var url = "confirmID.four?id=" + document.signUpForm.id.value;
+		var url = "confirmID?id=" + document.signUpForm.id.value;
 		open(url, "confirm",
 				"roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 	}
@@ -146,7 +146,7 @@
 	
 	function emailAuthentication(){
 		emailValCheck();
-		var url = "confirmEmail.four?email=" + document.signUpForm.email.value;
+		var url = "confirmEmail?email=" + document.signUpForm.email.value;
 		open(url, "confirm",
 				"toolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 		document.signUpForm.authCodeCheckBtn.disabled = false;
@@ -154,7 +154,7 @@
 	}
 	
 	function authCodeCheck(){
-		var url = "authCodeCheck.jsp?inputedCode=" + document.signUpForm.authCode.value;
+		var url = "authCodeCheck?inputedCode=" + document.signUpForm.authCode.value;
 		open(url, "confirm",
 				"toolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 	}
@@ -166,7 +166,7 @@
 <div class="mainBox">
 	<div class="contentBox">
 		<h1> 회원가입 </h1>
-		<form name="signUpForm" action="signUpInput.four" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+		<form name="signUpForm" action="signUpInput" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
 		<table class="table" style="margin-left: auto; margin-right: auto;">
 			<tr>
 				<th>아이디</th>

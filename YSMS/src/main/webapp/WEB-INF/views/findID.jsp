@@ -29,7 +29,7 @@ function findID(){
 	if (emailValCheck == false){
 		return false;
 	}
-	var url = "findAccount.four?email=" + document.getElementById("inputEmailForm").value;
+	var url = "findAccount?email=" + document.getElementById("inputEmailForm").value;
 	open(url, "findID",
 			"roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 }
