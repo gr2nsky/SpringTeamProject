@@ -130,13 +130,13 @@
 </div>
 
 <div class="mainLogo">
-	<a href="mainPage.jsp"><img alt="너공나공 메인 로고" src="/ysms/resources/img/ysms_main_logo.png"></a> <!-- Logo->클릭시 메인페이지 -->
+	<a href="mainPage"><img alt="너공나공 메인 로고" src="/ysms/resources/img/ysms_main_logo.png"></a> <!-- Logo->클릭시 메인페이지 -->
 </div>
 <div class="mainBox">
 <div class="header">
 	<ul>
 		<!-- <li><a href="mainPage.jsp">Logo->클릭시 메인페이지</a></li>	 -->
-		<li><a href="introduction.jsp">너공나공?</a></li>
+		<li><a href="introduction">너공나공?</a></li>
 		<li><a href="SearchPlacePage">공간 목록</a></li>
 		<li><a href="list">공간 나눔 목록</a></li>
 		

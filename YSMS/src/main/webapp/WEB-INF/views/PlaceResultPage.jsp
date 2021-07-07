@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/PlaceResultPage.css" rel="stylesheet" type="text/css">
+<link href="/ysms/resources/css/PlaceResultPage.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
@@ -62,11 +62,11 @@ session.setAttribute("date", printInputDate);
 	<c:forEach  items="${SearchLocation }" var="Dto_SearchPlace"> <!-- items 잊지 말 것 -->
 	<tr>
 		<td rowspan="2" align="right" class="photo">
-		<div class="shareList"><a href="detail.four?no=${Dto_SearchPlace.no }"><img class="shareListPhoto" src="${pageContext.request.contextPath }/resources/${Dto_SearchPlace.filePath }"/></a></div></td>	
+		<div class="shareList"><a href="detail?no=${Dto_SearchPlace.no }"><img class="shareListPhoto" src="${pageContext.request.contextPath }/resources/${Dto_SearchPlace.filePath }"/></a></div></td>	
 		<th width="200">공간유형</th>		
 		<td width="200">${Dto_SearchPlace.category }</td>
 		<th width="200">이름</th>
-		<td width="200"><a href="detail.four?no=${Dto_SearchPlace.no }">${Dto_SearchPlace.title }</a></td>	
+		<td width="200"><a href="detail?no=${Dto_SearchPlace.no }">${Dto_SearchPlace.title }</a></td>	
 	</tr>
 			<!-- <tr>
 				<td colspan="4"></td>
