@@ -25,7 +25,7 @@
     	</select>
     	
     	<select id="countTuple" resultType="int">
-    		SELECT COUNT(*) FROM SHARE
+    		SELECT COUNT(*) FROM SHARE WHERE USER_ID = #{param1}
     	</select>
     	
     	<select id="shareContentDao" resultType="com.team4.ysms.dto.Dto_Share">
