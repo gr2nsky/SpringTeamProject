@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- mapper쓰는 위치를 알려줌 -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="com.team4.ysms.dao.Dao_Announce">
+ 
+ 	<select id="announceList" resultType="com.team4.ysms.dto.Dto_Announce">
+		SELECT * FROM ANNOUNCE WHERE TITLE LIKE CONCAT('%', #{param1}, '%') AND CONTENT LIKE CONCAT('%', #{param2}, '%') AND REMOVEDATE IS NULL ORDER BY NO DESC LIMIT #{param3}, #{param4}
+	</select>
+	
+	<insert id="announceWrite">
+		INSERT INTO ANNOUNCE (TITLE, CONTENT, CREATEDATE, USER_ID) VALUES (#{param1}, #{param2}, NOW(), #{param3})
+	</insert>
+	
+	<select id="announceContent_view" resultType="com.team4.ysms.dto.Dto_Announce">
+		SELECT * FROM ANNOUNCE WHERE NO = #{param1}
+	</select>
+	
+	<delete id="announceDelete">
+		UPDATE ANNOUNCE SET REMOVEDATE = NOW() WHERE NO = #{param1}
+	</delete>
+
+	<update id="announceModify">
+		UPDATE ANNOUNCE SET TITLE = #{param1}, CONTENT = #{param2}, UPDATEDATE = NOW() WHERE NO = #{param3}
+	</update>
+	
+	<select id="countTuple" resultType="int">
+		SELECT COUNT(*) FROM ANNOUNCE WHERE TITLE LIKE CONCAT('%', #{param1}, '%') AND CONTENT LIKE CONCAT('%', #{param2}, '%') AND REMOVEDATE IS NULL
+	</select>
+
+
+ </mapper>

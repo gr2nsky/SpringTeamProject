@@ -5,14 +5,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>너의 공간 나의 공간 : 공간을 나누다. 당신의 공간 이야기를 들려주세요. </title>
-	<link rel="stylesheet" href="img_slide.css">
+	<link rel="stylesheet" href="/ysms/resources/css/img_slide.css">
 	
 	<!-- 슬라이더 스크립트 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit-icons.min.js"></script>
 	
 	<!-- 폰트 적용 -->
-	<link rel="stylesheet" href="css/spaceDetailView_QnaReview.css" type="text/css">
+	<link rel="stylesheet" href="/ysms/resources/css/spaceDetailView_QnaReview.css" type="text/css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <style>
@@ -134,16 +134,16 @@
 	<div class="my-slider uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay:true; autoplay-interval=1000;">
 	    <ul class="uk-slideshow-items">
 	        <li>
-	            <img src="img/ysms_slide_rest.png" alt="">
+	            <img src="/ysms/resources/img/ysms_slide_rest.png" alt="">
 	        </li>
 	        <li>
-	            <img src="img/ysms_slide_party.png" alt="">
+	            <img src="/ysms/resources/img/ysms_slide_party.png" alt="">
 	        </li>
 	        <li>
-	            <img src="img/ysms_slide_study.png" alt="">
+	            <img src="/ysms/resources/img/ysms_slide_study.png" alt="">
 	        </li>
 	        <li>
-	            <img src="img/ysms_slide_meeting.png" alt="">
+	            <img src="/ysms/resources/img/ysms_slide_meeting.png" alt="">
 	        </li>
 	    </ul>
 	    <a class="btn uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -156,14 +156,14 @@
 			<table align = "center">
 				<tr><td colspan="3"><h1>인기 지역</h1></td></tr>
 				<tr>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=강남"><img alt="Gangnam icon" src="img/ysms_hotPlace_Gangnam.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=종로"><img alt="Jongno icon" src="img/ysms_hotPlace_Jongno.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=마포"><img alt="Hongdae icon" src="img/ysms_hotPlace_Hongdae.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=강남"><img alt="Gangnam icon" src="/ysms/resources/img/ysms_hotPlace_Gangnam.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=종로"><img alt="Jongno icon" src="/ysms/resources/img/ysms_hotPlace_Jongno.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=마포"><img alt="Hongdae icon" src="/ysms/resources/img/ysms_hotPlace_Hongdae.png"></a></td>
 				</tr>
 				<tr>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=강남">강남</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=종로">종로</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=마포">홍대</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=강남">강남</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=종로">종로</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=마포">홍대</a></td>
 				</tr>
 			</table>
 		</div>
@@ -175,16 +175,16 @@
 			<table align = "center">
 				<tr><td colspan="4"><h1>추천 공간</h1></td></tr>
 				<tr>
-					<td><a href="SearchPlaceCommand.four?categorySpace=1&location=구"><img alt="rest icon" src="img/ysms_reco_icon_rest.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=2&location=구"><img alt="party icon" src="img/ysms_reco_icon_party.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=3&location=구"><img alt="study icon" src="img/ysms_reco_icon_study.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=4&location=구"><img alt="meeting icon" src="img/ysms_reco_icon_meeting.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=1&location=구"><img alt="rest icon" src="/ysms/resources/img/ysms_reco_icon_rest.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=2&location=구"><img alt="party icon" src="/ysms/resources/img/ysms_reco_icon_party.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=3&location=구"><img alt="study icon" src="/ysms/resources/img/ysms_reco_icon_study.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=4&location=구"><img alt="meeting icon" src="/ysms/resources/img/ysms_reco_icon_meeting.png"></a></td>
 				</tr>
 				<tr>
-					<td><a href="SearchPlaceCommand.four?categorySpace=1&location=구">Rest</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=2&location=구">Party</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=3&location=구">Study</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=4&location=구">Meeting</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=1&location=구">Rest</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=2&location=구">Party</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=3&location=구">Study</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=4&location=구">Meeting</a></td>
 				</tr>
 			</table>
 		</div>
@@ -195,13 +195,13 @@
 		<div class="review-slider uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay:true; autoplay-interval=1000;">
 		    <ul class="uk-slideshow-items">
 		        <li>
-		        	<img alt="이용 후기 1" src="img/ysms_review_slide_one.jpg">
+		        	<img alt="이용 후기 1" src="/ysms/resources/img/ysms_review_slide_one.jpg">
 		        </li>
 		        <li>
-		        	<img alt="이용 후기 2" src="img/ysms_review_slide_two.jpg">
+		        	<img alt="이용 후기 2" src="/ysms/resources/img/ysms_review_slide_two.jpg">
 		        </li>
 		        <li>
-		        	<img alt="이용 후기 3" src="img/ysms_review_slide_three.jpg">
+		        	<img alt="이용 후기 3" src="/ysms/resources/img/ysms_review_slide_three.jpg">
 		        </li>
 		    </ul>
 		    <a class="btn uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>

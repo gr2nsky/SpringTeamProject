@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- 폰트 적용 -->
-<link rel="stylesheet" href="css/spaceDetailView_QnaReview.css" type="text/css">
+<link rel="stylesheet" href="/ysms/resources/css/spaceDetailView_QnaReview.css" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <style>
 	/* 전체 글씨 속성 적용 */
@@ -30,7 +30,7 @@
 </style>
 <footer class="container">
 	<div class = "footer_logo">
-		<img alt="너공나공 푸토 로고" src="img/ysms_logo_footer.png">
+		<img alt="너공나공 푸토 로고" src="/ysms/resources/img/ysms_logo_footer.png">
 	</div>
 	<ul>
 		<li># YOURSPACE_MYSPACE made by TEAM4 for JSP project</li>

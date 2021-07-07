@@ -1,0 +1,322 @@
+@charset "UTF-8";
+  
+  
+/* font  */
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+	color: #505050;
+}
+
+/*review photo  */
+ .review {
+ 	width:400px;
+	height:270px;
+ 	overflow: hidden;
+}
+ .reviewPhoto {
+ 	width: 400px;
+	height: 270px;
+	object-fit: cover;
+}
+.reviewScore {
+ 	width: 15px;
+	height: 10px;
+} 
+
+
+/*detailView review  */
+#detailReview{
+	width:450px;
+	height:670px;
+/* 	border: 1px solid #dcdcdc; */
+ 	padding: 5px; 
+}
+
+#detailReview th{
+	padding:10px;
+	font-size:20px;
+	font-weight:700;
+	height:50px;
+}
+#detailReview td.title{
+	height:25px;
+	padding:10px;
+	font-weight:700;
+	font-size:15px;
+	border-bottom: 1px solid #dcdcdc;
+}
+#detailReview td.content{
+	margin-top:10px;
+	padding:10px;
+	font-size:13px;
+	border-bottom: 1px solid #dcdcdc;
+}
+#detailReview td.photo{
+	height:290px;
+	margin-top:10px;
+	padding:10px;
+	font-size:13px;
+	border-bottom: 1px solid #dcdcdc;
+}
+#detailReview td.date{
+	height:20px;
+	padding:10px;
+	font-size:11px;
+}
+
+
+/*button  */
+#detailReview input[type="button"]{
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#505050;
+	background-color: #fff;
+	font-weight:700;
+
+	border: none;
+
+	display: inline-block;
+	width: 50px;
+	height:30px;
+}
+#detailReview input[type="button"]:hover{
+	
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 50px;
+	
+}
+
+/*modify Review  */
+
+#modifyReview{
+	width:450px;
+	height:670px;
+/* 	border: 1px solid #dcdcdc; */
+ 	padding: 5px; 
+}
+
+#modifyReview th{
+	padding:10px;
+	font-size:20px;
+	font-weight:700;
+	height:50px;
+}
+#modifyReview td.title{
+	height:25px;
+	padding:10px;
+	font-weight:700;
+	font-size:15px;
+	border-bottom: 1px solid #dcdcdc;
+}
+#modifyReview td.content{
+	padding:10px;
+	font-size:13px;
+	border-bottom: 1px solid #dcdcdc;
+}
+#modifyReview td.photo{
+	height:290px;
+	margin-top:10px;
+	padding:10px;
+	font-size:13px;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+/*button  */
+#modifyReview input[type="button"]{
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#505050;
+	background-color: #fff;
+	font-weight:700;
+
+	border: none;
+
+	display: inline-block;
+	width: 50px;
+	height:30px;
+}
+#modifyReview input[type="button"]:hover{
+	
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 50px;
+	
+}
+#modifyReview input[type="reset"]{
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#505050;
+	background-color: #fff;
+	font-weight:700;
+	border: none;
+	display: inline-block;
+	width: 50px;
+	height:30px;
+}
+#modifyReview input[type="reset"]:hover{
+	
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 50px;
+}
+
+/*text area  */
+#modifyReview textarea{
+	width:400px;
+	height:100px;
+	resize: none;
+	border:none;
+	
+}
+ #modifyReview textarea:focus{
+	outline: none;
+} 
+
+/*select box  */
+#modifyReview select{
+	border: 1px solid #505050;
+	height:25px;
+	width: 70px;
+	text-align:center;
+}
+
+
+/*write Review  */
+
+#writeReview{
+	width:450px;
+	height:670px;
+/* 	border: 1px solid #dcdcdc; */
+ 	padding: 5px; 
+}
+
+#writeReview th{
+	padding:10px;
+	font-size:20px;
+	font-weight:700;
+	height:50px;
+}
+#writeReview td.title{
+	height:25px;
+	padding:10px;
+	font-weight:700;
+	font-size:15px;
+	border-bottom: 1px solid #dcdcdc;
+}
+#writeReview td.content{
+	padding:10px;
+	font-size:13px;
+	border-bottom: 1px solid #dcdcdc;
+}
+#writeReview td.photo{
+	height:290px;
+	margin-top:10px;
+	padding:10px;
+	font-size:13px;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+/*button  */
+#writeReview input[type="button"]{
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#505050;
+	background-color: #fff;
+	font-weight:700;
+
+	border: none;
+
+	display: inline-block;
+	width: 50px;
+	height:30px;
+}
+#writeReview input[type="button"]:hover{
+	
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 50px;
+	
+}
+#writeReview input[type="reset"]{
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#505050;
+	background-color: #fff;
+	font-weight:700;
+	border: none;
+	display: inline-block;
+	width: 50px;
+	height:30px;
+}
+#writeReview input[type="reset"]:hover{
+	
+	margin: 0;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 50px;
+}
+
+/*text area  */
+#writeReview textarea{
+	width:400px;
+	height:100px;
+	resize: none;
+	border:none;
+	
+}
+#writeReview textarea:focus{
+	outline: none;
+} 
+
+/*select box  */
+#writeReview select{
+	border: 1px solid #505050;
+	height:25px;
+	width: 70px;
+	text-align:center;
+}

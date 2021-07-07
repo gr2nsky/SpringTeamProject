@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/contentsView.css" rel="stylesheet" type="text/css">
+<link href="/ysms/resources/css/contentsView.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
@@ -16,7 +16,7 @@
 
 <h3 style="text-align: center;">공지사항 작성</h3>
 <body>
-<form action="announceWrite_admin.four" method="post">
+<form action="announceWrite_admin" method="post">
 	<table class="table" style="margin-left: auto; margin-right: auto;">
 		
 			<tr>
@@ -25,14 +25,14 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="content" readonly="readonly" style="height:500px;" ></textarea></td>
+				<td><textarea name="content" style="height:500px;" ></textarea></td>
 			</tr>
 	</table>
 	<table class="table2" style="margin-left: auto; margin-right: auto;">
 		<tr>
 			<td><button type="submit" class="btnModDel" >작성</button>
 			&nbsp;&nbsp;&nbsp;
-			<td align="right"><a href = "announce_admin.four"><button type="button" class="btnGoList" >목록보기</button></a>
+			<td align="right"><a href = "announce_admin"><button type="button" class="btnGoList" >목록보기</button></a>
 			</td>
 		</tr>
 	</table>

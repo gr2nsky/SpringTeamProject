@@ -8,47 +8,52 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
+
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/resources/img/**" location="/resources/img/" />
+	<resources mapping="/resources/css/**" location="/resources/css/" />
+
+	<!-- ** : 폴더 안에 있는 것 전부 사용하겠다 -->
+
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+
 	<context:component-scan base-package="com.team4.ysms" />
-	
+
 	<!-- JDBC -->
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></beans:property>
 		<beans:property name="url" value="jdbc:mysql://localhost:3306/team4?serverTimezone=Asia/Seoul&amp;characterEncoding=utf8&amp;useSSL=false"></beans:property>
 		<beans:property name="username" value="root"></beans:property>
-		<beans:property name="password" value="qwer1234"></beans:property>	
+		<beans:property name="password" value="qwer1234"></beans:property>
 	</beans:bean>
 	<beans:bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 	</beans:bean>
-	
+
 	<!-- myBatis -->
 	<beans:bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 		<beans:property name="mapperLocations" value="classpath:com/team4/ysms/dao/mapper/*.xml"></beans:property>
 	</beans:bean>
-	
+
 	<beans:bean name="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSessionFactory"></beans:constructor-arg>
 	</beans:bean>
-	
+
 	<!--multipart - fileupload  -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	    <beans:property name="maxUploadSize" value="200000000" />
 	    <beans:property name="maxInMemorySize" value="200000000" />
 	    <beans:property name="defaultEncoding" value="utf-8" />
 	</beans:bean>
-	
+
 </beans:beans>

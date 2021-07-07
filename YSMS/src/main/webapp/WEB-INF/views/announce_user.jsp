@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/announce.css" rel="stylesheet" type="text/css">
+<link href="/ysms/resources/css/announce.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
@@ -24,20 +24,20 @@
 		<c:forEach items="${announceList }" var="dto"> 
 		<tr>
 			<td align="center">${dto.no }</td>
-			<td><a href="announceContent_view_user.four?no=${dto.no}" class="a">${dto.title }</a></td>
+			<td><a href="announceContent_view_user?no=${dto.no}" class="a">${dto.title }</a></td>
 			<td align="center">${dto.createDate }</td>
 		</tr>
 		</c:forEach>
 		<tr>
 			<td colspan="3" align="center"><c:forEach items="${pageList }" var="page">
-				<a href="announce_user.four?page=${page }" class="a">${page }</a>
+				<a href="announce_user?page=${page }" class="a">${page }</a>
 			</c:forEach></td>
 		</tr>
 		
 	</table><br>
 	
 	<DIV class="aside_menu">
-		   <FORM name="frm" method="post" action="announce_user.four">
+		   <FORM name="frm" method="post" action="announce_user">
 			 <!--   <ASIDE style="float: center;">  -->
 			      <SELECT name="getSearch"> <!-- 검색 컬럼 -->
 			        <OPTION name ="search" value="title">제목</OPTION>

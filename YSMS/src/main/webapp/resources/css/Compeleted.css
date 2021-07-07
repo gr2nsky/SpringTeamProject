@@ -1,0 +1,194 @@
+@charset "UTF-8";
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+	color: #505050;
+}
+/*table  */
+
+#reviewCompeleted{
+	height:600px;
+}
+#reviewCompeleted td{
+	font-size:25px;
+	font-weight:800;
+	padding:50px;
+}
+
+/*button  */
+#reviewCompeleted input[type="button"]{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#505050;
+	background-color: #fff;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 250px;
+}
+#reviewCompeleted input[type="button"]:hover{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	
+}
+
+#reviewDeleteChk{
+	height:600px;
+}
+#reviewDeleteChk td{
+	font-size:25px;
+	font-weight:800;
+	padding-top:50px;
+	padding-bottom:50px;
+}
+
+/*button  */
+#reviewDeleteChk input[type="button"]{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#505050;
+	background-color: #fff;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 100px;
+}
+#reviewDeleteChk input[type="button"]:hover{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#fff;
+	background-color: #dcdcdc;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+}
+#reviewDeleteChk input[type="submit"]{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#505050;
+	background-color: #fff;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 100px;
+}
+#reviewDeleteChk input[type="submit"]:hover{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+}
+
+
+
+/*qna  */
+#qnaCompeleted{
+	height:200px;
+	border: none;
+}
+#qnaCompeleted td{
+	font-size:25px;
+	font-weight:800;
+}
+
+/*button  */
+#qnaCompeleted input[type="button"]{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#505050;
+	background-color: #fff;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 250px;
+}
+#qnaCompeleted input[type="button"]:hover{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	
+}
+
+
+#qnaDeleteChk{
+	height:200px;
+}
+#qnaDeleteChk td{
+	font-size:25px;
+	font-weight:800;
+}
+
+/*button  */
+#qnaDeleteChk input[type="button"]{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#505050;
+	background-color: #fff;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 70px;
+}
+#qnaDeleteChk input[type="button"]:hover{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#fff;
+	background-color: #dcdcdc;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+}
+#qnaDeleteChk input[type="submit"]{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#505050;
+	background-color: #fff;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+	width: 70px;
+}
+#qnaDeleteChk input[type="submit"]:hover{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#fff;
+	background-color: #ace2f9;
+ 	font-weight:700; 
+	border: none;	
+	display: inline-block;
+}

@@ -1,23 +1,28 @@
 package com.team4.ysms.command;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
 
 import com.team4.ysms.dao.Dao_Announce;
 import com.team4.ysms.dto.Dto_Announce;
 
-public class AnnounceCommand implements Command {
+public class AnnounceCommand implements SCommand {
 
 	// 화면에 한 페이지당 나타낼 게시물 수
 	int numOfTuplesPerPage = 5;
 	
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
 
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request"); 
+		
 		String search_title = "";
 		String search_content = "";
 		String search = "";
@@ -40,7 +45,8 @@ public class AnnounceCommand implements Command {
 		// 사용자가 요청한 페이지 번호 초기값은 가장 최신글을 보여주는 1
 		int requestPage = 1;
 		
-		Dao_Announce dao = new Dao_Announce();
+		//Dao_Announce dao = new Dao_Announce1();
+		Dao_Announce dao = sqlSession.getMapper(Dao_Announce.class);
 		
 		HttpSession session = request.getSession();
 		
@@ -58,8 +64,15 @@ public class AnnounceCommand implements Command {
 		// 페이지 목록을 세션에 담는다. *list에 진입하면 무조건 세션이 갱신되므로 새 글이 생겨도 최신화가 된다.
 		session.setAttribute("pageList", pageList);
 		
-		ArrayList<Dto_Announce> dtos = dao.announceList(requestPage, numOfTuplesPerPage, search_title, search_content);
-		request.setAttribute("announceList", dtos);
+		int offset = requestPage-1;
+		
+		// 0을 나누면 에러가 발생하므로 예외처리
+		if(offset != 0) {
+			offset *= numOfTuplesPerPage;
+		}
+		
+		ArrayList<Dto_Announce> dtos = dao.announceList(search_title, search_content, offset, numOfTuplesPerPage);
+		model.addAttribute("announceList", dtos);
 
 	}
 	
@@ -84,4 +97,4 @@ public class AnnounceCommand implements Command {
 		
 
 
-}
+} // AnnounceCommand

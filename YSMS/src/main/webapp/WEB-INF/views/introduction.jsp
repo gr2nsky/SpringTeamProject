@@ -7,7 +7,7 @@
 <title>너공나공?</title>
 
 	<!-- 슬라이더 스크립트 -->
-	<link rel="stylesheet" href="img_slide.css">
+	<link rel="stylesheet" href="/ysms/resources/css/img_slide.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit-icons.min.js"></script>
 
@@ -165,19 +165,19 @@
 	<div class="my-slider uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay:true; autoplay-interval=1000;">
 	    <ul class="uk-slideshow-items">
 	        <li>
-	            <img src="img/ysms_introduction_place_korea.png" alt="">
+	            <img src="/ysms/resources/img/ysms_introduction_place_korea.png" alt="">
 	        </li>
 	        <li>
-	            <img src="img/ysms_introduction_place_rooftop.png" alt="">
+	            <img src="/ysms/resources/img/ysms_introduction_place_rooftop.png" alt="">
 	        </li>
 	        <li>
-	            <img src="img/ysms_introduction_place_selfstudy.png" alt="">
+	            <img src="/ysms/resources/img/ysms_introduction_place_selfstudy.png" alt="">
 	        </li>
 	        <li>
-	            <img src="img/ysms_introduction_place_meeting.png" alt="">
+	            <img src="/ysms/resources/img/ysms_introduction_place_meeting.png" alt="">
 	        </li>
 	        <li>
-	            <img src="img/ysms_introduction_place_studyself.png" alt="">
+	            <img src="/ysms/resources/img/ysms_introduction_place_studyself.png" alt="">
 	        </li>
 	    </ul>
 	    <a class="btn uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -230,7 +230,7 @@
 			<h3>CI 소개</h3><br>
 			<table width = "750px">
 			<tr>
-				<td><img alt="너공나공 메인 로고" src="img/ysms_main_logo.png"></td>
+				<td><img alt="너공나공 메인 로고" src="/ysms/resources/img/ysms_main_logo.png"></td>
 			<td><h5>
 				‘Space’는 공간의 의미와 더불어 ‘띄우다’라는 의미도 있어 구름을 자연스럽게 떠올릴 수 있습니다.
 				이처럼 구름 모양의 아이콘과 하늘색은 흔히 볼 수 있는 하늘을 연상시키며 이는 사용자들의 접근성과 친근함을 표현하였습니다.

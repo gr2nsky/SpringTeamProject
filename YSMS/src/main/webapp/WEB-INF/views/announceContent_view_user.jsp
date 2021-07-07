@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/contentsView.css" rel="stylesheet" type="text/css">
+<link href="/ysms/resources/css/contentsView.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
@@ -32,7 +32,7 @@
 	<table class="table2">
 		<tr>		
 			<td align="right">
-			<a href = "announce_user.four"><button type="button" class="btnGoList" >목록보기</button></a>
+			<a href = "announce_user"><button type="button" class="btnGoList" >목록보기</button></a>
 			</td>
 		</tr>
 	</table>
