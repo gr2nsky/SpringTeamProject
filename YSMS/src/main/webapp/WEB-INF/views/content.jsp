@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/content.css" rel="stylesheet" type="text/css">
+<link href="/ysms/resources/css/content.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/spaceDetailView_QnaReview.css" type="text/css">
@@ -156,7 +156,7 @@ function selectedEdnTime(input){
 					<a href="sharedelete?no=${CONTENTS.no }&place_no=${CONTENTS.place_no}"><button type="button" class="btnModDel">삭제</button></a>
 				</td>
 				<td align="right">
-					<a href="list?page=${currentPage}"><button type="button" class="btnGoList">목록보기</button></a>
+					<a href="list"><button type="button" class="btnGoList">목록보기</button></a>
 				</td>
 			</tr>
 		
