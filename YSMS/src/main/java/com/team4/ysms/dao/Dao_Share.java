@@ -30,7 +30,7 @@ public interface Dao_Share {
 	public ArrayList<Dto_Share> shareListDao(String id, int requestPage, int numOfTuplePerPage);
 	
 	//  Paging을 위한 Method
-	public int countTuple();
+	public int countTuple(String id);
 	
 	public Dto_Share shareContentDao(int contentNo);
 	

@@ -45,6 +45,18 @@ function dateHandler(checkBox){
 	
 	dayLimit.value = shareableDateNum;
 }
+function selectedStartTime(input){
+	console.log(input);
+	startTime = input*1;
+}
+function selectedEdnTime(input){
+	console.log(input);
+	if (input*1 <= startTime*1){
+		alert("종료시간이 시작시간과 같거나 빠릅니다.");
+		document.writeForm.endTime.value=0;
+	}
+}
+
 </script>
 <body>
 	<%@ include file="header.jsp" %>
@@ -101,11 +113,25 @@ function dateHandler(checkBox){
 			</tr>
 			<tr>
 				<th>예약가능 시작시간</th>
-				<td><input type="text" name="startTime" size="15" value="${CONTENTS.startTime }"></td>
+				<td>
+					<select name="startTime" onchange="selectedStartTime(this.value)">
+						<option value="${CONTENTS.startTime }">${CONTENTS.startTime } : 00</option>
+						<c:forEach var="time" begin="8" end="22" step="1">
+							<option value="${time}">${time} : 00</option>
+						</c:forEach>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<th>예약가능 종료시간</th>
-				<td><input type="text" name="endTime" size="15" value="${CONTENTS.endTime }"></td>
+				<td>
+				<select name="endTime" onchange="selectedEdnTime(this.value)">
+						<option value="${CONTENTS.endTime }">${CONTENTS.endTime } : 00</option>
+						<c:forEach var="time" begin="8" end="22" step="1">
+							<option value="${time}">${time} : 00</option>
+						</c:forEach>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<th>예약가능 요일</th>
