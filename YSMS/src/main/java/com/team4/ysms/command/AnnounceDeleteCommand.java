@@ -1,20 +1,28 @@
 package com.team4.ysms.command;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
 
 import com.team4.ysms.dao.Dao_Announce;
 
-public class AnnounceDeleteCommand implements Command {
+public class AnnounceDeleteCommand implements SCommand {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request"); 
+		
 		String no = request.getParameter("no");
 		
-		Dao_Announce dao = new Dao_Announce();
+		Dao_Announce dao = sqlSession.getMapper(Dao_Announce.class);
 		dao.announceDelete(no);
 
 	}
 
-}
+} // AnnounceDeleteCommand
+
