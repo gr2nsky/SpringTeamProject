@@ -18,6 +18,11 @@
 <%String inputCategory = request.getParameter("categorySpace"); // 입력된 값 불러옴
 String printInputLocation = request.getParameter("location") ; //입력된 검색어 값 불러옴
 String printInputDate = request.getParameter("date") ; //입력된 검색어 값 불러옴
+
+session.setAttribute("categorySpace", inputCategory);
+session.setAttribute("location", printInputLocation);
+session.setAttribute("date", printInputDate);
+
 	// 날짜 값 공백이면 오늘 기준으로 검색하게 하기
 	if (printInputDate == null) {
 		String pattern = "yyyy-MM-dd";
@@ -53,42 +58,7 @@ String printInputDate = request.getParameter("date") ; //입력된 검색어 값
 </Table>
 </form>
 <table class="table" align="center">
-	<c:choose>
-		<c:when test="${empty SearchLocation }"> 
-			<c:forEach  items="${SearchLocationAll }" var="Dto_SearchPlace"> <!-- items 잊지 말 것 -->
-	<tr>
-		<td rowspan="2" align="right" class="photo">
-		<div class="shareList"><a href="detail.four?no=${Dto_SearchPlace.no }"><img class="shareListPhoto" src="${pageContext.request.contextPath }/resources/${Dto_SearchPlace.filePath }"/></a></div></td>	
-		<th width="200">공간유형</th>		
-		<td width="200">${Dto_SearchPlace.category }</td>
-		<th width="200">이름</th>
-		<td width="200"><a href="detail.four?no=${Dto_SearchPlace.no }">${Dto_SearchPlace.title }</a></td>	
-	</tr>
-			<!-- <tr>
-				<td colspan="4"></td>
-			</tr> -->
-			<tr>
-				<th >주소</th>		
-				<td >${Dto_SearchPlace.address1 } ${Dto_SearchPlace.address2 }</td> 
-				<th>가격<br>(원/시간)</th>
-				<td><fmt:formatNumber value="${Dto_SearchPlace.price }" pattern="##,###"/></td>	
-			</tr>	
-			<tr>
-				<td colspan="4"></td>
-			</tr>
-			</c:forEach>
-			<tr>
-				<td colspan="5" align="center">
-					<!-- 페이징 부분 -->
-					<c:forEach items="${ResultPlacePageListAll }" var="ResultPlacePageAll">
-						<a href="PlaceResultPage?ResultPlacePageAll=${ResultPlacePageAll }">${ResultPlacePageAll } </a>
-					</c:forEach>
-				</td>
-					</tr>
-		</table>
-		
-		</c:when>
-		<c:otherwise>
+	
 	<c:forEach  items="${SearchLocation }" var="Dto_SearchPlace"> <!-- items 잊지 말 것 -->
 	<tr>
 		<td rowspan="2" align="right" class="photo">
@@ -115,13 +85,11 @@ String printInputDate = request.getParameter("date") ; //입력된 검색어 값
 				<td colspan="5" align="center">
 					<!-- 페이징 부분 -->
 					<c:forEach items="${ResultPlacePageList }" var="ResultPlacePage">
-						<a href="PlaceResultPage?ResultPlacePage=${ResultPlacePage }">${ResultPlacePage } </a>
+						<a href="PlaceResultPage?categorySpace=${categorySpace }&location=${location }&date=${date }&ResultPlacePage=${ResultPlacePage }">${ResultPlacePage } </a>
 					</c:forEach>
 				</td>
 					</tr>
 		</table>
-		</c:otherwise>
-	</c:choose>
 </div>
 </div>
 <%@ include file="footer.jsp" %>

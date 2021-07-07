@@ -39,19 +39,19 @@ function checkTF(){
 		return false;
 	}
 	
-	// ******나중에 확인할 것
-/* 	if(form.date.value==""){
+	
+ 	if(form.date.value==""){
 		alert("날짜를 입력해 주세요!");
 		form.location.focus(); // tf 포커스
 		return false;
-	}	 */
+	}	 
 	
 	form.submit(); // loginForm 전송
 	}
 	
 	//달력 팝업 실행
 	function popupCalendar(){
-		var url = "placeSearchCalendar.jsp";
+		var url = "placeSearchCalendar";
 		open(url, "calendar",
 				"roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=400,height=400");
 	}

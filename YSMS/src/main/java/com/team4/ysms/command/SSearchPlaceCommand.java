@@ -38,44 +38,10 @@ public class SSearchPlaceCommand implements SCommand {
 
 		String search4 = "";
 		
-		
-		// 전체 검색할 시
-		if(inputCategory.equals("0")) {
-			inputCategory = "is not null"; // null값이 아닌 값을 전부
+//		if(inputCategory.equals("0")) {
+//			inputCategory = "1,2,3,4";
+//		}
 			
-			//최초 목록 진입시 page값을 넘겨주지 않음 -> 초기값인 1페이지 목록을 보여줌
-			//목록에서 page요청 -> 해당 페이지 번호로 requestPage 설정
-			if (request.getParameter("ResultPlacePageAll") != null) {
-				requestPage = Integer.parseInt(request.getParameter("ResultPlacePageAll"));
-				System.out.println();
-						
-				System.out.println(requestPage + "페이지 요청");
-			}
-					
-			//반환되는 총 튜플의 수
-			Dto_Paging dto = dao.searchPlaceResulAllPaging(inputCategory, inputLocation);
-			int countedTuple = dto.getTotalPage();
-//			int countedTuple = dao.countShareTuple();
-					
-			//페이지 목록 (1...n)
-			ArrayList<Integer> pageList = calcNumOfPage(countedTuple);
-			//페이지 목록을 세션에 담는다. *list에 진입하면 무조건 세션이 갱신되므로 새 글이 생겨도 최신화가 된다.
-			model.addAttribute("ResultPlacePageListAll", pageList);
-			
-			int offset = requestPage-1;
-			if(offset != 0) {
-				offset *= numOfTuplesPerPage;
-			}
-						
-
-//			model.addAttribute("shareList", dao.searchPlacelistDao(offset, numOfTuplesPerPage));
-//			model.addAttribute("pageList", dao.searchPlacelistDao(offset, numOfTuplesPerPage));
-			model.addAttribute("SearchLocationAll", dao.searchPlaceResultAll(inputCategory, inputLocation, inputDate, offset, numOfTuplesPerPage));
-
-							
-		} else {
-		
-		// 조건 검색할 시
 		
 			//최초 목록 진입시 page값을 넘겨주지 않음 -> 초기값인 1페이지 목록을 보여줌
 			//목록에서 page요청 -> 해당 페이지 번호로 requestPage 설정
@@ -107,7 +73,6 @@ public class SSearchPlaceCommand implements SCommand {
 			model.addAttribute("SearchLocation", dao.searchPlaceResult(inputCategory, inputLocation, inputDate, offset, numOfTuplesPerPage));
 	
 		}
-	}// if문 끝
 	
 	//총 튜플수를 받아 페이지당 표시할 게시글의 수로 나누어서 페이지수를 계산하고 jsp에서 for-each문을 돌리기 위해 배열에 담는다
 		public ArrayList<Integer> calcNumOfPage(int countedTuple) {

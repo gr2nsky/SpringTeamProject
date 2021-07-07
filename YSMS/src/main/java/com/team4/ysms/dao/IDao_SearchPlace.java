@@ -20,8 +20,8 @@ public interface IDao_SearchPlace {
 	public Dto_Paging searchPlaceResultPaging(String inputCategory, String inputLocation);
 	
 	// 검색 결과(카테고리 = 전체)
-	public ArrayList<Dto_SearchPlace> searchPlaceResultAll(String inputCategory, String inputLocation, String inputDate, int offset, int numOfTuplesPerPage);
-	public Dto_Paging searchPlaceResulAllPaging(String inputCategory, String inputLocation);
+//	public ArrayList<Dto_SearchPlace> searchPlaceResultAll(String inputCategory, String inputLocation, String inputDate, int offset, int numOfTuplesPerPage);
+//	public Dto_Paging searchPlaceResulAllPaging(String inputCategory, String inputLocation);
 
 	//검색 결과 목록 출력
 //	public ArrayList<Dto_SearchPlace> SearchLocation(String inputCategory, String inputLocation, String inputDate, int requestPage, int numOfTuplesPerPage){ // 검색
