@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +16,11 @@ import com.team4.ysms.command.PlaceListAllCommand;
 import com.team4.ysms.command.QnACommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.SPlaceListAllCommand;
+import com.team4.ysms.command.SSearchPlaceCommand;
 import com.team4.ysms.dao.Dao_SearchPlace;
 import com.team4.ysms.dao.IDao_SearchPlace;
 import com.team4.ysms.dto.Dto_SearchPlace;
+import com.team4.ysms.util.Constant;
 
 @Controller
 public class PlaceSearchController {
@@ -26,7 +29,15 @@ public class PlaceSearchController {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	private JdbcTemplate template;
+	
 	SCommand command = null;
+	
+	@Autowired
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+		Constant.template = this.template;
+	}
 	
 	// 검색 메인 페이지
 	@RequestMapping("/SearchPlacePage")
@@ -55,9 +66,14 @@ public class PlaceSearchController {
 	
 	
 	// 검색 결과 페이지로 이동
-	@RequestMapping("SearchPlaceCommand")
+	@RequestMapping("/PlaceResultPage")
 	public String PlaceResultPage(HttpServletRequest request, Model model) {
-		IDao_SearchPlace dao = sqlSession.getMapper(IDao_SearchPlace.class);
+		HttpSession httpsession = request.getSession();
+		model.addAttribute("request", request);
+		command = new SSearchPlaceCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+//		IDao_SearchPlace dao = sqlSession.getMapper(IDao_SearchPlace.class);
 //		model.addAttribute("inputCategory", dao.searchPlaceResult(inputCategory, inputLocation, inputDate, requestPage, numOfTuplesPerPage) ); // model에 전달
 //		command = new SDao_SearchPlace();
 	

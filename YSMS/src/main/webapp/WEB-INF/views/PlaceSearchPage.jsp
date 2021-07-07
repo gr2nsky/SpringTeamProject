@@ -39,19 +39,19 @@ function checkTF(){
 		return false;
 	}
 	
-	// ******나중에 확인할 것
-/* 	if(form.date.value==""){
+	
+ 	if(form.date.value==""){
 		alert("날짜를 입력해 주세요!");
 		form.location.focus(); // tf 포커스
 		return false;
-	}	 */
+	}	 
 	
 	form.submit(); // loginForm 전송
 	}
 	
 	//달력 팝업 실행
 	function popupCalendar(){
-		var url = "placeSearchCalendar.jsp";
+		var url = "placeSearchCalendar";
 		open(url, "calendar",
 				"roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=400,height=400");
 	}
@@ -60,7 +60,8 @@ function checkTF(){
 <%@ include file="header.jsp" %>
 <div class="mainBox">
 	<div class="contentBox">
-		<form name="searchForm" action="SearchPlaceCommand.four" method="post">
+		<!-- <form name="searchForm" action="SearchPlaceCommand.four" method="post"> -->
+		<form name="searchForm" action="PlaceResultPage" method="post">
 		<table id="SearchSpace" style="margin-left: auto; margin-right: auto;">
 			<tr>
 				<td colspan="4" align="center"><h2>장소 검색</h2></td>
