@@ -29,6 +29,12 @@ public class LoginController {
 	
 	SCommand command = null;
 	
+	@RequestMapping("/loginForm.jsp")
+	public String loginForm(HttpServletRequest request, Model model) {
+		
+		return "loginForm";
+	}
+	
 	@RequestMapping("/login_try.four")
 	public String writeForm(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
