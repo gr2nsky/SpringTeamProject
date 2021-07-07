@@ -26,6 +26,7 @@ public class HostQnACommand implements SCommand {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
 		int place_no = Integer.parseInt(request.getParameter("place_no"));
+		model.addAttribute("place_no", place_no);
 		
 		
 		if(request.getParameter("hostQnaPage") != null) {
