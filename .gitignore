@@ -36,3 +36,6 @@ YSMS/.classpath
 YSMS/.classpath
 YSMS/.classpath
 YSMS/.classpath
+YSMS/.classpath
+*.xml
+YSMS/.settings/org.eclipse.wst.common.project.facet.core.xml
