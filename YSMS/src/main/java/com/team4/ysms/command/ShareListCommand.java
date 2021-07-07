@@ -41,8 +41,13 @@ public class ShareListCommand implements SCommand {
 		}
 		
 
+		int offset = requestPage-1;
+		if(offset != 0) {
+			offset *= numOfTuplesPerPage;
+		}
+
 		// 반환되는 총 튜플의 수
-		int countedTuple = dao.countTuple();
+		int countedTuple = dao.countTuple(user_id);
 		// 페이지 목록 (1...n)
 		ArrayList<Integer> pageList = calcNumOfPage(countedTuple);
 		// 페이지 목록을 세션에 담는다. *list에 진입하면 무조건 세션이 갱신되므로 새 글이 생겨도 최신화가 된다.
@@ -53,7 +58,10 @@ public class ShareListCommand implements SCommand {
 //		request.setAttribute("list", dtos);
 		
 		
-		model.addAttribute("SHARELIST", dao.shareListDao(user_id, requestPage, numOfTuplesPerPage));
+		
+		
+		
+		model.addAttribute("SHARELIST", dao.shareListDao(user_id, offset, numOfTuplesPerPage));
 		
 	}
 
