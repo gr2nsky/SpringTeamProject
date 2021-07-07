@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/announceAdmin.css" rel="stylesheet" type="text/css">
+<link href="/ysms/resources/css/announceAdmin.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
@@ -25,19 +25,19 @@
 		<c:forEach items="${announceList }" var="dto"> 
 		<tr>
 			<td align="center">${dto.no }</td>
-			<td><a href="announceContent_view_admin.four?no=${dto.no}">${dto.title }</a></td>
+			<td><a href="announceContent_view_admin?no=${dto.no}">${dto.title }</a></td>
 			<td align="center">${dto.createDate }</td>
 		</tr>
 		</c:forEach>
 		<tr>
 			<td colspan="3" align="center"><c:forEach items="${pageList }" var="page">
-				<a href="announce_admin.four?page=${page }">${page }</a>
+				<a href="announce_admin?page=${page }">${page }</a>
 			</c:forEach></td>
 		</tr>
 	</table><br>
 	
 	<DIV class="aside_menu">
-		   <FORM name="frm" method="post" action="announce_admin.four">
+		   <FORM name="frm" method="post" action="announce_admin">
 			    <!-- <ASIDE style="float: right;"> -->
 			      <SELECT name="getSearch"> <!-- 검색 컬럼 -->
 			        <OPTION name ="search" value="title">제목</OPTION>
@@ -54,7 +54,7 @@
 	<tr>
 		<tr>
 			<td  align="right">
-			<a href="announceWrite_view_admin.four"><button type="button" class="btnWrite">공지 작성</button></a>
+			<a href="announceWrite_view_admin"><button type="button" class="btnWrite">공지 작성</button></a>
 		</td>
 		</tr>
 	</table>

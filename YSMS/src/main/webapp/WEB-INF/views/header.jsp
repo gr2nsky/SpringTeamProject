@@ -115,14 +115,14 @@
 	<c:if test="${!empty loginedUserID }">
 		<c:choose>
 			<c:when test="${loginedUserID eq 'admin' }">
-				<a href="admin_managingUser.four">회원관리</a>
-				<a href="mypage.four">마이페이지</a>
-				<a href="logout.four">로그아웃</a>
+				<a href="admin_managingUser">회원관리</a>
+				<a href="mypage">마이페이지</a>
+				<a href="logout">로그아웃</a>
 			</c:when>
 			<c:otherwise>			
 					${loginedUserID}님, 환영합니다.	
-					<a href="mypage.four">마이페이지</a>
-					<a href="logout.four">로그아웃</a>
+					<a href="mypage">마이페이지</a>
+					<a href="logout">로그아웃</a>
 			</c:otherwise>	
 		</c:choose>
 	</c:if>
@@ -137,16 +137,16 @@
 	<ul>
 		<!-- <li><a href="mainPage.jsp">Logo->클릭시 메인페이지</a></li>	 -->
 		<li><a href="introduction.jsp">너공나공?</a></li>
-		<li><a href="SearchPlacePage.four">공간 목록</a></li>
-		<li><a href="list.four">공간 나눔 목록</a></li>
+		<li><a href="SearchPlacePage">공간 목록</a></li>
+		<li><a href="list">공간 나눔 목록</a></li>
 		
 		<c:set var="loginedUserID" value="${loginedUserID }" />
 		<c:choose>
 			<c:when test="${loginedUserID eq 'admin'}">
-				<li><a href="announce_admin.four">공지사항</a></li>
+				<li><a href="announce_admin">공지사항</a></li>
 			</c:when>
 			<c:otherwise>
-				<li><a href="announce_user.four">공지사항</a></li>
+				<li><a href="announce_user">공지사항</a></li>
 			</c:otherwise>	
 		</c:choose>
 	</ul>

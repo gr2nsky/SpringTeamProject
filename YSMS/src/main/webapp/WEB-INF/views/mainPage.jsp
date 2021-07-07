@@ -156,14 +156,14 @@
 			<table align = "center">
 				<tr><td colspan="3"><h1>인기 지역</h1></td></tr>
 				<tr>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=강남"><img alt="Gangnam icon" src="/ysms/resources/img/ysms_hotPlace_Gangnam.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=종로"><img alt="Jongno icon" src="/ysms/resources/img/ysms_hotPlace_Jongno.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=마포"><img alt="Hongdae icon" src="/ysms/resources/img/ysms_hotPlace_Hongdae.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=강남"><img alt="Gangnam icon" src="/ysms/resources/img/ysms_hotPlace_Gangnam.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=종로"><img alt="Jongno icon" src="/ysms/resources/img/ysms_hotPlace_Jongno.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=마포"><img alt="Hongdae icon" src="/ysms/resources/img/ysms_hotPlace_Hongdae.png"></a></td>
 				</tr>
 				<tr>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=강남">강남</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=종로">종로</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=0&location=마포">홍대</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=강남">강남</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=종로">종로</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=0&location=마포">홍대</a></td>
 				</tr>
 			</table>
 		</div>
@@ -175,16 +175,16 @@
 			<table align = "center">
 				<tr><td colspan="4"><h1>추천 공간</h1></td></tr>
 				<tr>
-					<td><a href="SearchPlaceCommand.four?categorySpace=1&location=구"><img alt="rest icon" src="/ysms/resources/img/ysms_reco_icon_rest.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=2&location=구"><img alt="party icon" src="/ysms/resources/img/ysms_reco_icon_party.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=3&location=구"><img alt="study icon" src="/ysms/resources/img/ysms_reco_icon_study.png"></a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=4&location=구"><img alt="meeting icon" src="/ysms/resources/img/ysms_reco_icon_meeting.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=1&location=구"><img alt="rest icon" src="/ysms/resources/img/ysms_reco_icon_rest.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=2&location=구"><img alt="party icon" src="/ysms/resources/img/ysms_reco_icon_party.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=3&location=구"><img alt="study icon" src="/ysms/resources/img/ysms_reco_icon_study.png"></a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=4&location=구"><img alt="meeting icon" src="/ysms/resources/img/ysms_reco_icon_meeting.png"></a></td>
 				</tr>
 				<tr>
-					<td><a href="SearchPlaceCommand.four?categorySpace=1&location=구">Rest</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=2&location=구">Party</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=3&location=구">Study</a></td>
-					<td><a href="SearchPlaceCommand.four?categorySpace=4&location=구">Meeting</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=1&location=구">Rest</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=2&location=구">Party</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=3&location=구">Study</a></td>
+					<td><a href="SearchPlaceCommand?categorySpace=4&location=구">Meeting</a></td>
 				</tr>
 			</table>
 		</div>
