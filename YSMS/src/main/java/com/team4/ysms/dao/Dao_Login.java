@@ -13,54 +13,7 @@ public interface Dao_Login {
 	public Dto_Login tryToLogin(String inputID, String inputPW);
 	public Dto_Login IDdupleCheck(String inputID);
 	
-	
-//
-//
-//	public String tryToLogin(String inputID, String inputPW) {
-//		String query = "SELECT id, status, name, phone, email FROM user WHERE id = ? AND pw = ?";
-//
-//		Connection conn = null;
-//		PreparedStatement psmt = null;
-//		ResultSet rs = null;
-//
-//		String userID = null;
-//
-//		try {
-//			conn = dataSource.getConnection();
-//			psmt = conn.prepareStatement(query);
-//			psmt.setString(1, inputID);
-//			psmt.setString(2, inputPW);
-//			rs = psmt.executeQuery();
-//
-//			if (rs.next()) {
-//				userID = rs.getString("id");
-//				LoginedUserInfo.id = rs.getString("id");
-//				LoginedUserInfo.name = rs.getString("name");
-//				LoginedUserInfo.email = rs.getString("email");
-//				LoginedUserInfo.phone = rs.getString("phone");
-//				LoginedUserInfo.status = Integer.parseInt(rs.getString("status"));
-//				System.out.println("loginProcess success");
-//			}
-//		} catch (Exception e) {
-//			System.out.println("loginProcess fail");
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if (rs != null)
-//					rs.close();
-//				if (psmt != null)
-//					psmt.close();
-//				if (conn != null)
-//					conn.close();
-//				System.out.println("< rs, psmt, conn close success>");
-//			} catch (Exception e) {
-//				System.out.println("< rs, psmt, conn close Fail>");
-//			}
-//		}
-//
-//		return userID;
-//	}
-//
+
 //	public String IDdupleCheck(String inputID) {
 //		String result = "unuseable";
 //		String query = "SELECT id FROM user WHERE id = ?";
