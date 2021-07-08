@@ -23,6 +23,7 @@ public class Dto_Login {
 		this.id = id;
 	}
 
+
 	public int getNo() {
 		return no;
 	}
