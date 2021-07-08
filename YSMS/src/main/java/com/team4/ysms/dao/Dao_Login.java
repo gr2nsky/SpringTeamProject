@@ -6,17 +6,6 @@
 
 package com.team4.ysms.dao;
 
-import java.sql.Connection;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
-import com.team4.ysms.common.*;
 import com.team4.ysms.dto.Dto_Login;
 
 public interface Dao_Login {
