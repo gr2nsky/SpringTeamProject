@@ -13,4 +13,8 @@
 		SELECT ID FROM USER WHERE ID =#{param1}
 	</select>
 	
+	<select id="emailDupleCheck" resultType="com.team4.ysms.dto.Dto_Login" >
+		SELECT EMAIL FROM USER WHERE EMAIL =#{param1}
+	</select>
+	
 </mapper>

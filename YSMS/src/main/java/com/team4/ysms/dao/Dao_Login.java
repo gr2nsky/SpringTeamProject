@@ -12,49 +12,9 @@ public interface Dao_Login {
 	
 	public Dto_Login tryToLogin(String inputID, String inputPW);
 	public Dto_Login IDdupleCheck(String inputID);
-	
+	public Dto_Login emailDupleCheck(String inputEmail);
 
-//	public String IDdupleCheck(String inputID) {
-//		String result = "unuseable";
-//		String query = "SELECT id FROM user WHERE id = ?";
-//
-//		Connection conn = null;
-//		PreparedStatement psmt = null;
-//		ResultSet rs = null;
-//
-//		try {
-//			conn = dataSource.getConnection();
-//			psmt = conn.prepareStatement(query);
-//			psmt.setString(1, inputID);
-//			rs = psmt.executeQuery();
-//
-//			if (!rs.next()) {
-//				result = "useable";
-//				System.out.println("this id possible to use.");
-//			} else {
-//				result = "unuseable";
-//				System.out.println("this id is already in use.");
-//			}
-//		} catch (Exception e) {
-//			System.out.println("duplecheck fail");
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if (rs != null)
-//					rs.close();
-//				if (psmt != null)
-//					psmt.close();
-//				if (conn != null)
-//					conn.close();
-//				System.out.println("< rs, psmt, conn close success>");
-//			} catch (Exception e) {
-//				System.out.println("< rs, psmt, conn close Fail>");
-//			}
-//		}
-//
-//		return result;
-//	}
-//
+
 //	public String emailDupleCheck(String inputEmail) {
 //		String result = "unuseable";
 //		String query = "SELECT email FROM user WHERE email = ?";

@@ -23,9 +23,7 @@ public class DupleIDCheckCommand implements SCommand {
 		
 		Dao_Login dao = sqlSession.getMapper(Dao_Login.class);
 		Dto_Login dto = dao.IDdupleCheck(id);
-		String result = dto.getId();
-		
-		if (result.equals("") && result.equals("null")){
+		if (dto == null) {
 			model.addAttribute("duplicate_checked_id", id);
 		}
 		
