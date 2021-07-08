@@ -11,13 +11,6 @@ public class DetailViewReviewCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-
-		int rentalNo = Integer.parseInt(request.getParameter("rentalNo"));
-		
-		Dao_Review dao = new Dao_Review();
-		Dto_Review detailViewReview = dao.reviewDetails(rentalNo);
-		
-		request.setAttribute("detailViewReview", detailViewReview);
 	}
 
 }

@@ -10,14 +10,15 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import com.team4.ysms.common.LoginedUserInfo;
 import com.team4.ysms.dao.Dao_myinfo_Review;
 import com.team4.ysms.dto.Dto_Paging;
 
 public class MyinfoReviewCommand implements SCommand {
 
 
-//	String user_id = LoginedUserInfo.id;
-	String user_id = "user01";
+	String user_id = LoginedUserInfo.id;
+//	String user_id = "user01";
 	int numOfTuplesPerPage = 5;
 	
 	@Override

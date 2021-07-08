@@ -15,8 +15,8 @@ import com.team4.ysms.dto.Dto_Paging;
 
 public class MyinfoQnACommand implements SCommand {
 
-//	String user_id = LoginedUserInfo.id;
-	String user_id = "user01";
+	String user_id = LoginedUserInfo.id;
+//	String user_id = "user01";
 	int numOfTuplesPerPage = 5;
 	
 
