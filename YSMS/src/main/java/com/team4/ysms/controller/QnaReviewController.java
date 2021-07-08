@@ -46,6 +46,8 @@ public class QnaReviewController {
 	@RequestMapping("/write_qna")
 	public String write_qna(HttpServletRequest request, Model model) {
 		System.out.println("write_qna()");
+		
+		HttpSession httpsession = request.getSession();
 		model.addAttribute("place_no", request.getParameter("place_no"));
 		
 		return "write_QnA";
