@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/PlaceSearchPage.css" rel="stylesheet" type="text/css">
+<link href="/ysms/resources/css/PlaceSearchPage.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
