@@ -42,7 +42,7 @@ function findPW(){
 	if (idValCheck == false){
 		return false;
 	}
-	var url = "findAccount.four?email=" + document.getElementById("inputEmailForm").value +"&id=" + document.getElementById("inputIDForm").value;
+	var url = "findAccount?email=" + document.getElementById("inputEmailForm").value +"&id=" + document.getElementById("inputIDForm").value;
 	open(url, "findPW",
 			"roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 }

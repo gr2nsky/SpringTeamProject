@@ -110,7 +110,7 @@
 	<!-- 로그인 성공시 메인페이지에 추가적으로 정보 표시 -->
 	<c:set var="loginedUserID" value="${loginedUserID }" />
 	<c:if test="${empty loginedUserID }">
-			<a href="loginForm.jsp">로그인</a>
+			<a href="loginForm">로그인</a>
 	</c:if>
 	<c:if test="${!empty loginedUserID }">
 		<c:choose>
@@ -120,7 +120,7 @@
 				<a href="logout">로그아웃</a>
 			</c:when>
 			<c:otherwise>			
-					${loginedUserID}님, 환영합니다.	
+					${loginedUserID}님, 환영합니다.
 					<a href="mypage">마이페이지</a>
 					<a href="logout">로그아웃</a>
 			</c:otherwise>	

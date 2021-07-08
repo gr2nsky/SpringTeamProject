@@ -25,7 +25,7 @@
 	}
 
 	function requestAuthEamil(){
-		var url = "requestAuthEmail.four?email=" + "<%=email%>";
+		var url = "requestAuthEmail?email=" + "<%=email%>";
 		open(url, "authEmailSend",
 				"toolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 	}

@@ -12,6 +12,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.team4.ysms.dao.Dao_Login;
+import com.team4.ysms.dao.Dao_QnA;
+import com.team4.ysms.dto.Dto_Login;
 
 public class LoginCommand implements SCommand {
 
@@ -24,11 +26,12 @@ public class LoginCommand implements SCommand {
 		String userID = request.getParameter("userID");
 		String userPW = request.getParameter("userPW");
 		
-		Dao_Login dao = new Dao_Login();
-		String loginedUserID = dao.tryToLogin(userID, userPW);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("loginedUserID", loginedUserID);
+		Dao_Login dao = sqlSession.getMapper(Dao_Login.class);
+		Dto_Login dto = dao.tryToLogin(userID, userPW);
+		String loginedUserID = dto.getId();
+		
+		httpSession.setAttribute("loginedUserID", loginedUserID);
 		//로그인을 실행했다는 일종의 토큰
 		model.addAttribute("tryLogin", "1");
 		
