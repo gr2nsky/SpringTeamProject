@@ -17,13 +17,14 @@ import com.team4.ysms.command.MyinfoRentalScheduledCommand;
 import com.team4.ysms.command.MyinfoReviewCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteReviewCommand;
+import com.team4.ysms.common.LoginedUserInfo;
 import com.team4.ysms.dao.Dao_myinfo_QnA;
 import com.team4.ysms.dao.Dao_myinfo_Review;
 
 @Controller
 public class MyinfoController {
 	
-	String user_id = "user01"; // 로그인 아이디 받아오기
+	String user_id = LoginedUserInfo.id;
 
 	@Autowired
 	private SqlSession sqlSession;

@@ -13,6 +13,7 @@ import com.team4.ysms.command.HostQnACommand;
 import com.team4.ysms.command.QnACommand;
 import com.team4.ysms.command.ReviewCommand;
 import com.team4.ysms.command.SCommand;
+import com.team4.ysms.common.LoginedUserInfo;
 import com.team4.ysms.dao.Dao_Host_QnA;
 import com.team4.ysms.dao.Dao_QnA;
 
@@ -23,7 +24,7 @@ public class QnaReviewController {
 	private SqlSession sqlSession;
 	
 	SCommand command = null;
-	String user_id = "user03";
+	String user_id = LoginedUserInfo.id;
 	
 	/*
 	 * 21.07.05 hyokyeong

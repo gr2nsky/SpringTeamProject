@@ -18,9 +18,6 @@ public class QnACommand implements SCommand {
 	 	-----------------------------
 	 	21.07.05 hyokyeong JO
 	 	DB table qna_review
-	 	
-	 	****현재 place_no = 3으로 변수 선언해서 진행중
-	 	-> 추후 세션으로 받아와서 바꿀 것.
 	 	-----------------------------
 	 */
 	int qnaNumOfTuplesPerPage = 1;
