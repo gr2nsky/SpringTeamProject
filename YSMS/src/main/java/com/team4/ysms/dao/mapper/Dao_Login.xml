@@ -1,1 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.team4.ysms.dao.Dao_Login">
+
+	<select id="tryToLogin" resultType="com.team4.ysms.dto.Dto_Login" >
+		SELECT ID, STATUS, NAME, PHONE, EMAIL FROM USER WHERE ID = #{param1} AND PW = #{param2}
+	</select>
+
+	<select id="IDdupleCheck" resultType="com.team4.ysms.dto.Dto_Login" >
+		SELECT ID FROM USER WHERE ID =#{param1}
+	</select>
+	
+</mapper>
