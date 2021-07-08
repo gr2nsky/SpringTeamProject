@@ -41,29 +41,29 @@
 			<td colspan="3"class="title" align="left">${detailViewReview.reviewPlaceName }</td>
 			<td colspan="2"class="title" align="right">
 			<c:if test="${detailViewReview.reviewScore == 5 }">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 			</c:if>
 			<c:if test="${detailViewReview.reviewScore == 4 }">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 			</c:if>
 			<c:if test="${detailViewReview.reviewScore == 3 }">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 			</c:if>
 			<c:if test="${detailViewReview.reviewScore == 2 }">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 			</c:if>
 			<c:if test="${detailViewReview.reviewScore == 1 }">
-				<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+				<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 			</c:if></td>
 		</tr>
 		<c:if test="${!empty detailViewReview.reviewFilePath }">

@@ -25,11 +25,6 @@
 	}
 </script>
 <body>
-<%
-	int place_no = Integer.parseInt(request.getParameter("place_no"));
-	session.setAttribute("place_no", place_no);
-%>
-
 	<form name="writeQna" action="qna_write" method="post">
 	
 		<input type="hidden" name="place_no" value="${place_no }">

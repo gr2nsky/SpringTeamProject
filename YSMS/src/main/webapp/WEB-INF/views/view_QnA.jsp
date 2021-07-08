@@ -92,8 +92,7 @@
 			<th align="right">
 				<button id="write" type="button" style="font-weight:800;" onclick="writeQna();">작성하기</button>
 				<input type="hidden" id="loginedId" value="${loginedUserID }">
-<%-- 				<input type="hidden" id="place_no" value="${placeNo }"> --%>
-				<input type="hidden" id="place_no" value="3">
+ 				<input type="hidden" id="place_no" value="${place_no }">
 			</th>
 		</tr>
 		<c:choose>
@@ -155,7 +154,7 @@
 			<td colspan="3" align="center">
 				<!--Paging  -->
 			<c:forEach items="${qnaPageList }" var="qnaPage">
-				<a href="qna?place_no=${placeNo }&qnaPage=${qnaPage }">${qnaPage }</a>
+				<a href="qna?place_no=${place_no }&qnaPage=${qnaPage }">${qnaPage }</a>
 			</c:forEach></td>
 		</tr>
 	</table>

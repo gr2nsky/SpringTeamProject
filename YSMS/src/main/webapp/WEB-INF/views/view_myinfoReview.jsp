@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/ysms/resources/css/myinfo.css" type="text/css">
-<title>${loginedUserID}님의 리뷰 목록 </title>
+<title>나의 리뷰 목록 </title>
 </head>
 <style>
 	*{
@@ -95,7 +96,10 @@
 				<td><div class="text_line">${Dto_review.reviewPlaceName }</div></td>
 				<td><div class="text_contentline">${Dto_review.reviewContent }</div></td>
 				<td>${Dto_review.reviewScore }</td>
-				<td>${Dto_review.reviewUpdateDate }</td>
+				<td>
+				<fmt:parseDate var="parseRegDate" value="${Dto_review.reviewUpdateDate }" pattern="yyyy-MM-dd"/>
+				<fmt:formatDate var="resultRegDt" value="${parseRegDate}" pattern="yyyy-MM-dd"/>
+				${resultRegDt }</td>
 				<td><a href="javascript:openReview('detail_review?rentalNo=${Dto_review.rentalNo }')">
 				<button>자세히보기</button></a></td>
 			</tr>

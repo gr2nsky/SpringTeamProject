@@ -166,13 +166,13 @@
 	</div>	
 </div>
 <%// 리뷰와 큐앤에이 %>
-	<%-- <div style="text-align: center; margin-bottom:50px;">
-	<iframe src="qna.four?place_no=${DETAIL.place_no }" id="qna_iframe" onload="calcQnaHeight();" name="" title="" frameborder="0" scrolling="no"></iframe>
-	<iframe src="review.four?place_no=${DETAIL.place_no }" id="review_iframe" onload="calcReviewHeight();" frameborder="0" scrolling="no"></iframe>
+	<div style="text-align: center; margin-bottom:50px;">
+	<iframe src="qna?place_no=${DETAIL.place_no }" id="qna_iframe" onload="calcQnaHeight();" name="" title="" frameborder="0" scrolling="no"></iframe>
+	<iframe src="review?place_no=${DETAIL.place_no }" id="review_iframe" onload="calcReviewHeight();" frameborder="0" scrolling="no"></iframe>
 	</div>
 		<!-- 예약하기 페이지로 이동 -->
 	<form action="reservation.four" method="post">
-	<input type="hidden" name="sNo" value="${DETAIL.no}"> --%>
+	<input type="hidden" name="sNo" value="${DETAIL.no}">
 	<script type="text/javascript">
 		/* $(function() {
 			var offset = $("#sidebar").offset();
