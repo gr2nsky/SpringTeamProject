@@ -65,29 +65,29 @@
 <%-- 			<th align="right">${reviewDto.reviewScore }</th> --%>
 			<th align="right">
 				<c:if test="${Dto_Review.reviewScore == 5 }">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 				</c:if>
 				<c:if test="${Dto_Review.reviewScore == 4 }">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 				</c:if>
 				<c:if test="${Dto_Review.reviewScore == 3 }">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 				</c:if>
 				<c:if test="${Dto_Review.reviewScore == 2 }">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 				</c:if>
 				<c:if test="${Dto_Review.reviewScore == 1 }">
-					<img class="reviewScore" src="${pageContext.request.contextPath }/resources/reviewPhoto/reviewScore.PNG">
+					<img class="reviewScore" src="/ysms/resources/img/reviewScore.png">
 				</c:if>
 			</th>
 		</tr>
@@ -125,7 +125,7 @@
 			<td colspan="3" align="center">
 				<!--Paging  -->
 			<c:forEach items="${reviewPageList }" var="reviewPage">
-				<a href="review?place_no=${placeNo }&reviewPage=${reviewPage }">${reviewPage }</a>
+				<a href="review?place_no=${place_no }&reviewPage=${reviewPage }">${reviewPage }</a>
 			</c:forEach></td>
 		</tr>
 	</table>

@@ -169,9 +169,17 @@
 					</tr>
 					<tr>
 						<td class="td_title">이용일자 :</td>
-						<td class="td_content">${Dto_Rental.checkInDate }</td>
+						<td class="td_content">
+						<fmt:parseDate var="parseRegDate" value="${Dto_Rental.checkInDate }" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate var="resultRegDt" value="${parseRegDate}" pattern="yyyy-MM-dd"/>
+						${resultRegDt }
+						</td>
 						<td class="td_title">예약일자 :</td>
-						<td class="td_content">${Dto_Rental.rentalDate }</td>
+						<td class="td_content">
+						<fmt:parseDate var="parseRegDate" value="${Dto_Rental.rentalDate }" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate var="resultRegDt" value="${parseRegDate}" pattern="yyyy-MM-dd"/>
+						${resultRegDt }
+						</td>
 					</tr>
 					<tr>
 						<td class="td_title">이용시간 :</td>
@@ -185,7 +193,11 @@
 			 			<c:choose>
 							<c:when test="${!empty Dto_Rental.rentalCancellationDate }">
 							<td class="td_title">취소일자 :</td>
-							<td class="td_content">${Dto_Rental.rentalCancellationDate }</td>
+							<td class="td_content">
+							<fmt:parseDate var="parseRegDate" value="${Dto_Rental.rentalCancellationDate }" pattern="yyyy-MM-dd"/>
+							<fmt:formatDate var="resultRegDt" value="${parseRegDate}" pattern="yyyy-MM-dd"/>
+							${resultRegDt }
+							</td>
 							</c:when>
 							<c:when test="${empty Dto_Rental.reviewSubmitDate }">
 							<td colspan="2" align="right">

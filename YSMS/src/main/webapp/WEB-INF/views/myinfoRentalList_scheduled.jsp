@@ -129,9 +129,17 @@ function moveToDetail(btn){
 					</tr>
 					<tr>
 						<td class="td_title">이용일자 :</td>
-						<td class="td_content">${Dto_Rental.checkInDate }</td>
+						<td class="td_content">
+						<fmt:parseDate var="parseRegDate" value="${Dto_Rental.checkInDate }" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate var="resultRegDt" value="${parseRegDate}" pattern="yyyy-MM-dd"/>
+						${resultRegDt }
+						</td>
 						<td class="td_title">예약일자 :</td>
-						<td class="td_content">${Dto_Rental.rentalDate }</td>
+						<td class="td_content">
+						<fmt:parseDate var="parseRegDate" value="${Dto_Rental.rentalDate }" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate var="resultRegDt" value="${parseRegDate}" pattern="yyyy-MM-dd"/>
+						${resultRegDt }
+						</td>
 					</tr>
 					<tr>
 						<td class="td_title">이용시간 :</td>
