@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	function suc(){
 		alert("이메일이 성공적으로 전송되었습니다.");
-		opener.cancel();
+		opener.close();
 		self.close();
 	}
 	function fail(){

@@ -69,7 +69,7 @@ public class SignUpInputCommand implements SCommand {
 			filePath = filePath + "/" + uploadPhoto;
 
 			Dao_Login dao = sqlSession.getMapper(Dao_Login.class);
-			int queryResult = dao.signUp(id, name, pw, email, phone, status, birthday, filePath);
+			int queryResult = dao.signUp(id, name, pw, email, phone, status, birthday, saveFilename);
 			
 			String result = "false";
 			if (queryResult == 1) {

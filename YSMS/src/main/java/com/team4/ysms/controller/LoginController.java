@@ -37,13 +37,13 @@ public class LoginController {
 		
 		return "loginForm";
 	}
-	
+
 	@RequestMapping("/findID")
 	public String findID(HttpServletRequest request, Model model) {
 		
 		return "findID";
 	}
-	
+
 	@RequestMapping("/findPW")
 	public String findPW(HttpServletRequest request, Model model) {
 		
@@ -74,7 +74,7 @@ public class LoginController {
 	}
 
 	
-	//작업이 워낙 적어서 커맨드 제거하고 컨트롤러에서 제어
+	//작업이 워낙 적어서 커맨드 제거하고 컨트롤러에서 제어하도록 수정
 	@RequestMapping("/logout")
 	public String logOut(HttpServletRequest request, Model model) {
 		HttpSession httpSession = request.getSession();
@@ -85,7 +85,7 @@ public class LoginController {
 		
 		return "mainPage";
 	}
-	
+
 	@RequestMapping("/signUpInput")
 	public String signUpInput(MultipartHttpServletRequest mtfRequest, Model model) {
 		model.addAttribute("mtfRequest", mtfRequest);
@@ -95,7 +95,7 @@ public class LoginController {
 		command.execute(sqlSession, model, httpSession);
 		return "mainPage";
 	}
-
+	
 	@RequestMapping("confirmID")
 	public String confirmID(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
@@ -130,6 +130,7 @@ public class LoginController {
 	@RequestMapping("findAccount")
 	public String findAccount(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
+		model.addAttribute("mailSender",mailSender);
 		HttpSession httpSession = request.getSession(); 
 		
 		command = new FindAccountCommand();

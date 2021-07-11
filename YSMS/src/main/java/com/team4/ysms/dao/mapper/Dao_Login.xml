@@ -22,4 +22,12 @@
 		VALUES (#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, NOW())
 	</insert>
 	
+	<select id="findAccountID" resultType="com.team4.ysms.dto.Dto_Login" >
+		SELECT ID FROM USER WHERE EMAIL = #{param1}
+	</select>
+	
+	<select id="findAccountPW" resultType="com.team4.ysms.dto.Dto_Login" >
+		SELECT PW FROM USER WHERE EMAIL = #{param1} AND ID = #{param2}
+	</select>
+	
 </mapper>

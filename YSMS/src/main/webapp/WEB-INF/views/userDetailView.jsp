@@ -6,7 +6,7 @@
 <head>
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/myinfo.css" type="text/css">
+<link rel="stylesheet" href="/ysms/resources/css/myinfo.css" type="text/css">
 <meta charset="UTF-8">
 <title>내 정보 수정</title>
 <style>
