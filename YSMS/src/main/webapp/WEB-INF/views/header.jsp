@@ -103,8 +103,12 @@
 	<c:set var="tryLogout" value="${tryLogout }" />
 	<c:if test="${!empty tryLogout }">
 		<script type="text/javascript"> 
-			alert("로그아웃 되었습니다.")
+			console.log("tryLogout1 : " + sessionStorage.getItem("tryLogout"));
+			console.log("jstl tryLogout1 : " + ${tryLogout });
+			alert("로그아웃 되었습니다.");
 			sessionStorage.clear();
+			console.log("tryLogout2 : " + sessionStorage.getItem("tryLogout"));
+			console.log("jstl tryLogout1 : " + ${tryLogout });
 		</script>
 	</c:if>
 	<!-- 로그인 성공시 메인페이지에 추가적으로 정보 표시 -->
@@ -112,7 +116,7 @@
 	<c:if test="${empty loginedUserID }">
 			<a href="loginForm">로그인</a>
 	</c:if>
-	<c:if test="${!empty loginedUserID }">
+	<c:if test="${not empty loginedUserID }">
 		<c:choose>
 			<c:when test="${loginedUserID eq 'admin' }">
 				<a href="admin_managingUser">회원관리</a>

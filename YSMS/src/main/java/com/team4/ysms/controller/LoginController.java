@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,8 @@ import com.team4.ysms.command.SignUpInputCommand;
 public class LoginController {
 	@Autowired
 	private SqlSession sqlSession;
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	SCommand command = null;
 	
@@ -74,8 +77,8 @@ public class LoginController {
 	//작업이 워낙 적어서 커맨드 제거하고 컨트롤러에서 제어
 	@RequestMapping("/logout")
 	public String logOut(HttpServletRequest request, Model model) {
-		
 		HttpSession httpSession = request.getSession();
+		
 		httpSession.removeAttribute("loginedUserID");
 		//로그아웃 작업을 수행했다는 토큰
 		httpSession.setAttribute("tryLogout", "1");
@@ -116,6 +119,7 @@ public class LoginController {
 	@RequestMapping("requestAuthEmail")
 	public String requestAuthEmail(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
+		model.addAttribute("mailSender",mailSender);
 		HttpSession httpSession = request.getSession(); 
 		
 		command = new AuthEmailRequestCommand();

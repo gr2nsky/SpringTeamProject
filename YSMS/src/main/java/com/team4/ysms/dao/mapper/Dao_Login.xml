@@ -17,4 +17,9 @@
 		SELECT EMAIL FROM USER WHERE EMAIL =#{param1}
 	</select>
 	
+	<insert id="signUp">
+		INSERT INTO USER (ID, NAME, PW, EMAIL, PHONE, STATUS, BIRTHDAY, FILEPATH, SIGNDATE) 
+		VALUES (#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, NOW())
+	</insert>
+	
 </mapper>
