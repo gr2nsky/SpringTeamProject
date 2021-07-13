@@ -20,7 +20,6 @@ public class SignUpInputCommand implements SCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
-//		FilePath_login fl = FilePath_login.getInstance();
 		
 		Map<String, Object> map = model.asMap();
 		MultipartHttpServletRequest mtfRequest = (MultipartHttpServletRequest) map.get("mtfRequest");

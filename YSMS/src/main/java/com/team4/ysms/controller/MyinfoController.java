@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ModifyReviewCommand;
+import com.team4.ysms.command.MyInfoFormCommand;
+import com.team4.ysms.command.MyInfoUpdateCommand;
 import com.team4.ysms.command.MyinfoQnACommand;
 import com.team4.ysms.command.MyinfoRentalPreviousCommand;
 import com.team4.ysms.command.MyinfoRentalScheduledCommand;
@@ -31,6 +33,38 @@ public class MyinfoController {
 	
 	SCommand command = null;
 	
+	@RequestMapping("/mypage")
+	public String myInfo(HttpServletRequest request, Model model) {
+		HttpSession httpSession = request.getSession();
+		model.addAttribute("request", request);
+
+		command = new MyInfoFormCommand();
+		command.execute(sqlSession, model, httpSession);
+		
+		return "myPage";
+	}
+	
+	@RequestMapping("/myInfoUpdateForm")
+	public String myInfoUpdateForm(HttpServletRequest request, Model model) {
+		HttpSession httpSession = request.getSession();
+		model.addAttribute("request", request);
+
+		command = new MyInfoFormCommand();
+		command.execute(sqlSession, model, httpSession);
+		
+		return "myInfoUpdateProfile";
+	}
+	
+	@RequestMapping("/myInfoUpdate")
+	public String myInfoUpdate(MultipartHttpServletRequest mtfRequest, Model model) {
+		HttpSession httpSession = mtfRequest.getSession();
+		model.addAttribute("mtfRequest", mtfRequest);
+
+		command = new MyInfoUpdateCommand();
+		command.execute(sqlSession, model, httpSession);
+		
+		return "myInfoUpdateForm";
+	}
 	
 	/*
 	 * 21.07.06 효경 -myInfoQnA
