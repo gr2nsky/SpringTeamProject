@@ -111,7 +111,7 @@ function goToUser(userNo){
 				
 				<tr> <td colspan="6" align="center">
 					<c:forEach items="${pageList }" var="page">
-						<a href="admin_managingUser.four?page=${page }">${page}</a>
+						<a href="admin_managingUser?page=${page }">${page}</a>
 					</c:forEach>
 				</td> </tr>
 			</table>
@@ -119,16 +119,16 @@ function goToUser(userNo){
 			<table class="table2" style="margin-left: auto; margin-right: auto;">
 				<tr>
 					<td align="right">
-						<a href="admin_managingUser.four"><button type="button" class="btnWrite" onclick="kickBack()"> 강제탈퇴 </button></a>
+						<a href="admin_managingUser"><button type="button" class="btnWrite" onclick="kickBack()"> 강제탈퇴 </button></a>
 					</td>
 				</tr>
 			</table>
 		</div>
 	</div>
-	<form action="userDelete.four" method="post" name="hiddenForm">
+	<form action="userDelete" method="post" name="hiddenForm">
 		<input type="hidden" value="" name="selectedUsers" id="result">
 	</form>
-	<form action="userDetailView.four" method="post" name="hiddenForm2"></form>
+	<form action="userDetailView" method="post" name="hiddenForm2"></form>
 	<br>
 	<br>
 	<br>
