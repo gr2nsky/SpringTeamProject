@@ -17,7 +17,7 @@ paymentResult = "<%=paymentResult%>"
 
 
 if (paymentResult == "true"){
-	window.opener.location.href="paymentResultCheck.four";
+	window.opener.location.href="paymentResultCheck";
 	alert("결제정보가 성공적으로 등록되었습니다.");
 	self.close();
 } else {

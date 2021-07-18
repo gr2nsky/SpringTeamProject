@@ -5,10 +5,26 @@
     <mapper namespace="com.team4.ysms.dao.Dao_Reservation">
     
         <select id="refineSharesDetail" resultType="com.team4.ysms.dto.Dto_Reservation_rentalDetail">
-        SELECT no, resName, resEmail, resPhone, resCapacity, resPrice, checkInDate, startTime, endTime 
-		FROM (SELECT *, TIMESTAMPDIFF(DAY, now(), checkInDate) timeDiff FROM rental WHERE place_no = #{param1} AND cancellationDate IS NULL) r 
-      	WHERE r.timeDiff BETWEEN -32 AND 32 
-      	ORDER BY checkInDate ASC, startTime ASC
+        SELECT NO, RESNAME, RESEMAIL, RESPHONE, RESCAPACITY, RESPRICE, CHECKINDATE, STARTTIME, ENDTIME 
+		FROM (SELECT *, TIMESTAMPDIFF(DAY, NOW(), CHECKINDATE) TIMEDIFF FROM RENTAL WHERE PLACE_NO = #{param1} AND CANCELLATIONDATE IS NULL) R 
+      	WHERE R.TIMEDIFF BETWEEN -32 AND 32 
+      	ORDER BY CHECKINDATE ASC, STARTTIME ASC
+    	</select>
+    	
+    	<select id="refineShares" resultType="com.team4.ysms.dto.Dto_Reservation_rental">
+		SELECT CHECKINDATE, STARTTIME, ENDTIME 
+		FROM (SELECT *, TIMESTAMPDIFF(DAY, NOW(), CHECKINDATE) TIMEDIFF FROM RENTAL WHERE PLACE_NO = #{param1} AND CANCELLATIONDATE IS NULL) R 
+      	WHERE R.TIMEDIFF BETWEEN -32 AND 32 
+      	ORDER BY CHECKINDATE ASC, STARTTIME ASC 
+    	</select>
+    	
+    	<insert id="payment">
+		INSERT INTO RENTAL (RENTALDATE, CHECKINDATE, STARTTIME, ENDTIME, PRICE, USER_ID, PLACE_NO, RESNAME, RESPHONE, RESEMAIL, RESCAPACITY)  
+		VALUES (NOW(), #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9}, #{param10})
+		</insert>
+		
+		<select id="findRental" resultType="com.team4.ysms.dto.Dto_Payment">
+		SELECT place_no, checkInDate, startTime, endTime, resName, resPhone, resEmail, resCapacity, price FROM rental WHERE no =  #{param1}
     	</select>
     
     </mapper>

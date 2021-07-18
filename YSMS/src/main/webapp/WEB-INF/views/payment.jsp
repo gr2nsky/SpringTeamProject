@@ -34,7 +34,7 @@ IMP.request_pay({
     buyer_postcode : '123-456'
 }, function(rsp) {
     if ( rsp.success ) {
-        location.href="successPayment.four?pNo=" + "<%=placeNoCheck%>";
+        location.href="successPayment?pNo=" + "<%=placeNoCheck%>";
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;

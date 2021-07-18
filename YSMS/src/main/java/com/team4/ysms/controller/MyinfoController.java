@@ -19,6 +19,7 @@ import com.team4.ysms.command.MyinfoRentalScheduledCommand;
 import com.team4.ysms.command.MyinfoReviewCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteReviewCommand;
+import com.team4.ysms.command.paymentResultDetailViewCommand;
 import com.team4.ysms.common.LoginedUserInfo;
 import com.team4.ysms.dao.Dao_myinfo_QnA;
 import com.team4.ysms.dao.Dao_myinfo_Review;
@@ -281,5 +282,16 @@ public class MyinfoController {
 		
 		return "myinfoRentalList_previous";
 	}
+
 	
+	@RequestMapping("/paymentResultDetailView")
+	public String paymentResultDetailView(HttpServletRequest request, Model model) {
+		HttpSession httpsession = request.getSession();
+		model.addAttribute("request", request);
+		
+		command = new paymentResultDetailViewCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+		return "paymentResultCheck";
+	}
 }
