@@ -1,22 +1,24 @@
 package com.team4.ysms.command;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
 
 import com.team4.ysms.common.PaymentInfo;
 import com.team4.ysms.common.ReservationInfo;
 import com.team4.ysms.dto.Dto_Payment;
 import com.team4.ysms.dto.Dto_Share;
 
-public class PaymentResultCheckCommand implements Command {
+public class PaymentResultCheckCommand implements SCommand {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
 		Dto_Share detail = ReservationInfo.detail;
 		Dto_Payment dto = PaymentInfo.dto_payment;
 		
-		request.setAttribute("DETAIL", detail);
-		request.setAttribute("DTO", dto);
+		model.addAttribute("DETAIL", detail);
+		model.addAttribute("DTO", dto);
 	}
 
 }

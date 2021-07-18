@@ -286,6 +286,7 @@ public class Dto_Share {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
+	
 	public void printAll() {
 		System.out.println("share no : " + no + "title : " + title + "intro : " + introduce);
 		System.out.println("place no  : " + place_no + "address  : " + address1 + ", " + address2 + "start-end time : "

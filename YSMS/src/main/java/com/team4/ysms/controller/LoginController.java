@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,8 @@ import com.team4.ysms.command.SignUpInputCommand;
 public class LoginController {
 	@Autowired
 	private SqlSession sqlSession;
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	SCommand command = null;
 	
@@ -34,13 +37,13 @@ public class LoginController {
 		
 		return "loginForm";
 	}
-	
+
 	@RequestMapping("/findID")
 	public String findID(HttpServletRequest request, Model model) {
 		
 		return "findID";
 	}
-	
+
 	@RequestMapping("/findPW")
 	public String findPW(HttpServletRequest request, Model model) {
 		
@@ -71,18 +74,18 @@ public class LoginController {
 	}
 
 	
-	//작업이 워낙 적어서 커맨드 제거하고 컨트롤러에서 제어
+	//작업이 워낙 적어서 커맨드 제거하고 컨트롤러에서 제어하도록 수정
 	@RequestMapping("/logout")
 	public String logOut(HttpServletRequest request, Model model) {
-		
 		HttpSession httpSession = request.getSession();
+		
 		httpSession.removeAttribute("loginedUserID");
 		//로그아웃 작업을 수행했다는 토큰
 		httpSession.setAttribute("tryLogout", "1");
 		
 		return "mainPage";
 	}
-	
+
 	@RequestMapping("/signUpInput")
 	public String signUpInput(MultipartHttpServletRequest mtfRequest, Model model) {
 		model.addAttribute("mtfRequest", mtfRequest);
@@ -92,7 +95,7 @@ public class LoginController {
 		command.execute(sqlSession, model, httpSession);
 		return "mainPage";
 	}
-
+	
 	@RequestMapping("confirmID")
 	public String confirmID(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
@@ -116,6 +119,7 @@ public class LoginController {
 	@RequestMapping("requestAuthEmail")
 	public String requestAuthEmail(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
+		model.addAttribute("mailSender",mailSender);
 		HttpSession httpSession = request.getSession(); 
 		
 		command = new AuthEmailRequestCommand();
@@ -126,6 +130,7 @@ public class LoginController {
 	@RequestMapping("findAccount")
 	public String findAccount(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
+		model.addAttribute("mailSender",mailSender);
 		HttpSession httpSession = request.getSession(); 
 		
 		command = new FindAccountCommand();

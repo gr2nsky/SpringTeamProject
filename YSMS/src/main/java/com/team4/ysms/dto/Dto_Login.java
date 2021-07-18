@@ -14,6 +14,7 @@ public class Dto_Login {
 	Timestamp filePath;
 	Timestamp signDate;
 	Timestamp cancelDate;
+	String pw;
 	
 	public Dto_Login() {
 		
@@ -22,6 +23,7 @@ public class Dto_Login {
 	public Dto_Login(String id) {
 		this.id = id;
 	}
+
 
 	public int getNo() {
 		return no;
@@ -102,6 +104,15 @@ public class Dto_Login {
 	public void setCancelDate(Timestamp cancelDate) {
 		this.cancelDate = cancelDate;
 	}
+
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	
 	
 	
 	

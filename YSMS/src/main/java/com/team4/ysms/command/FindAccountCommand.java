@@ -23,33 +23,38 @@ import org.springframework.ui.Model;
 
 import com.team4.ysms.common.ShareVar_login;
 import com.team4.ysms.dao.Dao_Login;
+import com.team4.ysms.dto.Dto_Login;
 
 public class FindAccountCommand implements SCommand {
 	
-	@Autowired
-	private JavaMailSender mailSender;
+	JavaMailSender mailSender;
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		
+		mailSender = (JavaMailSender) map.get("mailSender");
 		
 		String inputedEmail = null;
 		String inputedID = null;
 		String result = null;
-		Dao_Login dao = new Dao_Login();
 		String mailSendReuslt = "false";
 		
 		
 		inputedEmail = request.getParameter("email");
 		inputedID = request.getParameter("id");
 		
+
+		
 		if (inputedID == null || inputedID.equals("")) {
-			result = dao.findAccount(inputedEmail);
+			Dao_Login dao = sqlSession.getMapper(Dao_Login.class);
+			Dto_Login dto = dao.findAccountID(inputedEmail);
+			result = dto.getId();
 			mailSendReuslt = sendEmail(inputedEmail, result, 0);
 		} else {
-			result = dao.findAccount(inputedEmail, inputedID);
+			Dao_Login dao = sqlSession.getMapper(Dao_Login.class);
+			Dto_Login dto = dao.findAccountPW(inputedEmail, inputedID);
+			result = dto.getPw();
 			mailSendReuslt = sendEmail(inputedEmail, result, 1);
 		}
 		

@@ -48,4 +48,8 @@
     		UPDATE share SET title = #{param2}, introduce = #{param3}, filePath = #{param4} , price = #{param5}, startTime = #{param6}, endTime = #{param7}, dayLimit = #{param8} WHERE share.no = #{param1}
     	</update>
     	
+    	<select id="rDetail" resultType="com.team4.ysms.dto.Dto_Share">
+    		SELECT * FROM PLACE, SHARE WHERE PLACE_NO = #{param1} AND PLACE.NO = SHARE.PLACE_NO
+    	</select>
+    	
     </mapper>

@@ -6,7 +6,7 @@
 <head>
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/myinfo.css" type="text/css">
+<link rel="stylesheet" href="/ysms/resources/css/myinfo.css" type="text/css">
 <meta charset="UTF-8">
 <title>내 정보 수정</title>
 <style>
@@ -145,7 +145,7 @@
 	<%@ include file="myinfoHeader.jsp" %>
 <div class="mainBox">
 	<div class="contentBox">
-		<form name="signUpForm" action="myInfoUpdate.four" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+		<form name="signUpForm" action="myInfoUpdate" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
 		<table align="center">
 			<tr>
 				<td colspan="3" align="left" valign="top" class="td_myinfo"><div style="margin-bottom:10px;">내 정보 수정</div>

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/spaceDetailView_QnaReview.css" type="text/css">
+<link rel="stylesheet" href="/ysms/resources/css/spaceDetailView_QnaReview.css" type="text/css">
 <style>
 	*{
 		font-family: 'Nanum Gothic', sans-serif;

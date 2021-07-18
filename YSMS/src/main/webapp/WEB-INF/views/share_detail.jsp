@@ -117,7 +117,7 @@
 				</tr>
 			</table>
 					<!-- 예약하기 페이지로 이동 -->
-			<form action="reservation.four" method="post">
+			<form action="reservation" method="post">
 			<input type="hidden" name="sNo" value="${DETAIL.no}">
 			<!-- <input type="submit" value="예약하기"> -->
 			</form>

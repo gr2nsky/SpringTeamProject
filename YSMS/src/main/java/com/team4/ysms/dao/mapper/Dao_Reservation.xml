@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.team4.ysms.dao.Dao_Reservation">
+    
+        <select id="refineSharesDetail" resultType="com.team4.ysms.dto.Dto_Reservation_rentalDetail">
+        SELECT NO, RESNAME, RESEMAIL, RESPHONE, RESCAPACITY, RESPRICE, CHECKINDATE, STARTTIME, ENDTIME 
+		FROM (SELECT *, TIMESTAMPDIFF(DAY, NOW(), CHECKINDATE) TIMEDIFF FROM RENTAL WHERE PLACE_NO = #{param1} AND CANCELLATIONDATE IS NULL) R 
+      	WHERE R.TIMEDIFF BETWEEN -32 AND 32 
+      	ORDER BY CHECKINDATE ASC, STARTTIME ASC
+    	</select>
+    	
+    	<select id="refineShares" resultType="com.team4.ysms.dto.Dto_Reservation_rental">
+		SELECT CHECKINDATE, STARTTIME, ENDTIME 
+		FROM (SELECT *, TIMESTAMPDIFF(DAY, NOW(), CHECKINDATE) TIMEDIFF FROM RENTAL WHERE PLACE_NO = #{param1} AND CANCELLATIONDATE IS NULL) R 
+      	WHERE R.TIMEDIFF BETWEEN -32 AND 32 
+      	ORDER BY CHECKINDATE ASC, STARTTIME ASC 
+    	</select>
+    	
+    	<insert id="payment">
+		INSERT INTO RENTAL (RENTALDATE, CHECKINDATE, STARTTIME, ENDTIME, PRICE, USER_ID, PLACE_NO, RESNAME, RESPHONE, RESEMAIL, RESCAPACITY)  
+		VALUES (NOW(), #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9}, #{param10})
+		</insert>
+		
+		<select id="findRental" resultType="com.team4.ysms.dto.Dto_Payment">
+		SELECT place_no, checkInDate, startTime, endTime, resName, resPhone, resEmail, resCapacity, price FROM rental WHERE no =  #{param1}
+    	</select>
+    
+    </mapper>

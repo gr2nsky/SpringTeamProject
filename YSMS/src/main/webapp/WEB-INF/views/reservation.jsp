@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/reservation.css" type="text/css">
+<link rel="stylesheet" href="/ysms/resources/css/reservation.css" type="text/css">
 <title>Reservation : ${DETAIL.title}</title>
 <style>
 	#reservation_share{
@@ -538,7 +538,7 @@
 		
 		popUp = window.open("payment", "payment");
 		form = document.paymentForm
-		form.action = "payment.four";
+		form.action = "payment";
 		form.target = "payment";
 		form.submit();
 	}
@@ -550,7 +550,7 @@
 	<div class="contentBox">
 		<div class="textLeft"><span style="color: #505050; font-size:40px; font-weight:700">예약하기</span>
 		<div class="underline"></div></div>
-		<form action="payment.four" method="post" name="paymentForm">
+		<form action="payment" method="post" name="paymentForm">
 		<table id="reservation_share" align="center">
 			<tr>
 				<td class="top" colspan="3" align="left">공간명 ${DETAIL.title}</td>

@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ModifyReviewCommand;
+import com.team4.ysms.command.MyInfoFormCommand;
+import com.team4.ysms.command.MyInfoUpdateCommand;
 import com.team4.ysms.command.MyinfoQnACommand;
 import com.team4.ysms.command.MyinfoRentalPreviousCommand;
 import com.team4.ysms.command.MyinfoRentalScheduledCommand;
 import com.team4.ysms.command.MyinfoReviewCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteReviewCommand;
+import com.team4.ysms.command.paymentResultDetailViewCommand;
 import com.team4.ysms.common.LoginedUserInfo;
 import com.team4.ysms.dao.Dao_myinfo_QnA;
 import com.team4.ysms.dao.Dao_myinfo_Review;
@@ -31,6 +34,38 @@ public class MyinfoController {
 	
 	SCommand command = null;
 	
+	@RequestMapping("/mypage")
+	public String myInfo(HttpServletRequest request, Model model) {
+		HttpSession httpSession = request.getSession();
+		model.addAttribute("request", request);
+
+		command = new MyInfoFormCommand();
+		command.execute(sqlSession, model, httpSession);
+		
+		return "myPage";
+	}
+	
+	@RequestMapping("/myInfoUpdateForm")
+	public String myInfoUpdateForm(HttpServletRequest request, Model model) {
+		HttpSession httpSession = request.getSession();
+		model.addAttribute("request", request);
+
+		command = new MyInfoFormCommand();
+		command.execute(sqlSession, model, httpSession);
+		
+		return "myInfoUpdateProfile";
+	}
+	
+	@RequestMapping("/myInfoUpdate")
+	public String myInfoUpdate(MultipartHttpServletRequest mtfRequest, Model model) {
+		HttpSession httpSession = mtfRequest.getSession();
+		model.addAttribute("mtfRequest", mtfRequest);
+
+		command = new MyInfoUpdateCommand();
+		command.execute(sqlSession, model, httpSession);
+		
+		return "myInfoUpdateForm";
+	}
 	
 	/*
 	 * 21.07.06 효경 -myInfoQnA
@@ -247,5 +282,16 @@ public class MyinfoController {
 		
 		return "myinfoRentalList_previous";
 	}
+
 	
+	@RequestMapping("/paymentResultDetailView")
+	public String paymentResultDetailView(HttpServletRequest request, Model model) {
+		HttpSession httpsession = request.getSession();
+		model.addAttribute("request", request);
+		
+		command = new paymentResultDetailViewCommand();
+		command.execute(sqlSession, model, httpsession);
+		
+		return "paymentResultCheck";
+	}
 }

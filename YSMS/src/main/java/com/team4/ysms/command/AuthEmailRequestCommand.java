@@ -2,6 +2,8 @@ package com.team4.ysms.command;
 
 import java.util.Random;
 import java.util.Map;
+
+import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import com.team4.ysms.common.ShareVar_login;
@@ -17,14 +20,14 @@ import com.team4.ysms.common.ShareVar_login;
 
 public class AuthEmailRequestCommand implements SCommand{
 	
-	@Autowired
 	private JavaMailSender mailSender;
-
+	
 	@Override
 	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
 		
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		mailSender = (JavaMailSender)map.get("mailSender");
 		
 		String AuthenticationKey = authCodeMaker();
 		String subject = "안녕하세요. 너공나공의 인증메일입니다.";

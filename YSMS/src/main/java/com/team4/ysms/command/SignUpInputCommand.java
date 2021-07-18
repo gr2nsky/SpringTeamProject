@@ -14,12 +14,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.dao.Dao_Login;
+import com.team4.ysms.dto.Dto_Login;
 
 public class SignUpInputCommand implements SCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
-//		FilePath_login fl = FilePath_login.getInstance();
 		
 		Map<String, Object> map = model.asMap();
 		MultipartHttpServletRequest mtfRequest = (MultipartHttpServletRequest) map.get("mtfRequest");
@@ -67,9 +67,13 @@ public class SignUpInputCommand implements SCommand {
 	        
 			filePath = filePath + "/" + uploadPhoto;
 
-			Dao_Login dao = new Dao_Login();
-			String result = dao.signUp(id, name, pw, email, phone, status, birthday, filePath);
-
+			Dao_Login dao = sqlSession.getMapper(Dao_Login.class);
+			int queryResult = dao.signUp(id, name, pw, email, phone, status, birthday, saveFilename);
+			
+			String result = "false";
+			if (queryResult == 1) {
+				result = "true";
+			}
 			model.addAttribute("sginUpResult", result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,7 +82,7 @@ public class SignUpInputCommand implements SCommand {
 	
 	public String getFilePath(HttpSession session) {
 		String root_path = session.getServletContext().getRealPath("/"); // 웹서비스 root 경로 
-		String attach_path = "resources/test/";
+		String attach_path = "resources/user/";
 		
 		String uploadPath = root_path + attach_path;
 		System.out.println(uploadPath);

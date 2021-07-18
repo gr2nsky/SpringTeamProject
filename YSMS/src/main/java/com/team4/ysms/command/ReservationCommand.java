@@ -3,6 +3,7 @@
  */
 package com.team4.ysms.command;
 
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -11,9 +12,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.common.ReservationInfo;
 import com.team4.ysms.dao.Dao_Reservation;
@@ -21,10 +26,13 @@ import com.team4.ysms.dto.Dto_Refine_rental;
 import com.team4.ysms.dto.Dto_Reservation_rental;
 import com.team4.ysms.dto.Dto_Share;
 
-public class ReservationCommand implements Command {
+public class ReservationCommand implements SCommand {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public void execute(SqlSession sqlSession, Model model, HttpSession httpSession) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
 		int sNo = Integer.parseInt(request.getParameter("sNo"));
 		Dto_Share detail = ReservationInfo.detail;
 		//총 이용 가능한 시간
@@ -56,8 +64,27 @@ public class ReservationCommand implements Command {
 		// 성공적으로 로드를 못할 때도 존재하니 no 일치하는지 검사
 		if (sNo == detail.getNo()) {
 			detail.printAll();
-			Dao_Reservation dao = new Dao_Reservation();
-			ArrayList<Dto_Reservation_rental> dtos = dao.refineShares(detail.getPlace_no());
+			
+			Dao_Reservation dao = sqlSession.getMapper(Dao_Reservation.class);
+			ArrayList<Dto_Reservation_rental> preDtos = dao.refineShares(detail.getPlace_no());
+			ArrayList<Dto_Reservation_rental> dtos = new ArrayList<Dto_Reservation_rental>();
+			for (Dto_Reservation_rental preDto : preDtos) {
+				Timestamp checkInDate = preDto.getCheckInDate();
+				System.out.println("checkInDate : " + checkInDate);
+				int startTime = preDto.getStartTime();
+				int endTime = preDto.getEndTime();
+
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(checkInDate);
+				
+				int tMonth = calendar.get(Calendar.MONTH) + 1;
+				int tDate = calendar.get(Calendar.DATE);
+				int tUsingTime = endTime - startTime;
+				
+				Dto_Reservation_rental uDto = new Dto_Reservation_rental(tMonth, tDate, startTime, tUsingTime);
+				System.out.println(month + " / " + tDate + " : " + startTime + " + " + tUsingTime);
+				dtos.add(uDto);
+			}
 			
 			//dto를 이번달과 다음달로 분류
 			for(Dto_Reservation_rental dto : dtos) {
@@ -134,24 +161,23 @@ public class ReservationCommand implements Command {
 			}
 			
 			// share-detail 정보 dto로 담아 전송
-			request.setAttribute("DETAIL", detail);
+			model.addAttribute("DETAIL", detail);
 			// dto를 이번달과 다음달로 나눠서 전송
-			request.setAttribute("thisMonthResData", thisMonthResData);
-			request.setAttribute("nextMonthResData", nextMonthResData);
+			model.addAttribute("thisMonthResData", thisMonthResData);
+			model.addAttribute("nextMonthResData", nextMonthResData);
 			
 			Integer[] thisMonthFullDateList = thisMonthFullDate.toArray(new Integer[thisMonthFullDate.size()]);
 			Integer[] nextMonthFullDateList = nextMonthFullDate.toArray(new Integer[nextMonthFullDate.size()]);
 			
-			request.setAttribute("thisMonthFullDateList", thisMonthFullDateList);
-			request.setAttribute("nextMonthFullDateList", nextMonthFullDateList);
-			request.setAttribute("error", 0);
+			model.addAttribute("thisMonthFullDateList", thisMonthFullDateList);
+			model.addAttribute("nextMonthFullDateList", nextMonthFullDateList);
+			model.addAttribute("error", 0);
 			System.out.println("place no이 동일하므로 다음작업을 수행합니다.");
 		} else {
 			System.out.println("시스템 오류. 데이터를 로드하는데 문제가 발생했습니다.");
 			//error 전송
-			request.setAttribute("error", 1);
+			model.addAttribute("error", 1);
 		}
-
 	}
 	
 
