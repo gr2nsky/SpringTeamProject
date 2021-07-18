@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team4.ysms.command.ShareListCommand;
+import com.team4.ysms.command.ContentCommand;
 import com.team4.ysms.command.ModifyShareCommand;
 import com.team4.ysms.command.SCommand;
 import com.team4.ysms.command.WriteCommand;
@@ -100,8 +101,12 @@ public class ShareSpaceController {
 	//////////////////////////////////
 	@RequestMapping("/content")
 	public String shareContent(HttpServletRequest request, Model model) {
-		
+		HttpSession httpSession = request.getSession();
 		Dao_Share dao = sqlSession.getMapper(Dao_Share.class);
+		
+		command = new ContentCommand();
+		command.execute(sqlSession, model, httpSession);
+		
 		model.addAttribute("CONTENTS", dao.shareDetailDao(Integer.parseInt(request.getParameter("no"))));
 		
 		return "content";

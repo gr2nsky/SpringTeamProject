@@ -1,5 +1,7 @@
 package com.team4.ysms.dto;
 
+import java.sql.Timestamp;
+
 public class Dto_Reservation_rentalDetail {
 	// 누가 예약했는지도 중요하니까 가져온다
 		// 필요한것 : 예약넘버, 예약자이름, 예약날자, 시작, 이용시간(종료시간 - 시작시간 : 이건 dao가 계산),
@@ -9,12 +11,28 @@ public class Dto_Reservation_rentalDetail {
 		String resPhone;
 		int resCapacity;
 		int resPrice;
+		Timestamp checkInDate;
 		int month;
 		int date;
 		int startTime;
 		int usingTime;
+		int endTime;
 		
 		public Dto_Reservation_rentalDetail(){ }
+		
+		public Dto_Reservation_rentalDetail(int no, String resName, String resEmail, String resPhone, int resCapacity,
+				int resPrice, Timestamp checkInDate, int startTime, int endTime) {
+			this.no = no;
+			this.resName = resName;
+			this.resEmail = resEmail;
+			this.resPhone = resPhone;
+			this.resCapacity = resCapacity;
+			this.resPrice = resPrice;
+			this.checkInDate = checkInDate;
+			this.startTime = startTime;
+			this.endTime = endTime;
+		}
+		
 
 		public Dto_Reservation_rentalDetail(int no, String resName, String resEmail, String resPhone, int resCapacity,
 				int resPrice, int month, int date, int startTime, int usingTime) {
@@ -61,9 +79,19 @@ public class Dto_Reservation_rentalDetail {
 			return resPrice;
 		}
 
-		public void setPrice(int resPrice) {
+		public void setResPrice(int resPrice) {
 			this.resPrice = resPrice;
 		}
+		
+
+		public Timestamp getCheckInDate() {
+			return checkInDate;
+		}
+
+		public void setCheckInDate(Timestamp checkInDate) {
+			this.checkInDate = checkInDate;
+		}
+
 
 		public int getNo() {
 			return no;
@@ -114,6 +142,16 @@ public class Dto_Reservation_rentalDetail {
 			this.usingTime = usingTime;
 		}
 		
+		
+		
+		public int getEndTime() {
+			return endTime;
+		}
+
+		public void setEndTime(int endTime) {
+			this.endTime = endTime;
+		}
+
 		public String getInfo() {
 			return month + "/" + date + " : " + startTime + " 부터 " + usingTime + "시간";
 		}
